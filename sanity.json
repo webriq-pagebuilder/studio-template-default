@@ -1,0 +1,55 @@
+{
+  "root": true,
+  "project": {
+    "name": "landing-page-builder"
+  },
+  "api": {
+    "projectId": "9itgab5x",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "json-input",
+    "tabs",
+    "color-list",
+    "visual-options",
+    "@sanity/dashboard",
+    "@webriq-pagebuilder/sanity-plugin-webriq-forms",
+    "dashboard-widget-netlify",
+    "dashboard-widget-document-list",
+    "google-analytics",
+    "@sanity/production-preview",
+    "netlify-deploy-status-badge"
+  ],
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./src/resolvePreviewUrl.js"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./src/deskStructure/index.js"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./src/dashboardConfig.js"
+    }
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision",
+        "parts-list",
+        "@andre-brdoch/sanity-plugin-schema-inspector"
+      ]
+    }
+  }
+}
