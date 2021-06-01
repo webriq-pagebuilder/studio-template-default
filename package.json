@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "description": "",
   "main": "package.json",
-  "author": "Dorell James <galangdj@gmail.com>",
-  "license": "UNLICENSED",
+  "author": "WebriQ <info@webriq.com>",
+  "license": "MIT",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
