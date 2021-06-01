@@ -19,6 +19,7 @@
     "visual-options",
     "@sanity/dashboard",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms",
+    "@webriq-pagebuilder/sanity-plugin-schema-default",
     "dashboard-widget-netlify",
     "dashboard-widget-document-list",
     "google-analytics",
