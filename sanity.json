@@ -42,14 +42,6 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./src/dashboardConfig.js"
-    },
-    {
-      "implements": "part:@sanity/base/brand-logo",
-      "path": "./src/components/previews/brand/logo.js"
-    },
-    {
-      "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "./src/components/previews/styles/variable.css"
     }
   ],
   "env": {
