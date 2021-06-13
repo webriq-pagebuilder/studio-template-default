@@ -17,7 +17,6 @@
     "tabs",
     "color-list",
     "visual-options",
-    "@sanity/dashboard",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms",
     "@webriq-pagebuilder/sanity-plugin-schema-default",
     "dashboard-widget-netlify",
@@ -40,8 +39,12 @@
       "path": "./src/deskStructure/index.js"
     },
     {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "./src/dashboardConfig.js"
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "./src/brand/logo.js"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "./src/brand/styles/variable.css"
     }
   ],
   "env": {
