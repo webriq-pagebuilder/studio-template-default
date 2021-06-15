@@ -54,5 +54,17 @@ export default {
         { type: "signInSignUp" },
       ],
     },
+    {
+      title: "SEO Settings",
+      name: "seoSettings",
+      type: "seo-tools",
+      options: {
+        baseUrl: "http://localhost:3000",
+        slug(doc) {
+          return doc.slug.current
+        },
+        fetchRemote: true
+      }
+    }
   ],
 };
