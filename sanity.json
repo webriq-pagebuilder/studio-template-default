@@ -24,7 +24,8 @@
     "dashboard-widget-document-list",
     "google-analytics",
     "@sanity/production-preview",
-    "netlify-deploy-status-badge"
+    "netlify-deploy-status-badge",
+    "theme-manager"
   ],
   "parts": [
     {
