@@ -5,6 +5,15 @@ export default {
   name: "page",
   icon: MdLibraryBooks,
   type: "document",
+  fieldsets: [
+    {
+      title: "Seo Settings",
+      name: "seo",
+      options: {
+        collapsible: true
+      }
+    }
+  ],
   fields: [
     {
       title: "Title",
@@ -54,5 +63,38 @@ export default {
         { type: "signInSignUp" },
       ],
     },
+    {
+      title: "Title",
+      name: "seoTitle",
+      description: "Override the page title",
+      fieldset: "seo",
+      type: "string"
+    },
+    {
+      title: "Keywords",
+      name: "keywords",
+      description: "Separate with commas",
+      fieldset: "seo",
+      type: "string"
+    },
+    {
+      title: "Synonyms",
+      name: "synonyms",
+      description: "Similar words to inform the SEO review",
+      fieldset: "seo",
+      type: "string"
+    },
+    {
+      title: "Description",
+      name: "description",
+      fieldset: "seo",
+      type: "string"
+    },
+    {
+      title: "Image",
+      name: "addImage",
+      fieldset: "seo",
+      type: "image"
+    }
   ],
 };
