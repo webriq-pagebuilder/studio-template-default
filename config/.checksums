@@ -9,5 +9,7 @@
   "seo-tools": "564f33b8f2360b079d7c71dac71fb0e4efbad16ec97f1042b9cabc58c7da8533",
   "@dorelljames/sanity-plugin-netlify-deploy-status-badge": "922902575995e62af8f628e6abe652ecc5f3b1e1d2dec5859392e79e47707088",
   "netlify-deploy-status-badge": "f4302d53933615325853c58a226af2f9206d055688e932cb636a4ace2e8b85c4",
-  "@webriq-pagebuilder/sanity-plugin-webriq-forms": "bf339e7c91b08c2dcba6885a82637b0d60a75032227d9fb9adbf8ce08bbc128d"
+  "@webriq-pagebuilder/sanity-plugin-webriq-forms": "bf339e7c91b08c2dcba6885a82637b0d60a75032227d9fb9adbf8ce08bbc128d",
+  "sanity-plugin-seo-pane": "922902575995e62af8f628e6abe652ecc5f3b1e1d2dec5859392e79e47707088",
+  "seo-pane": "922902575995e62af8f628e6abe652ecc5f3b1e1d2dec5859392e79e47707088"
 }
