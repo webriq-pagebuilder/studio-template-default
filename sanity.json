@@ -23,8 +23,7 @@
     "dashboard-widget-document-list",
     "google-analytics",
     "@sanity/production-preview",
-    "netlify-deploy-status-badge",
-    "seo-pane"
+    "netlify-deploy-status-badge"
   ],
   "parts": [
     {
