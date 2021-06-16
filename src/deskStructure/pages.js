@@ -43,8 +43,8 @@ export default S.listItem()
             S.view
               .component(SeoPane)
               .options({ 
-                keywords: "keywords",
-                synonyms: "synonyms",
+                keywords: `seo.keywords`,
+                synonyms: `seo.synonyms`,
                 url: (document) => resolveProductionUrl(document)
                })
               .icon(EyeIcon)
