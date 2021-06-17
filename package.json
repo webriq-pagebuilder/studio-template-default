@@ -41,6 +41,7 @@
     "sanity-plugin-json-input": "^0.1.0",
     "sanity-plugin-netlify-deploy-status-badge": "^0.0.3",
     "sanity-plugin-parts-list": "^1.0.2",
+    "sanity-plugin-seo-pane": "^1.1.1",
     "sanity-plugin-tabs": "^2.0.1",
     "sanity-plugin-visual-options": "^0.8.4",
     "uuidv4": "^6.2.7"

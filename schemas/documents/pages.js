@@ -54,5 +54,10 @@ export default {
         { type: "signInSignUp" },
       ],
     },
+    {
+      title: "SEO Settings",
+      name: "seo",
+      type: "seoSettings"
+    }
   ],
 };
