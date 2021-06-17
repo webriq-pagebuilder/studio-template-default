@@ -14,19 +14,19 @@ export default {
     },
     {
       title: "Keywords",
-      name: "keywords",
+      name: "seoKeywords",
       description: "Separate with commas",
       type: "string"
     },
     {
       title: "Synonyms",
-      name: "synonyms",
+      name: "seoSynonyms",
       description: "These are similar words to inform the SEO review",
       type: "string"
     },
     {
       title: "Description",
-      name: "description",
+      name: "seoDescription",
       type: "text"
     },
     {

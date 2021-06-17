@@ -5,7 +5,7 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 import pages from "./documents/pages";
-import seo from "./documents/seo"
+import seo from "./objects/seo"
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
