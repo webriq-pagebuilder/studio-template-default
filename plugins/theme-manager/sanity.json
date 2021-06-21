@@ -1,8 +1,25 @@
-{
+{  
   "parts": [
     {
       "implements": "part:@sanity/base/tool",
       "path": "./index.js"
+    },
+    {
+      "implements": "part:@sanity/base/schema-type",
+      "path": "schema/typography.js"
+    },
+    {
+      "implements": "part:@sanity/base/schema-type",
+      "path": "schema/colors.js"
+    },
+    {
+      "implements": "part:@sanity/base/schema-type",
+      "path": "schema/fontStyles.js"
+    },
+    {
+      "implements": "part:@sanity/base/schema-type",
+      "path": "schema/themeSettings.js"
     }
   ]
 }
+
