@@ -57,7 +57,11 @@ export default {
     {
       title: "SEO Settings",
       name: "seo",
-      type: "seoSettings"
+      type: "seoSettings",
+      options: { 
+        collapsible: true,
+        collapsed: true 
+      }
     }
   ],
 };
