@@ -1906,9 +1906,10 @@
     prop-types "15.7.2"
     styled-components "^5.3.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-0.0.1.tgz#daee86e5709c6f2f22307be8b86cd477606d81db"
+"@webriq-pagebuilder/sanity-plugin-schema-default@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-0.0.2.tgz#5701a17345cc36ad76b429fbd8146b01aa3068a2"
+  integrity sha512-NrqDNSXxyDGhIV7SY8ueuIGfzQM9ZDk4CBqCQGH+ewUKuUsrmwVkD0NwG/J68GDK4mLEEjcOX0mn3Zf5P8m4nw==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^0.0.3"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.3"
