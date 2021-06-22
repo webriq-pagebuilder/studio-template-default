@@ -4,6 +4,7 @@ export default {
     name: 'themeSettings',
     fields: [
         {type: 'colors', name: 'colors'},
-        {type: 'typography', name: 'typography'}
+        {type: 'typography', name: 'typography'},
+        {type: 'fontStyles', name: 'fontStyles'}
     ]
 }
