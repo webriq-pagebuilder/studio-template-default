@@ -1,8 +1,8 @@
 export default function resolveProductionUrl(document) {
-  const previewUrl = `api/preview?secret=secret&slug=${document.slug.current}`
+  const previewUrl = `api/preview?secret=${process.env.SANITY_STUDIO_PREVIEW_SECRET}&slug=${document.slug.current}`;
   if (window.location.hostname.includes("localhost")) {
-    return `http://localhost:3000/${previewUrl}`
+    return `${process.env.SANITY_STUDIO_DEV_SITE_URL}/${previewUrl}`;
   }
 
-  return `https://webriq-atis.webriq.me/${previewUrl}`
+  return `${process.env.SANITY_STUDIO_PRODUCTION_SITE_URL}/${previewUrl}`;
 }

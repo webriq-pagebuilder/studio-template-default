@@ -1,23 +1,23 @@
 /* eslint-disable react/no-unused-prop-types, react/no-multi-comp, react/no-did-mount-set-state, react/forbid-prop-types */
-import React from "react"
-import PropTypes from "prop-types"
-import imageUrlBuilder from "@sanity/image-url"
-import sanityClient from "part:@sanity/base/client"
-import { assemblePageUrl, toPlainText } from "./frontendUtils"
-import styles from "./TwitterCard.css"
+import React from "react";
+import PropTypes from "prop-types";
+import imageUrlBuilder from "@sanity/image-url";
+import sanityClient from "part:@sanity/base/client";
+import { assemblePageUrl } from "./frontendUtils";
+import styles from "./TwitterCard.css";
 
-const builder = imageUrlBuilder(sanityClient)
+const builder = imageUrlBuilder(sanityClient);
 
-const urlFor = source => {
-  return builder.image(source)
-}
+const urlFor = (source) => {
+  return builder.image(source);
+};
 
 const author = {
-  name: "Sanity.io",
-  handle: "sanity_io",
+  name: "WebriQ",
+  handle: "WebriQgoesMad",
   image:
-    "https://pbs.twimg.com/profile_images/1135907399582199809/7uZ5d2to_400x400.jpg",
-}
+    "https://pbs.twimg.com/profile_images/1408052895531126790/BAhX7Puq_400x400.jpg",
+};
 
 class TwitterCard extends React.PureComponent {
   static propTypes = {
@@ -25,18 +25,19 @@ class TwitterCard extends React.PureComponent {
     width: PropTypes.number,
     route: PropTypes.object,
     options: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     document: null,
     width: 500,
-  }
+  };
 
   render() {
-    const { document, width, options } = this.props
-    const { title, excerpt, mainImage } = document
-    const url = assemblePageUrl({ document, options })
-    const websiteUrlWithoutProtocol = url.split("://")[1]
+    const { document, width, options } = this.props;
+    const { title, seo } = document;
+    const url = assemblePageUrl({ document, options });
+    const websiteUrlWithoutProtocol = url.split("://").pop();
+
     return (
       <div className={styles.seoItem}>
         <h3>Twitter card preview</h3>
@@ -64,13 +65,13 @@ class TwitterCard extends React.PureComponent {
           <a href={url} className={styles.tweetUrlWrapper}>
             <div className={styles.tweetCardPreview}>
               <div className={styles.tweetCardImage}>
-                <img src={urlFor(mainImage).width(300).url()} />
+                <img src={urlFor(seo?.seoImage).width(300).url()} />
               </div>
               <div className={styles.tweetCardContent}>
                 <h2 className={styles.tweetCardTitle}>{title}</h2>
-                {excerpt && (
+                {seo?.seoDescription && (
                   <div className={styles.tweetCardDescription}>
-                    {toPlainText(excerpt)}
+                    {seo?.seoDescription}
                   </div>
                 )}
                 <div className={styles.tweetCardDestination}>
@@ -81,8 +82,8 @@ class TwitterCard extends React.PureComponent {
           </a>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default TwitterCard
+export default TwitterCard;

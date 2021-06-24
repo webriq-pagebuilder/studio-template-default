@@ -1,26 +1,26 @@
 /* eslint-disable react/no-multi-comp, react/no-did-mount-set-state, react/forbid-prop-types, react/prop-types */
-import React from "react"
-import PropTypes from "prop-types"
-import { assemblePageUrl, toPlainText } from "./frontendUtils"
-import Truncate from "./Truncate"
-import styles from "./GoogleSearchResult.css"
+import React from "react";
+import PropTypes from "prop-types";
+import { assemblePageUrl, toPlainText } from "./frontendUtils";
+import Truncate from "./Truncate";
+import styles from "./GoogleSearchResult.css";
 
 class GoogleSearchResult extends React.PureComponent {
   static propTypes = {
     document: PropTypes.object,
     width: PropTypes.number,
     route: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     document: null,
     width: 500,
-  }
+  };
 
   render() {
-    const { document, options, width } = this.props
-    const { title, excerpt } = document
-    const url = assemblePageUrl({ document, options })
+    const { document, options, width } = this.props;
+    const { title, excerpt, seo } = document;
+    const url = assemblePageUrl({ document, options });
 
     return (
       <div className={styles.seoItem}>
@@ -30,15 +30,15 @@ class GoogleSearchResult extends React.PureComponent {
             {title}
           </Truncate>
           <div className={styles.url}>{url}</div>
-          {excerpt && (
+          {seo?.seoDescription && (
             <Truncate maxChars={300} className={styles.description}>
-              {toPlainText(excerpt)}
+              {seo?.seoDescription}
             </Truncate>
           )}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default GoogleSearchResult
+export default GoogleSearchResult;
