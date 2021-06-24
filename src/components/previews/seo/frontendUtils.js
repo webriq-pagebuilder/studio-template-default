@@ -1,26 +1,30 @@
 export const assemblePageUrl = ({ document, options }) => {
-  const { slug } = document
-  const { previewURL } = options
+  const { slug } = document;
+  const { publishedURL, previewURL } = options;
   if (!slug || !previewURL) {
-    console.warn("Missing slug or previewURL", { slug, previewURL })
-    return ""
+    console.warn("Missing slug or publishedURL/previewURL", {
+      slug,
+      publishedURL,
+      previewURL,
+    });
+    return "";
   }
-  return `${previewURL}/project/${slug.current}`
-}
+  return `${publishedURL || previewURL}/${slug.current}`;
+};
 
-const defaults = { nonTextBehavior: "remove" }
+const defaults = { nonTextBehavior: "remove" };
 
 export function toPlainText(blocks, opts = {}) {
-  const options = Object.assign({}, defaults, opts)
+  const options = Object.assign({}, defaults, opts);
   return blocks
-    .map(block => {
+    .map((block) => {
       if (block._type !== "block" || !block.children) {
         return options.nonTextBehavior === "remove"
           ? ""
-          : `[${block._type} block]`
+          : `[${block._type} block]`;
       }
 
-      return block.children.map(child => child.text).join("")
+      return block.children.map((child) => child.text).join("");
     })
-    .join("\n\n")
+    .join("\n\n");
 }
