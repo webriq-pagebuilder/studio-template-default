@@ -17,7 +17,6 @@
     "tabs",
     "color-list",
     "visual-options",
-    "@sanity/dashboard",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms",
     "@webriq-pagebuilder/sanity-plugin-schema-default",
     "dashboard-widget-netlify",
@@ -26,6 +25,7 @@
     "@sanity/production-preview",
     "netlify-deploy-status-badge",
     "theme-manager"
+    "seo-pane"
   ],
   "parts": [
     {
@@ -41,16 +41,12 @@
       "path": "./src/deskStructure/index.js"
     },
     {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "./src/dashboardConfig.js"
-    },
-    {
       "implements": "part:@sanity/base/brand-logo",
-      "path": "./src/components/previews/brand/logo.js"
+      "path": "./src/brand/logo.js"
     },
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "./src/components/previews/styles/variable.css"
+      "path": "./src/brand/styles/variable.css"
     }
   ],
   "env": {
