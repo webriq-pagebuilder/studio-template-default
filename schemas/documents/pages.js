@@ -52,15 +52,16 @@ export default {
         { type: "cookies" },
         { type: "logoCloud" },
         { type: "signInSignUp" },
+        { type: "textComponent" }
       ],
     },
     {
       title: "SEO Settings",
       name: "seo",
       type: "seoSettings",
-      options: { 
+      options: {
         collapsible: true,
-        collapsed: true 
+        collapsed: true
       }
     }
   ],
