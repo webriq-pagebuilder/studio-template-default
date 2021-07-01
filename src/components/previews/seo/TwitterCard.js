@@ -65,7 +65,9 @@ class TwitterCard extends React.PureComponent {
           <a href={url} className={styles.tweetUrlWrapper}>
             <div className={styles.tweetCardPreview}>
               <div className={styles.tweetCardImage}>
-                <img src={urlFor(seo?.seoImage).width(300).url()} />
+                {seo?.seoImage && (
+                  <img src={urlFor(seo?.seoImage)?.width(300)?.url()} />
+                )}
               </div>
               <div className={styles.tweetCardContent}>
                 <h2 className={styles.tweetCardTitle}>{title}</h2>
