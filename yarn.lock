@@ -8828,10 +8828,10 @@ sanity-plugin-parts-list@^1.0.2:
   dependencies:
     prop-types "15.7.2"
 
-sanity-plugin-seo-pane@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/sanity-plugin-seo-pane/-/sanity-plugin-seo-pane-1.1.2.tgz#96a2861ff771d45c3c62e2eaaa6312447ef98807"
-  integrity sha512-srsyloTiWPgj925s4wFO9VV2PPIiJZXApq8dUA2BHIulz8SOqQ3abTRbAKSIqYUpNZblWbO5WSKnt+T41WcHSA==
+sanity-plugin-seo-pane@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/sanity-plugin-seo-pane/-/sanity-plugin-seo-pane-1.2.1.tgz#fe729d90cc45041b1e126a89338b60d9a168e071"
+  integrity sha512-pms9pul9ri/qv4MJu72KTdHIHhjcwbxFyiCrs27vxwz+Thf3l8hJ1bh2SS3Je7ysU4mXHMxZn2nI4ApRoMs6FQ==
   dependencies:
     "@sanity/ui" "^0.34.1"
     dlv "^1.1.3"
