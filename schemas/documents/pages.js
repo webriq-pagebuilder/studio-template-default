@@ -48,20 +48,21 @@ export default {
         { type: "callToAction" },
         { type: "team" },
         { type: "stats" },
-        { type: "appPromo" },
+        { type: "appPromo" }, // modified
         { type: "cookies" },
         { type: "logoCloud" },
         { type: "signInSignUp" },
+        { type: "product" }, // added
       ],
     },
     {
       title: "SEO Settings",
       name: "seo",
       type: "seoSettings",
-      options: { 
+      options: {
         collapsible: true,
-        collapsed: true 
-      }
-    }
+        collapsed: true,
+      },
+    },
   ],
 };
