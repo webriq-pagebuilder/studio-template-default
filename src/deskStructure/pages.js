@@ -16,10 +16,16 @@ import TextToSpeechPreview from "../components/previews/a11y/text-to-speech/Text
 import BraillePreview from "../components/previews/a11y/braille/Braille";
 
 // Web preview configuration
-const remotePreviewUrl = `${process.env.SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${process.env.SANITY_STUDIO_PREVIEW_SECRET}&slug=`; // @todo: swap with Next.js one
+const remotePreviewUrl = `${
+  process.env.SANITY_STUDIO_PRODUCTION_SITE_URL
+}/api/preview?secret=${
+  process.env.SANITY_STUDIO_PREVIEW_SECRET || "secret"
+}&slug=`; // @todo: swap with Next.js one
 const localPreviewUrl = `${
   process.env.SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
-}/api/preview?secret=${process.env.SANITY_STUDIO_PREVIEW_SECRET}&slug=`;
+}/api/preview?secret=${
+  process.env.SANITY_STUDIO_PREVIEW_SECRET || "secret"
+}&slug=`;
 const previewURL =
   window.location.hostname === "localhost" ? localPreviewUrl : remotePreviewUrl;
 const publishedURL = `${process.env.SANITY_STUDIO_PRODUCTION_SITE_URL}`;

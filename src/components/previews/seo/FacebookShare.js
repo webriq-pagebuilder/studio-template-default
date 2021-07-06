@@ -25,11 +25,7 @@ class FacebookShare extends React.PureComponent {
 
   render() {
     const { document, width, options } = this.props;
-    const {
-      title,
-      seo,
-      seo: { seoImage: openGraphImage },
-    } = document;
+    const { title, seo } = document;
     const url = assemblePageUrl({ document, options });
     const websiteUrlWithoutProtocol = url.split("://").pop();
 
@@ -38,10 +34,12 @@ class FacebookShare extends React.PureComponent {
         <h3>Facebook share</h3>
         <div className={styles.facebookWrapper} style={{ width }}>
           <div className={styles.facebookImageContainer}>
-            <img
-              className={styles.facebookCardImage}
-              src={urlFor(openGraphImage).width(500).url()}
-            />
+            {seo?.seoImage && (
+              <img
+                className={styles.facebookCardImage}
+                src={urlFor(seo?.seoImage)?.width(500)?.url()}
+              />
+            )}
           </div>
           <div className={styles.facebookCardContent}>
             <div className={styles.facebookCardUrl}>

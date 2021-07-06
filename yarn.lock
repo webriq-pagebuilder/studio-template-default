@@ -1693,7 +1693,7 @@
     "@types/react" "^17.0.0"
     rxjs "^6.5.3"
 
-"@sanity/ui@^0.33.19":
+"@sanity/ui@0.33.29", "@sanity/ui@^0.33.19":
   version "0.33.29"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.33.29.tgz#263972f3a11c6063413764f23e3985b6e0e3657b"
   integrity sha512-9tu1Qz4Oh7AHUJiTa6hQAgxI5z0hzbqzfkUJXJsxyYKvZpCvStd3KbKBxUlaRzzDYGp9mmZ1icrz4NlIvG+51A==
@@ -1709,7 +1709,7 @@
     react-popper "^2.2.5"
     react-refractor "^2.1.4"
 
-"@sanity/ui@^0.34.0", "@sanity/ui@^0.34.1", "@sanity/ui@^0.34.3", "@sanity/ui@^0.34.4":
+"@sanity/ui@^0.34.1", "@sanity/ui@^0.34.3", "@sanity/ui@^0.34.4":
   version "0.34.4"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.34.4.tgz#cb01ea9384c355b9ce8fd2c834424668d5769565"
   integrity sha512-vRWBqwjzld7NvZ2Je7NtqyBO7u3yDvRzTN5L2JX1cac3+gdg2oh76QS8dn8OBe2z8GIYBQDVAR8m1EAmz90Tbw==
@@ -1913,32 +1913,32 @@
   dependencies:
     prop-types "15.7.2"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-variants@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-variants/-/sanity-plugin-input-component-variants-0.0.3.tgz#2303f7455f6391d7ab5e7fa00196192a449d1790"
-  integrity sha512-JpVShbetnkI6E87ulWGqHc7i70I7WYLmI4mvgErx69hho0un8Ph8IErmivdsobLGeVcq6O2D3oB+Cc6Ad4SEKA==
+"@webriq-pagebuilder/sanity-plugin-input-component-variants@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-variants/-/sanity-plugin-input-component-variants-0.0.4.tgz#1933b21a4a787fa8c061d629acea1f1830e66eae"
+  integrity sha512-mTv0f7RmYBzpvlN76X2xkbV36B3wcqSnxLyJTyrc/L9tw9KvABaJCpfUqTWkQKytZxwn4mHZpooUA0oHeknQgQ==
   dependencies:
     "@sanity/icons" "^1.1.1"
-    "@sanity/ui" "^0.34.0"
+    "@sanity/ui" "0.33.29"
     prop-types "15.7.2"
     styled-components "^5.3.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-0.0.3.tgz#3e5395f0c67adfa2c5050b72872b36bbe4ae57b3"
-  integrity sha512-JQ4ZIAd5VesgYr901vM+Vh8UGzQz4d/xpR+H2uVfyY2pe9OQVD6E+T8YcliGeSdHScvUmKi2qiZGMOr3ymsXWA==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-0.0.4.tgz#10654f44f5aa2f7ca46d703a15a2625af511a74b"
+  integrity sha512-gESlPbJ6OXo4Gzgl2R+zcoMPH4/Kt5FErKRhNxT7TFbCAqtK19cCMcPEtvYrx75qRL8SzyutUPFLtl9yvPzsCg==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^0.0.3"
-    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.3"
+    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.4"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-webriq-forms@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-0.0.3.tgz#aa5f9e4dcfb0718c3a468ba0b8853389f7930fca"
-  integrity sha512-kg8ee0SilMWWP1VdJr9ejftQ9n753tF+7T55trnMRQYCj4Y85cqjUN+i4b2Ok2LB4bxI9iMeEUlubE1fXz7pVg==
+"@webriq-pagebuilder/sanity-plugin-webriq-forms@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-0.0.4.tgz#985c0df43354a0f0126c8daa7ff962aea727a6d1"
+  integrity sha512-EXvdfVv89/RFHkwuMbnNA0vvIFecTXHyHE8NUSSRmyrtu9V8ZuMUTt8iiqJ/ay85oBE6Qn9fUvQZH9F3Onww5A==
   dependencies:
     "@sanity/icons" "^1.1.1"
-    "@sanity/ui" "^0.34.0"
+    "@sanity/ui" "0.33.29"
     date-fns "^2.21.3"
     prop-types "15.7.2"
     sanity-secrets "^0.0.5"
@@ -8828,10 +8828,10 @@ sanity-plugin-parts-list@^1.0.2:
   dependencies:
     prop-types "15.7.2"
 
-sanity-plugin-seo-pane@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/sanity-plugin-seo-pane/-/sanity-plugin-seo-pane-1.1.2.tgz#96a2861ff771d45c3c62e2eaaa6312447ef98807"
-  integrity sha512-srsyloTiWPgj925s4wFO9VV2PPIiJZXApq8dUA2BHIulz8SOqQ3abTRbAKSIqYUpNZblWbO5WSKnt+T41WcHSA==
+sanity-plugin-seo-pane@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/sanity-plugin-seo-pane/-/sanity-plugin-seo-pane-1.2.1.tgz#fe729d90cc45041b1e126a89338b60d9a168e071"
+  integrity sha512-pms9pul9ri/qv4MJu72KTdHIHhjcwbxFyiCrs27vxwz+Thf3l8hJ1bh2SS3Je7ysU4mXHMxZn2nI4ApRoMs6FQ==
   dependencies:
     "@sanity/ui" "^0.34.1"
     dlv "^1.1.3"

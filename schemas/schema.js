@@ -5,7 +5,9 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 import pages from "./documents/pages";
-import seo from "./objects/seo"
+
+import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default";
+const baseSchemaArray = Object.values(baseSchema);
 
 import { mergeReplaceAndAdd } from "../src/utils";
 import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default";
@@ -21,5 +23,5 @@ export default createSchema({
   name: "default",
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([pages, seo, ...allSchemas]),
+  types: schemaTypes.concat([pages, ...baseSchemaArray]),
 });
