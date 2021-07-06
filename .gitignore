@@ -2,4 +2,5 @@
 dist
 yarn-error.log
 
-*.env
+# local env files
+.env
