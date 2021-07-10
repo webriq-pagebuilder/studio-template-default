@@ -24,7 +24,7 @@
     "@sanity/desk-tool": "^2.12.2",
     "@sanity/production-preview": "^2.2.6",
     "@sanity/vision": "^2.11.2",
-    "@webriq-pagebuilder/sanity-plugin-schema-default": "^0.0.4",
+    "@webriq-pagebuilder/sanity-plugin-schema-default": "^0.0.6",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "^0.0.4",
     "braille": "^1.1.0",
     "get-it": "^4.1.4",
