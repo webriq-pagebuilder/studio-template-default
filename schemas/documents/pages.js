@@ -52,6 +52,7 @@ export default {
         { type: "cookies" },
         { type: "logoCloud" },
         { type: "signInSignUp" },
+        { type: "textComponent" }
       ],
     },
     {
