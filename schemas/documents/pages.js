@@ -53,6 +53,7 @@ export default {
         { type: "logoCloud" },
         { type: "signInSignUp" },
         { type: "product" }, // added
+        { type: "textComponent" }
       ],
     },
     {
