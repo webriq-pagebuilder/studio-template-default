@@ -24,7 +24,8 @@
     "google-analytics",
     "@sanity/production-preview",
     "netlify-deploy-status-badge",
-    "seo-pane"
+    "seo-pane",
+    "theme-manager"
   ],
   "parts": [
     {
