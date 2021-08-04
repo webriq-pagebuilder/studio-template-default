@@ -24,7 +24,8 @@
     "google-analytics",
     "@sanity/production-preview",
     "netlify-deploy-status-badge",
-    "seo-pane"
+    "seo-pane",
+    "media"
   ],
   "parts": [
     {
@@ -46,6 +47,10 @@
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "./src/brand/styles/variable.css"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./src/assetSources.js"
     }
   ],
   "env": {
