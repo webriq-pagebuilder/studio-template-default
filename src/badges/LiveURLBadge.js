@@ -6,26 +6,25 @@ export function LiveURLBadge(props) {
   if (!window.location.hostname.includes("localhost")) {
     siteUrl = process.env.SANITY_STUDIO_PRODUCTION_SITE_URL;
   }
+  const isPublished = !props.draft;
 
   return {
     label: (
       <Link
         target={`${siteUrl}/${
-          props?.published?.slug?.current || (props?.draft?.slug?.current ?? "")
+          isPublished
+            ? props?.published?.slug?.current
+            : props?.draft?.slug?.current ?? ""
         }`}
-        isPublished={!props.draft}
+        isPublished={isPublished}
       />
     ),
-    title: "Site custom URL",
-    color: props.draft ? "default" : "success",
+    title: "Open LIVE URL in a new window!",
+    color: isPublished ? "success" : "default",
   };
 }
 
 const Link = ({ target, isPublished }) => {
-  console.log(
-    "🚀 ~ file: LiveURLBadge.js ~ line 26 ~ Link ~ isPublished",
-    isPublished
-  );
   return (
     <a
       onClick={() => (isPublished ? window.open(target) : null)}
