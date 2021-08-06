@@ -51,6 +51,10 @@
     {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",
       "path": "./src/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/base/document-badges/resolver",
+      "path": "./src/resolveDocumentBadges.js"
     }
   ],
   "env": {
