@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useCallback} from 'react'
 import { withRouterHOC } from 'part:@sanity/base/router'
 import { useDocumentOperation, useEditState } from '@sanity/react-hooks'
 import {
@@ -21,14 +21,13 @@ import { encryptKey } from '../../utils/secureKey'
 // See https://github.com/css-modules/css-modules for more info.
 
 const WebriQPayments = () => {
-  const {useCallback, useState} = React
   const [open, setOpen] = useState(false)
   const onClose = useCallback(() => setOpen(false), [])
   const onOpen = useCallback(() => setOpen(true), [])
-  const [required, setRequired] = React.useState(false)
+  const [required, setRequired] = useState(false)
   const ops = useDocumentOperation('stripe-account', 'array')
   const editState = useEditState('stripe-account')  
-  const [stripeAPI, setStripeAPI] = React.useState({})
+  const [stripeAPI, setStripeAPI] = useState({})
   const toast = useToast()
   const data = []
 
@@ -36,9 +35,7 @@ const WebriQPayments = () => {
     const { name, value } = e.target
     setStripeAPI(prevState => ({...prevState, [name]: value}))
   }
-  // const ciphertText = encryptKey('Key')
-  // console.log(ciphertText)
-  // console.log(decryptKey(ciphertText))
+
   const handleSubmit = () => {    
     if(stripeAPI?.accountName === undefined || stripeAPI?.stripePKey === undefined || stripeAPI?.stripePKey === undefined) {
       setRequired(true)

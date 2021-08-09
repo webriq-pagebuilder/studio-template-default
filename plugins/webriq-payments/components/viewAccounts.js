@@ -1,4 +1,4 @@
-import React, {useRef, } from 'react'
+import React from 'react'
 import {
     Text,
     Card,
@@ -11,7 +11,7 @@ import {
   import { GrView } from 'react-icons/gr'
   import { BiKey } from 'react-icons/bi'
   import { FaCcStripe } from 'react-icons/fa'
-  import { VscGistSecret, VscListTree, VscTrash } from 'react-icons/vsc'
+  import { VscGistSecret, VscListTree } from 'react-icons/vsc'
   import { AiOutlineAppstoreAdd } from 'react-icons/ai'
 
 function ViewAccounts({accounts}) {
@@ -91,21 +91,7 @@ function ViewAccounts({accounts}) {
                     portal
                     >
                     <Button mode="bleed" tone="primary" icon={GrView}/>
-                </Tooltip>
-                {/* <Tooltip
-                    content={
-                        <Box padding={2}>
-                        <Text muted size={1}>
-                            Delete Account
-                        </Text>
-                        </Box>
-                    }
-                    fallbackPlacements={['right', 'left']}
-                    placement="top"
-                    portal
-                    >
-                    <Button mode="bleed" tone="critical" icon={VscTrash}/>
-                </Tooltip>*/}
+                </Tooltip>               
                 </Box>
             </Card>    
             )
