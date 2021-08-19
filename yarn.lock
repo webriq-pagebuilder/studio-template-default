@@ -1450,8 +1450,8 @@
     styled-components "^5.2.1"
 
 "@sanity/desk-tool@^2.0.9":
-  version "2.15.1"
-  resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-2.15.1.tgz#5e83998d0ab45aa9b3d872d693ce19af2f3cb302"
+  version "2.15.2"
+  resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-2.15.2.tgz#4c4d2f41d48c5a174acb7c1eac85d91431f90af5"
   dependencies:
     "@popperjs/core" "^2.5.4"
     "@reach/auto-id" "^0.13.2"
@@ -1970,8 +1970,8 @@
     react-refractor "^2.1.4"
 
 "@sanity/ui@>=0.33.11", "@sanity/ui@^0.36.0":
-  version "0.36.1"
-  resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.36.1.tgz#3543b7659b7a80ffc6352c29c16eab10f72a5f91"
+  version "0.36.2"
+  resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.36.2.tgz#9514e11497cda73671b4a982f86f3fb37235b56b"
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
     "@popperjs/core" "^2.9.3"
@@ -2301,8 +2301,8 @@
   resolved "https://registry.npmjs.org/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
 
 "@types/react@^17.0.0":
-  version "17.0.18"
-  resolved "https://registry.npmjs.org/@types/react/-/react-17.0.18.tgz#4109cbbd901be9582e5e39e3d77acd7b66bb7fbe"
+  version "17.0.19"
+  resolved "https://registry.npmjs.org/@types/react/-/react-17.0.19.tgz#8f2a85e8180a43b57966b237d26a29481dacc991"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4573,8 +4573,8 @@ fastparse@^1.1.2:
   resolved "https://registry.npmjs.org/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
 
 fastq@^1.6.0:
-  version "1.11.1"
-  resolved "https://registry.npmjs.org/fastq/-/fastq-1.11.1.tgz#5d8175aae17db61947f8b162cfc7f63264d22807"
+  version "1.12.0"
+  resolved "https://registry.npmjs.org/fastq/-/fastq-1.12.0.tgz#ed7b6ab5d62393fb2cc591c853652a5c318bf794"
   dependencies:
     reusify "^1.0.4"
 
