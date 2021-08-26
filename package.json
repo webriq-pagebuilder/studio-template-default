@@ -27,6 +27,7 @@
     "@webriq-pagebuilder/sanity-plugin-schema-default": "^0.0.6",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "^0.0.4",
     "braille": "^1.1.0",
+    "crypto-js": "^4.1.1",
     "get-it": "^4.1.4",
     "nanoid": "^3.1.22",
     "prop-types": "^15.7",
