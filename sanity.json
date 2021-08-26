@@ -48,6 +48,14 @@
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "./src/brand/styles/variable.css"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./src/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/base/document-badges/resolver",
+      "path": "./src/resolveDocumentBadges.js"
     }
   ],
   "env": {
