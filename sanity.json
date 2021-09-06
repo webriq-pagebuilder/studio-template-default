@@ -56,7 +56,11 @@
     {
       "implements": "part:@sanity/base/document-badges/resolver",
       "path": "./src/resolveDocumentBadges.js"
-    }
+    },
+    { 
+      "implements": "part:@sanity/base/document-actions/resolver", 
+      "path": "./src/documentActions/index.js" 
+    } 
   ],
   "env": {
     "development": {
