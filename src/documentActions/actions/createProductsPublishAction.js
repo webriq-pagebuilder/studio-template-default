@@ -4,7 +4,7 @@ import sanityClient from "part:@sanity/base/client";
 import {
   useToast
 } from '@sanity/ui'
-const {SANITY_STUDIO_APP_HOST} = process.env
+const {SANITY_STUDIO_APP_URL} = process.env
 export default function createProductsPublishAction(props) {
   const toast = useToast()
   const {publish} = useDocumentOperation(props.id, props.type)
@@ -21,7 +21,7 @@ export default function createProductsPublishAction(props) {
   }, [props])
 
   useEffect(() => {
-    const URL = `${SANITY_STUDIO_APP_HOST || 'http://localhost:3001'}/api/stripe-account/create-products`;
+    const URL = `${SANITY_STUDIO_APP_URL || 'https://dxpstudio.webriq.com'}/api/stripe-account/create-products`;
     const payload = !props.draft ? props?.publish?.sections : props.draft.sections
     async function createProducts (URL, payload) {
       const response = await fetch(URL,
@@ -31,11 +31,10 @@ export default function createProductsPublishAction(props) {
         mode: 'cors',
         body: JSON.stringify(payload)
       })
-      console.log(response)
       if(response.status !== 200){
           toast.push({
             status: 'error',
-            title: 'Something went wrong.'
+            title: 'Error Fetching Data.'
           })
       }
       response.json().then(data => {
