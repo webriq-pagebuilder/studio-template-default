@@ -48,7 +48,7 @@ export default {
         { type: "callToAction" },
         { type: "team" },
         { type: "stats" },
-        { type: "appPromo" }, // modified
+        { type: "appPromo" },
         { type: "cookies" },
         { type: "logoCloud" },
         { type: "signInSignUp" },
