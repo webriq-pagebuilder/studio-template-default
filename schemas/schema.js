@@ -7,8 +7,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import pages from "./documents/pages";
 
 import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default";
-// import customSchema from "./custom";
-
 const baseSchemaArray = Object.values(baseSchema);
 
 // Then we give our schema to the builder and provide the result to Sanity
