@@ -25,6 +25,7 @@
     "@sanity/production-preview",
     "netlify-deploy-status-badge",
     "seo-pane",
+    "media",
     "@webriq-pagebuilder/sanity-plugin-webriq-payments"
   ],
   "parts": [
