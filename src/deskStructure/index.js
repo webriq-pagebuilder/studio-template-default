@@ -1,9 +1,9 @@
 import S from "@sanity/desk-tool/structure-builder";
 
 import pages from "./pages";
-import posts from "./posts";
-// import posts from "@webriq-pagebuilder/sanity-plugin-schema-blog/lib/deskStructure"; // @todo: this doesn't work
+import posts from "@webriq-pagebuilder/sanity-plugin-schema-blog/lib/deskStructure";
 
+const blogs = Object.values(posts);
 const hiddenTypes = ["media.tag", "category", "page", "post", "author"];
 
 export default () =>
@@ -11,8 +11,7 @@ export default () =>
     .title("Content")
     .items([
       pages,
-      // blog,
-      posts,
+      S.listItem(...blogs),
       ...S.documentTypeListItems().filter(
         (listItem) => !hiddenTypes.includes(listItem.getId())
       ),
