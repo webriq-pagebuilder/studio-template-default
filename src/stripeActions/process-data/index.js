@@ -3,10 +3,7 @@ import { createProduct } from "../createProduct";
 import { getProductById } from "../getProductById";
 import { updateProductById } from "../updateProductById";
 
-const { SANITY_STUDIO_AUTH_TOKEN } = process.env;
-const sanityToken =
-  SANITY_STUDIO_AUTH_TOKEN ||
-  "skXudT7ttWONZn7JtKTILAE2TWYDTa4sOCq4lHgwnOcHOFShmNy39lFYgLuKArb1DKgJJItloKD8tr4mT";
+const sanityToken = "studio";
 
 export const processData = async (payload) => {
   let pricings = [];
@@ -83,6 +80,9 @@ export const processData = async (payload) => {
             sanityToken,
             stripeSecretKey: plans[i].stripeSKey,
             hashKey: plans[i].hashKey,
+            metadata: !plans[i][index].planIncludes
+              ? {}
+              : plans[i][index].planIncludes,
             apiVersion: !plans[i].apiVersion
               ? "2020-08-27"
               : plans[i].apiVersion,
@@ -186,6 +186,9 @@ export const processData = async (payload) => {
             sanityToken,
             stripeSecretKey: plans[i].stripeSKey,
             hashKey: plans[i].hashKey,
+            metadata: !plans[i][index].planIncludes
+              ? {}
+              : plans[i][index].planIncludes,
             apiVersion: !plans[i].apiVersion
               ? "2020-08-27"
               : plans[i].apiVersion,
