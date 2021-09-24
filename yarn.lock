@@ -2312,6 +2312,18 @@
     sanity-secrets "^0.0.5"
     styled-components "^5.3.0"
 
+"@webriq-pagebuilder/sanity-plugin-webriq-payments@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-payments/-/sanity-plugin-webriq-payments-0.7.0.tgz#597b7530a827815e98342ebaafc12952398c0b34"
+  integrity sha512-1aJc33JvKC5+DnkRT9Nzti/MWHINx+//033PvFHzt9T8Appktb///fpYNPKiGg0L2FyeQR+RlHep2tSdoyAu0w==
+  dependencies:
+    "@sanity/base" "^2.13.1"
+    "@sanity/react-hooks" "^2.13.1"
+    "@sanity/ui" "^0.35.0"
+    crypto-js "^4.1.1"
+    nanoid "^3.1.25"
+    react-icons "^4.2.0"
+
 "@webriq-pagebuilder/sanity-plugin-webriq-payments@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-payments/-/sanity-plugin-webriq-payments-0.6.0.tgz#0a97477e0d65fbf3be8bea07979dfae47ef2cfb1"
