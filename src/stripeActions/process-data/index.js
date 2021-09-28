@@ -83,9 +83,7 @@ export const processData = async (payload) => {
             metadata: !plans[i][index].planIncludes
               ? {}
               : plans[i][index].planIncludes,
-            apiVersion: !plans[i].apiVersion
-              ? "2020-08-27"
-              : plans[i].apiVersion,
+            apiVersion: plans[i].apiVersion,
             name: plans[i][index].planType,
             description: plans[i][index].description,
           };
@@ -126,16 +124,13 @@ export const processData = async (payload) => {
                   };
                 }
 
-                //  Structure Requirement for /create-price API (recurring)
+                //  Structure Requirement for /create-price API
                 const pricePayload = {
                   sanityToken,
                   hashKey: plans[i].hashKey,
                   stripeSecretKey: plans[i].stripeSKey,
-                  apiVersion: !plans[i].apiVersion
-                    ? "2020-08-27"
-                    : plans[i].apiVersion,
+                  apiVersion: plans[i].apiVersion,
                   productId: responseCreateProduct.data.id,
-                  isRecurring: false,
                   unit_amount: parseInt(plans[i][index].price),
                   currency: "usd",
                 };
@@ -148,6 +143,10 @@ export const processData = async (payload) => {
                     statusText: `Product Not Created`,
                   };
                 }
+                return {
+                  status: 200,
+                  statusText: `Product Successfully Created`,
+                };
               } catch (error) {
                 console.log(error);
               }
@@ -189,9 +188,7 @@ export const processData = async (payload) => {
             metadata: !plans[i][index].planIncludes
               ? {}
               : plans[i][index].planIncludes,
-            apiVersion: !plans[i].apiVersion
-              ? "2020-08-27"
-              : plans[i].apiVersion,
+            apiVersion: plans[i].apiVersion,
             name: plans[i][index].planType,
             description: plans[i][index].description,
           };
@@ -234,26 +231,47 @@ export const processData = async (payload) => {
                 }
 
                 //  Structure Requirement for /create-price API (recurring)
-                const pricePayload = {
+                const monthlyPricePayload = {
                   sanityToken,
                   hashKey: plans[i].hashKey,
                   stripeSecretKey: plans[i].stripeSKey,
-                  apiVersion: !plans[i].apiVersion
-                    ? "2020-08-27"
-                    : plans[i].apiVersion,
+                  apiVersion: plans[i].apiVersion,
                   productId: responseCreateProduct.data.id,
-                  isRecurring: true,
-                  monthly_unit_amount: parseInt(plans[i][index].monthlyPrice),
-                  yearly_unit_amount: parseInt(plans[i][index].yearlyPrice),
+                  unit_amount: parseInt(plans[i][index].monthlyPrice),
+                  interval: "month",
+                  currency: "usd",
+                };
+
+                const yearlyPricePayload = {
+                  sanityToken,
+                  hashKey: plans[i].hashKey,
+                  stripeSecretKey: plans[i].stripeSKey,
+                  apiVersion: plans[i].apiVersion,
+                  productId: responseCreateProduct.data.id,
+                  unit_amount: parseInt(plans[i][index].yearlyPrice),
+                  interval: "year",
                   currency: "usd",
                 };
 
                 // Creating Price
-                const responseCreatePrice = await createPrice(pricePayload);
-                if (responseCreatePrice.meta.status !== 200) {
+                const resposeMonthlyCreatePrice = await createPrice(
+                  monthlyPricePayload
+                );
+                const responseYearlyCreatePrice = await createPrice(
+                  yearlyPricePayload
+                );
+                if (
+                  resposeMonthlyCreatePrice.meta.status !== 200 &&
+                  responseYearlyCreatePrice.meta.status !== 200
+                ) {
                   return {
                     status: 500,
                     statusText: `Product Not Created`,
+                  };
+                } else {
+                  return {
+                    status: 200,
+                    statusText: `Product Successfully Created`,
                   };
                 }
               } catch (error) {

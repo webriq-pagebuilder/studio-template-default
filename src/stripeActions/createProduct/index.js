@@ -4,13 +4,17 @@ const URL = `${
 }/api/stripe-account/create-product`;
 
 export const createProduct = async (payload) => {
-  const response = await fetch(URL, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(URL, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return "Error on Creating Product";
+  }
 };
