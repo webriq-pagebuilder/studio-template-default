@@ -3,8 +3,6 @@ import { createProduct } from "../createProduct";
 import { getProductById } from "../getProductById";
 import { updateProductById } from "../updateProductById";
 
-const sanityToken = "studio";
-
 export const processData = async (payload) => {
   let pricings = [];
   let plans = [];
@@ -72,20 +70,23 @@ export const processData = async (payload) => {
 
           //  Structure Requirement for /create-product API
           const productPayload = {
-            id: `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
-              index
-            ].planType.replace(/ /g, "-")}-oneTimePrice-${
-              plans[i][index].price
-            }`,
-            sanityToken,
-            stripeSecretKey: plans[i].stripeSKey,
-            hashKey: plans[i].hashKey,
-            metadata: !plans[i][index].planIncludes
-              ? {}
-              : plans[i][index].planIncludes,
-            apiVersion: plans[i].apiVersion,
-            name: plans[i][index].planType,
-            description: plans[i][index].description,
+            credentials: {
+              stripeSecretKey: plans[i].stripeSKey,
+              hashKey: plans[i].hashKey,
+              apiVersion: plans[i].apiVersion,
+            },
+            stripeParams: {
+              id: `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
+                index
+              ].planType.replace(/ /g, "-")}-oneTimePrice-${
+                plans[i][index].price
+              }`,
+              metadata: !plans[i][index].planIncludes
+                ? {}
+                : plans[i][index].planIncludes,
+              name: plans[i][index].planType,
+              description: plans[i][index].description,
+            },
           };
           try {
             // Check if Product is existed in Stripe
@@ -126,27 +127,27 @@ export const processData = async (payload) => {
 
                 //  Structure Requirement for /create-price API
                 const pricePayload = {
-                  sanityToken,
-                  hashKey: plans[i].hashKey,
-                  stripeSecretKey: plans[i].stripeSKey,
-                  apiVersion: plans[i].apiVersion,
-                  productId: responseCreateProduct.data.id,
-                  unit_amount: parseInt(plans[i][index].price),
-                  currency: "usd",
+                  credentials: {
+                    hashKey: plans[i].hashKey,
+                    stripeSecretKey: plans[i].stripeSKey,
+                    apiVersion: plans[i].apiVersion,
+                  },
+                  stripeParams: {
+                    productId: responseCreateProduct.data.id,
+                    unit_amount: parseInt(plans[i][index].price),
+                    currency: "usd",
+                  },
                 };
 
                 // Creating Price
                 const responseCreatePrice = await createPrice(pricePayload);
+
                 if (responseCreatePrice.meta.status !== 200) {
                   return {
                     status: 500,
                     statusText: `Product Not Created`,
                   };
                 }
-                return {
-                  status: 200,
-                  statusText: `Product Successfully Created`,
-                };
               } catch (error) {
                 console.log(error);
               }
@@ -177,20 +178,23 @@ export const processData = async (payload) => {
 
           //  Structure Requirement for /create-product API
           const productPayload = {
-            id: `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
-              index
-            ].planType.replace(/ /g, "-")}-recurring-monthlyPrice-${
-              plans[i][index].monthlyPrice
-            }-yearlyPrice-${plans[i][index].yearlyPrice}`,
-            sanityToken,
-            stripeSecretKey: plans[i].stripeSKey,
-            hashKey: plans[i].hashKey,
-            metadata: !plans[i][index].planIncludes
-              ? {}
-              : plans[i][index].planIncludes,
-            apiVersion: plans[i].apiVersion,
-            name: plans[i][index].planType,
-            description: plans[i][index].description,
+            credentials: {
+              stripeSecretKey: plans[i].stripeSKey,
+              hashKey: plans[i].hashKey,
+              apiVersion: plans[i].apiVersion,
+            },
+            stripeParams: {
+              id: `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
+                index
+              ].planType.replace(/ /g, "-")}-recurring-monthlyPrice-${
+                plans[i][index].monthlyPrice
+              }-yearlyPrice-${plans[i][index].yearlyPrice}`,
+              metadata: !plans[i][index].planIncludes
+                ? {}
+                : plans[i][index].planIncludes,
+              name: plans[i][index].planType,
+              description: plans[i][index].description,
+            },
           };
 
           try {
@@ -229,28 +233,33 @@ export const processData = async (payload) => {
                     statusText: `Product Not Created`,
                   };
                 }
-
                 //  Structure Requirement for /create-price API (recurring)
                 const monthlyPricePayload = {
-                  sanityToken,
-                  hashKey: plans[i].hashKey,
-                  stripeSecretKey: plans[i].stripeSKey,
-                  apiVersion: plans[i].apiVersion,
-                  productId: responseCreateProduct.data.id,
-                  unit_amount: parseInt(plans[i][index].monthlyPrice),
-                  interval: "month",
-                  currency: "usd",
+                  credentials: {
+                    hashKey: plans[i].hashKey,
+                    stripeSecretKey: plans[i].stripeSKey,
+                    apiVersion: plans[i].apiVersion,
+                  },
+                  stripeParams: {
+                    productId: responseCreateProduct.data.id,
+                    unit_amount: parseInt(plans[i][index].monthlyPrice),
+                    interval: "month",
+                    currency: "usd",
+                  },
                 };
 
                 const yearlyPricePayload = {
-                  sanityToken,
-                  hashKey: plans[i].hashKey,
-                  stripeSecretKey: plans[i].stripeSKey,
-                  apiVersion: plans[i].apiVersion,
-                  productId: responseCreateProduct.data.id,
-                  unit_amount: parseInt(plans[i][index].yearlyPrice),
-                  interval: "year",
-                  currency: "usd",
+                  credentials: {
+                    hashKey: plans[i].hashKey,
+                    stripeSecretKey: plans[i].stripeSKey,
+                    apiVersion: plans[i].apiVersion,
+                  },
+                  stripeParams: {
+                    productId: responseCreateProduct.data.id,
+                    unit_amount: parseInt(plans[i][index].yearlyPrice),
+                    interval: "year",
+                    currency: "usd",
+                  },
                 };
 
                 // Creating Price
@@ -260,6 +269,7 @@ export const processData = async (payload) => {
                 const responseYearlyCreatePrice = await createPrice(
                   yearlyPricePayload
                 );
+
                 if (
                   resposeMonthlyCreatePrice.meta.status !== 200 &&
                   responseYearlyCreatePrice.meta.status !== 200
@@ -267,11 +277,6 @@ export const processData = async (payload) => {
                   return {
                     status: 500,
                     statusText: `Product Not Created`,
-                  };
-                } else {
-                  return {
-                    status: 200,
-                    statusText: `Product Successfully Created`,
                   };
                 }
               } catch (error) {
