@@ -100,9 +100,7 @@ export const processData = async (payload) => {
 
         const checkProductPayload = {
           credentials,
-          StripeParams: {
-            id,
-          },
+          id,
         };
 
         try {
@@ -148,14 +146,12 @@ export const processData = async (payload) => {
           } else {
             const createProductPayload = {
               credentials,
-              StripeParams: {
-                id,
-                metadata: !plans[i][index].planIncludes
-                  ? {}
-                  : plans[i][index].planIncludes,
-                name: plans[i][index].planType,
-                description: plans[i][index].description,
-              },
+              id,
+              metadata: !plans[i][index].planIncludes
+                ? {}
+                : plans[i][index].planIncludes,
+              name: plans[i][index].planType,
+              description: plans[i][index].description,
             };
             const createProductURL = `${
               SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
@@ -177,14 +173,12 @@ export const processData = async (payload) => {
                 if (plans[i].variant === "variant_b") {
                   const createPricePayload_VariantB = {
                     credentials,
-                    StripeParams: {
-                      product: createProduct.id,
-                      currency: "usd",
-                      metadata: !plans[i][index].planIncludes
-                        ? {}
-                        : plans[i][index].planIncludes,
-                      unit_amount: plans[i][index].price * 100,
-                    },
+                    product: createProduct.id,
+                    currency: "usd",
+                    metadata: !plans[i][index].planIncludes
+                      ? {}
+                      : plans[i][index].planIncludes,
+                    unit_amount: plans[i][index].price * 100,
                   };
                   try {
                     const response = await fetch(createPriceURL, {
@@ -199,30 +193,26 @@ export const processData = async (payload) => {
                 } else {
                   const createPricePayload_VariantAC_Monthly = {
                     credentials,
-                    StripeParams: {
-                      product: createProduct.id,
-                      currency: "usd",
-                      metadata: !plans[i][index].planIncludes
-                        ? {}
-                        : plans[i][index].planIncludes,
-                      unit_amount: plans[i][index].monthlyPrice * 100,
-                      recurring: {
-                        interval: "month",
-                      },
+                    product: createProduct.id,
+                    currency: "usd",
+                    metadata: !plans[i][index].planIncludes
+                      ? {}
+                      : plans[i][index].planIncludes,
+                    unit_amount: plans[i][index].monthlyPrice * 100,
+                    recurring: {
+                      interval: "month",
                     },
                   };
                   const createPricePayload_Variant_AC_Yearly = {
                     credentials,
-                    StripeParams: {
-                      product: createProduct.id,
-                      currency: "usd",
-                      metadata: !plans[i][index].planIncludes
-                        ? {}
-                        : plans[i][index].planIncludes,
-                      unit_amount: plans[i][index].yearlyPrice * 100,
-                      recurring: {
-                        interval: "year",
-                      },
+                    product: createProduct.id,
+                    currency: "usd",
+                    metadata: !plans[i][index].planIncludes
+                      ? {}
+                      : plans[i][index].planIncludes,
+                    unit_amount: plans[i][index].yearlyPrice * 100,
+                    recurring: {
+                      interval: "year",
                     },
                   };
                   const responseMonthly = await fetch(createPriceURL, {
