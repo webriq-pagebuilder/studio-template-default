@@ -1,9 +1,4 @@
-import { createPrice } from "../createPrice";
-import { createProduct } from "../createProduct";
-import { getProductById } from "../getProductById";
-import { updateProductById } from "../updateProductById";
-
-const sanityToken = "studio";
+const { SANITY_STUDIO_APP_URL } = process.env;
 
 export const processData = async (payload) => {
   let pricings = [];
@@ -54,12 +49,12 @@ export const processData = async (payload) => {
     let i = 0;
     for (; i < plans.length; ) {
       let index = 0;
-      if (plans[i].variant === "variant_b") {
-        do {
+      do {
+        if (plans[i].variant === "variant_b") {
           if (
-            !plans[i][index].planType ||
-            !plans[i][index].price ||
-            !plans[i][index].checkoutButtonName
+            !plans[i][index]?.planType ||
+            !plans[i][index]?.price ||
+            !plans[i][index]?.checkoutButtonName
           ) {
             return {
               status: 500,
@@ -68,104 +63,12 @@ export const processData = async (payload) => {
               }`,
             };
           }
-          /*------- Creating Stripe Products --------*/
-
-          //  Structure Requirement for /create-product API
-          const productPayload = {
-            id: `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
-              index
-            ].planType.replace(/ /g, "-")}-oneTimePrice-${
-              plans[i][index].price
-            }`,
-            sanityToken,
-            stripeSecretKey: plans[i].stripeSKey,
-            hashKey: plans[i].hashKey,
-            metadata: !plans[i][index].planIncludes
-              ? {}
-              : plans[i][index].planIncludes,
-            apiVersion: !plans[i].apiVersion
-              ? "2020-08-27"
-              : plans[i].apiVersion,
-            name: plans[i][index].planType,
-            description: plans[i][index].description,
-          };
-          try {
-            // Check if Product is existed in Stripe
-            const checkProductStatus = await getProductById(productPayload);
-
-            if (checkProductStatus.meta.status === 200) {
-              // Update Product in stripe
-              // Send the Request to API for Updating Our Product
-              try {
-                const responseUpdateProduct = await updateProductById(
-                  productPayload
-                );
-                // If Success it will return status = 200 and the data which we will be using is ID to update the price
-                if (responseUpdateProduct.meta.status !== 200) {
-                  return {
-                    status: 500,
-                    statusText: `Product Not Updated`,
-                  };
-                }
-              } catch (error) {
-                console.log(error);
-              }
-            } else {
-              // Create Product if not existed in stripe
-              // Send the Request to API for Creating Our Product
-              try {
-                const responseCreateProduct = await createProduct(
-                  productPayload
-                );
-
-                // If Success it will return status = 200 and the data which we will be using is ID to create the price
-                if (responseCreateProduct.meta.status !== 200) {
-                  return {
-                    status: 500,
-                    statusText: `Product Not Created`,
-                  };
-                }
-
-                //  Structure Requirement for /create-price API (recurring)
-                const pricePayload = {
-                  sanityToken,
-                  hashKey: plans[i].hashKey,
-                  stripeSecretKey: plans[i].stripeSKey,
-                  apiVersion: !plans[i].apiVersion
-                    ? "2020-08-27"
-                    : plans[i].apiVersion,
-                  productId: responseCreateProduct.data.id,
-                  isRecurring: false,
-                  unit_amount: parseInt(plans[i][index].price),
-                  currency: "usd",
-                };
-
-                // Creating Price
-                const responseCreatePrice = await createPrice(pricePayload);
-                if (responseCreatePrice.meta.status !== 200) {
-                  return {
-                    status: 500,
-                    statusText: `Product Not Created`,
-                  };
-                }
-              } catch (error) {
-                console.log(error);
-              }
-            }
-          } catch (error) {
-            console.log("Product Not Found and Trying to Create it");
-          }
-          index++;
-        } while (index < plans[i].length);
-        i++;
-      } else {
-        //   If not variant B
-        do {
+        } else {
           if (
-            !plans[i][index].planType ||
-            !plans[i][index].monthlyPrice ||
-            !plans[i][index].yearlyPrice ||
-            !plans[i][index].checkoutButtonName
+            !plans[i][index]?.planType ||
+            !plans[i][index]?.monthlyPrice ||
+            !plans[i][index]?.yearlyPrice ||
+            !plans[i][index]?.checkoutButtonName
           ) {
             return {
               status: 500,
@@ -174,99 +77,168 @@ export const processData = async (payload) => {
               }`,
             };
           }
-          /*------- Creating Stripe Products --------*/
+        }
+        /*------- Creating Stripe Products --------*/
 
-          //  Structure Requirement for /create-product API
-          const productPayload = {
-            id: `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
-              index
-            ].planType.replace(/ /g, "-")}-recurring-monthlyPrice-${
-              plans[i][index].monthlyPrice
-            }-yearlyPrice-${plans[i][index].yearlyPrice}`,
-            sanityToken,
-            stripeSecretKey: plans[i].stripeSKey,
-            hashKey: plans[i].hashKey,
-            metadata: !plans[i][index].planIncludes
-              ? {}
-              : plans[i][index].planIncludes,
-            apiVersion: !plans[i].apiVersion
-              ? "2020-08-27"
-              : plans[i].apiVersion,
-            name: plans[i][index].planType,
-            description: plans[i][index].description,
-          };
+        const credentials = {
+          stripeSecretKey: plans[i].stripeSKey,
+          hashKey: plans[i].hashKey,
+          apiVersion: plans[i].apiVersion,
+        };
+        const id =
+          plans[i].variant === "variant_b"
+            ? `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
+                index
+              ].planType.replace(/ /g, "-")}-oneTimePrice-${
+                plans[i][index].price
+              }`
+            : `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
+                index
+              ].planType.replace(/ /g, "-")}-recurring-monthlyPrice-${
+                plans[i][index].monthlyPrice
+              }-yearlyPrice-${plans[i][index].yearlyPrice}`;
 
-          try {
-            // Check if Product is existed in Stripe
-            const checkProductStatus = await getProductById(productPayload);
+        const checkProductPayload = {
+          credentials,
+          id,
+        };
 
-            if (checkProductStatus.meta.status === 200) {
-              // Update Product in stripe
-              // Send the Request to API for Updating Our Product
-              try {
-                const responseUpdateProduct = await updateProductById(
-                  productPayload
-                );
-                // If Success it will return status = 200 and the data which we will be using is ID to update the price
-                if (responseUpdateProduct.meta.status !== 200) {
-                  return {
-                    status: 500,
-                    statusText: `Product Not Updated`,
-                  };
-                }
-              } catch (error) {
-                console.log(error);
-              }
-            } else {
-              // Create Product if not existed in stripe
-              // Send the Request to API for Creating Our Product
-              try {
-                const responseCreateProduct = await createProduct(
-                  productPayload
-                );
-
-                // If Success it will return status = 200 and the data which we will be using is ID to create the price
-                if (responseCreateProduct.meta.status !== 200) {
-                  return {
-                    status: 500,
-                    statusText: `Product Not Created`,
-                  };
-                }
-
-                //  Structure Requirement for /create-price API (recurring)
-                const pricePayload = {
-                  sanityToken,
-                  hashKey: plans[i].hashKey,
-                  stripeSecretKey: plans[i].stripeSKey,
-                  apiVersion: !plans[i].apiVersion
-                    ? "2020-08-27"
-                    : plans[i].apiVersion,
-                  productId: responseCreateProduct.data.id,
-                  isRecurring: true,
-                  monthly_unit_amount: parseInt(plans[i][index].monthlyPrice),
-                  yearly_unit_amount: parseInt(plans[i][index].yearlyPrice),
-                  currency: "usd",
-                };
-
-                // Creating Price
-                const responseCreatePrice = await createPrice(pricePayload);
-                if (responseCreatePrice.meta.status !== 200) {
-                  return {
-                    status: 500,
-                    statusText: `Product Not Created`,
-                  };
-                }
-              } catch (error) {
-                console.log(error);
-              }
+        try {
+          const checkProductURL = `${
+            SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+          }/api/payments/stripe?resource=products&action=retrieve`;
+          const response = await fetch(checkProductURL, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(checkProductPayload),
+          });
+          const checkProductStatus = await response.json();
+          if (checkProductStatus.id) {
+            const updateProductPayload = {
+              credentials,
+              id,
+              metadata: !plans[i][index].planIncludes
+                ? {}
+                : plans[i][index].planIncludes,
+              name: plans[i][index].planType,
+              description: plans[i][index].description,
+            };
+            const updateProductURL = `${
+              SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+            }/api/payments/stripe?resource=products&action=update`;
+            try {
+              await fetch(updateProductURL, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(updateProductPayload),
+              });
+            } catch (error) {
+              console.log(error);
             }
-          } catch (error) {
-            console.log("Product Not Found and Trying to Create it");
+          } else {
+            const createProductPayload = {
+              credentials,
+              id,
+              metadata: !plans[i][index].planIncludes
+                ? {}
+                : plans[i][index].planIncludes,
+              name: plans[i][index].planType,
+              description: plans[i][index].description,
+            };
+            const createProductURL = `${
+              SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+            }/api/payments/stripe?resource=products&action=create`;
+            try {
+              const response = await fetch(createProductURL, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(createProductPayload),
+              });
+              const createProduct = await response.json();
+              if (createProduct.id) {
+                const createPriceURL = `${
+                  SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+                }/api/payments/stripe?resource=prices&action=create`;
+
+                if (plans[i].variant === "variant_b") {
+                  const createPricePayload_VariantB = {
+                    credentials,
+                    product: createProduct.id,
+                    currency: "usd",
+                    metadata: !plans[i][index].planIncludes
+                      ? {}
+                      : plans[i][index].planIncludes,
+                    unit_amount: plans[i][index].price * 100,
+                  };
+                  try {
+                    const response = await fetch(createPriceURL, {
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      method: "POST",
+                      body: JSON.stringify(createPricePayload_VariantB),
+                    });
+                    await response.json();
+                  } catch (error) {}
+                } else {
+                  const createPricePayload_VariantAC_Monthly = {
+                    credentials,
+                    product: createProduct.id,
+                    currency: "usd",
+                    metadata: !plans[i][index].planIncludes
+                      ? {}
+                      : plans[i][index].planIncludes,
+                    unit_amount: plans[i][index].monthlyPrice * 100,
+                    recurring: {
+                      interval: "month",
+                    },
+                  };
+                  const createPricePayload_Variant_AC_Yearly = {
+                    credentials,
+                    product: createProduct.id,
+                    currency: "usd",
+                    metadata: !plans[i][index].planIncludes
+                      ? {}
+                      : plans[i][index].planIncludes,
+                    unit_amount: plans[i][index].yearlyPrice * 100,
+                    recurring: {
+                      interval: "year",
+                    },
+                  };
+                  const responseMonthly = await fetch(createPriceURL, {
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    method: "POST",
+                    body: JSON.stringify(createPricePayload_VariantAC_Monthly),
+                  });
+                  await responseMonthly.json();
+                  const responseYearly = await fetch(createPriceURL, {
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    method: "POST",
+                    body: JSON.stringify(createPricePayload_Variant_AC_Yearly),
+                  });
+                  await responseYearly.json();
+                }
+              }
+            } catch (error) {
+              console.log(error);
+            }
           }
-          index++;
-        } while (index < plans[i].length);
-        i++;
-      }
+        } catch (error) {
+          console.log(error);
+        }
+        index++;
+      } while (index < plans[i].length);
+      i++;
     }
   }
 };
