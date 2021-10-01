@@ -118,16 +118,12 @@ export const processData = async (payload) => {
           if (checkProductStatus.id) {
             const updateProductPayload = {
               credentials,
-              StripeParams: {
-                id,
-                params: {
-                  metadata: !plans[i][index].planIncludes
-                    ? {}
-                    : plans[i][index].planIncludes,
-                  name: plans[i][index].planType,
-                  description: plans[i][index].description,
-                },
-              },
+              id,
+              metadata: !plans[i][index].planIncludes
+                ? {}
+                : plans[i][index].planIncludes,
+              name: plans[i][index].planType,
+              description: plans[i][index].description,
             };
             const updateProductURL = `${
               SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
