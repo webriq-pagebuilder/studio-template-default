@@ -19,6 +19,8 @@
     "visual-options",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms",
     "@webriq-pagebuilder/sanity-plugin-schema-default",
+    "@webriq-pagebuilder/sanity-plugin-schema-blog",
+    "@webriq-pagebuilder/sanity-plugin-webriq-blog",
     "dashboard-widget-netlify",
     "dashboard-widget-document-list",
     "google-analytics",
@@ -57,10 +59,10 @@
       "implements": "part:@sanity/base/document-badges/resolver",
       "path": "./src/resolveDocumentBadges.js"
     },
-    { 
-      "implements": "part:@sanity/base/document-actions/resolver", 
-      "path": "./src/documentActions/index.js" 
-    } 
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./src/documentActions/index.js"
+    }
   ],
   "env": {
     "development": {
