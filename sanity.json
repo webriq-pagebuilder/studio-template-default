@@ -19,14 +19,16 @@
     "visual-options",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms",
     "@webriq-pagebuilder/sanity-plugin-schema-default",
+    "@webriq-pagebuilder/sanity-plugin-schema-blog",
+    "@webriq-pagebuilder/sanity-plugin-webriq-payments",
+    "@webriq-pagebuilder/sanity-plugin-webriq-blog",
+    "media",
     "dashboard-widget-netlify",
     "dashboard-widget-document-list",
     "google-analytics",
     "@sanity/production-preview",
-    "netlify-deploy-status-badge",
     "seo-pane",
-    "media",
-    "@webriq-pagebuilder/sanity-plugin-webriq-payments"
+    "netlify-deploy-status-badge"
   ],
   "parts": [
     {
@@ -57,10 +59,10 @@
       "implements": "part:@sanity/base/document-badges/resolver",
       "path": "./src/resolveDocumentBadges.js"
     },
-    { 
-      "implements": "part:@sanity/base/document-actions/resolver", 
-      "path": "./src/documentActions/index.js" 
-    } 
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./src/documentActions/index.js"
+    }
   ],
   "env": {
     "development": {

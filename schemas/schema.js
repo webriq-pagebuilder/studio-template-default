@@ -9,11 +9,18 @@ import pages from "./documents/pages";
 import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default";
 const baseSchemaArray = Object.values(baseSchema);
 
+import blogSchema from "@webriq-pagebuilder/sanity-plugin-schema-blog";
+const blogSchemaArray = Object.values(blogSchema);
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
   name: "default",
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([pages, ...baseSchemaArray]),
+  types: schemaTypes.concat([
+    pages,
+    ...baseSchemaArray,
+    ...blogSchemaArray, // added blog schema
+  ]),
 });
