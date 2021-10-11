@@ -1,4 +1,4 @@
-const { SANITY_STUDIO_APP_URL } = process.env;
+import { SANITY_STUDIO_APP_URL } from "../../config";
 
 export const processData = async (payload) => {
   let pricings = [];
