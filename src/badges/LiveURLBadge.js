@@ -1,10 +1,13 @@
 import React from "react";
+import {
+  SANITY_STUDIO_DEV_SITE_URL,
+  SANITY_STUDIO_PRODUCTION_SITE_URL,
+} from "../config";
 
 export function LiveURLBadge(props) {
-  let siteUrl =
-    process.env.SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000";
+  let siteUrl = SANITY_STUDIO_DEV_SITE_URL;
   if (!window.location.hostname.includes("localhost")) {
-    siteUrl = process.env.SANITY_STUDIO_PRODUCTION_SITE_URL;
+    siteUrl = SANITY_STUDIO_PRODUCTION_SITE_URL;
   }
   const isPublished = !props.draft;
 
