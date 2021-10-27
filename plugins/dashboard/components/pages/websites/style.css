@@ -1,0 +1,11 @@
+th {
+  min-width: 300px;
+  text-align: left;
+  padding-top: 15px;
+}
+
+td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed lightgray;
+}
