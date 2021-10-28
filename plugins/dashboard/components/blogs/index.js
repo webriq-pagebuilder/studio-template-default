@@ -54,7 +54,7 @@ const items = [
   },
 ];
 
-function BlgosComponent() {
+function BlogsComponent() {
   const router = useRouter();
   const [component, setComponent] = React.useState("");
 
@@ -129,4 +129,4 @@ function BlgosComponent() {
   );
 }
 
-export default BlgosComponent;
+export default BlogsComponent;
