@@ -6,7 +6,8 @@ import DashboardComponent from "../../dashboard";
 import PagesComponent from "..";
 import { AiOutlineEye } from "react-icons/ai";
 import { CgFileAdd } from "react-icons/cg";
-import EditPage from "../iframe/editPage";
+import EditPageComponent from "../iframe/editPage";
+import CreatePageComponent from "../iframe/createPage";
 
 const items = [
   {
@@ -46,7 +47,9 @@ function WebsitesComponent() {
   const [page, setPage] = React.useState("");
 
   async function getPages() {
-    await client.fetch('*[_type == "page"]').then((data) => setPages(data));
+    await client
+      .fetch('*[_type == "page"] | order(_updatedAt desc)')
+      .then((data) => setPages(data));
   }
 
   React.useEffect(() => {
@@ -63,9 +66,12 @@ function WebsitesComponent() {
     return <DashboardComponent />;
   } else if (component === "Pages") {
     return <PagesComponent />;
+  } else if (component === "CreatePage") {
+    return <CreatePageComponent page={page} />;
   } else if (component === "Edit") {
-    return <EditPage page={page} />;
+    return <EditPageComponent page={page} />;
   }
+
   return (
     <Container width={10} style={{ background: "#EEEFF3" }} padding={4}>
       <Box style={{ display: "flex", justifyContent: "space-between" }}>
@@ -129,7 +135,7 @@ function WebsitesComponent() {
                 mode="bleed"
                 padding="2"
                 tone="primary"
-                // onClick={handleDelete}
+                onClick={() => handleRoute("CreatePage", null, null)}
                 style={{ cursor: "pointer" }}
               />
             </Tooltip>
@@ -144,11 +150,10 @@ function WebsitesComponent() {
           <th>Slug</th>
           <th>Status</th>
           <th>Published date</th>
-          <th>Option</th>
+          <th>View Page</th>
         </tr>
         {pages?.map((page) => {
           const date = new Date(page._updatedAt);
-
           return (
             <tr>
               <td key={page._id}>
@@ -199,7 +204,7 @@ function WebsitesComponent() {
                   </span>
                   <span>
                     {date.toLocaleString("default", { month: "long" })}{" "}
-                    {date.getDay()}
+                    {date.getDate()}
                   </span>
                 </Text>
               </td>
@@ -213,13 +218,6 @@ function WebsitesComponent() {
                   // onClick={() => handleEdit({ id: page._id, type: page._type })}
                   onClick={() => handleRoute("Edit", page._id, page.title)}
                 />
-                {/* <Button
-                  icon={MdDelete}
-                  fontSize={2}
-                  mode="bleed"
-                  padding="2"
-                  onClick={() => handleDelete(page._id)}
-                /> */}
               </td>
             </tr>
           );

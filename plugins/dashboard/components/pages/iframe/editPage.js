@@ -15,7 +15,7 @@ import { BsTrashFill } from "react-icons/bs";
 import { useDocumentOperation } from "@sanity/react-hooks";
 import sanityClient from "part:@sanity/base/client";
 
-function EditPage({ page }) {
+function EditPageComponent({ page }) {
   const { id, title } = page;
   const publishId = String(id).startsWith("drafts.")
     ? String(id).replace("drafts.", "")
@@ -25,6 +25,7 @@ function EditPage({ page }) {
   const { del } = useDocumentOperation(publishId, "page");
   const [component, setComponent] = React.useState("");
   const [loading, setLoading] = React.useState(true);
+  const [loadingDelete, setLoadingDelete] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const onClose = React.useCallback(() => setOpen(false), []);
 
@@ -49,27 +50,32 @@ function EditPage({ page }) {
   };
 
   const confirmDelete = async () => {
+    setLoadingDelete(true);
     del.execute();
-    await client.fetch('*[_type == "page"]').then((data) => {
-      const pageStatus = data.filter(
-        (page) => id === page._id || publishId === page._id
-      );
-
-      if (pageStatus.length >= 1) {
-        toast.push({
-          status: "error",
-          title: "The page you are trying to delete is linked to another page.",
-        });
-      } else {
-        toast.push({
-          status: "success",
-          title: "Page has been deleted",
-        });
-      }
-    });
-
-    setOpen(false);
-    // setComponent("Websites");
+    try {
+      setTimeout(async function () {
+        const res = await client.fetch(
+          `*[_type == "page" && _id == "${publishId}"]`
+        );
+        if (res.length === 0) {
+          toast.push({
+            status: "success",
+            title: "Page has been deleted",
+          });
+          setComponent("Websites");
+        } else {
+          toast.push({
+            status: "error",
+            title:
+              "The page you are trying to delete is linked to another page.",
+          });
+        }
+        setLoadingDelete(false);
+      }, 2000);
+      setOpen(false);
+    } catch (error) {
+      setOpen(false);
+    }
   };
 
   const handleRoute = (route) => {
@@ -97,10 +103,20 @@ function EditPage({ page }) {
             padding={4}
             style={{ display: "flex", justifyContent: "space-around" }}
           >
-            <Button mode="default" tone="success" onClick={confirmDelete}>
+            <Button
+              mode="default"
+              tone="success"
+              onClick={confirmDelete}
+              style={{ cursor: "pointer" }}
+            >
               Confirm
             </Button>
-            <Button mode="default" tone="caution" onClick={onClose}>
+            <Button
+              mode="default"
+              tone="caution"
+              onClick={onClose}
+              style={{ cursor: "pointer" }}
+            >
               Cancel
             </Button>
           </Box>
@@ -119,6 +135,32 @@ function EditPage({ page }) {
         }}
       >
         {loading && <h4>Loading Contents...</h4>}
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 58,
+          width: "1550px",
+          height: loadingDelete ? "980px" : "1px",
+          backgroundColor: "black",
+          opacity: "80%",
+          zIndex: 1,
+          marginTop: "11px",
+          borderTop: "1px solid lightgray",
+        }}
+      >
+        {loadingDelete && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingTop: "400px",
+              color: "white",
+            }}
+          >
+            <h3>Deleting Page...</h3>
+          </div>
+        )}
       </div>
       <Box
         style={{
@@ -242,4 +284,4 @@ function EditPage({ page }) {
   );
 }
 
-export default EditPage;
+export default EditPageComponent;
