@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 // import getIt from "get-it";
 // import jsonResponse from "get-it/lib/middleware/jsonResponse";
 // import promise from "get-it/lib/middleware/promise";
-import { DashboardWidget } from "@sanity/dashboard";
 import { Grid, Card, Text, Box, Button, Container } from "@sanity/ui";
 // import styled from "styled-components";
 import { IntentLink } from "part:@sanity/base/router";
