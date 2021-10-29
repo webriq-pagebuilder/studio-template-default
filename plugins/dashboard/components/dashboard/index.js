@@ -10,7 +10,7 @@ import PagesComponent from "../pages";
 import BlogsComponent from "../blogs";
 import FormsComponent from "../forms";
 import PaymentsComponent from "../payments";
-import AnalyticsComponent from "../Analytics";
+import AnalyticsComponent from "../analytics";
 
 const items = [
   {
