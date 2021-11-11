@@ -27,8 +27,7 @@
     "dashboard-widget-document-list",
     "google-analytics",
     "@sanity/production-preview",
-    "seo-pane",
-    "netlify-deploy-status-badge"
+    "seo-pane"
   ],
   "parts": [
     {
