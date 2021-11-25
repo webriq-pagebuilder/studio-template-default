@@ -8,6 +8,8 @@
     "dataset": "production"
   },
   "plugins": [
+    "@sanity/dashboard",
+    "dashboard",
     "@sanity/base",
     "@sanity/components",
     "@sanity/default-layout",
@@ -23,13 +25,15 @@
     "@webriq-pagebuilder/sanity-plugin-webriq-payments",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog",
     "media",
-    "dashboard-widget-netlify",
-    "dashboard-widget-document-list",
     "google-analytics",
     "@sanity/production-preview",
     "seo-pane"
   ],
   "parts": [
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./src/dashboardConfig/index.js"
+    },
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
