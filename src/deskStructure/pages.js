@@ -2,6 +2,8 @@ import S from "@sanity/desk-tool/structure-builder";
 
 import EyeIcon from "part:@sanity/base/eye-icon";
 import EditIcon from "part:@sanity/base/edit-icon";
+import TrashIcon from "part:@sanity/base/trash-icon";
+import ContentCopyIcon from "part:@sanity/base/content-copy-icon";
 import { MdAccessibility, MdDashboard } from "react-icons/md";
 
 // Web preview
@@ -36,6 +38,59 @@ export default S.listItem()
   .child(
     S.documentTypeList("page")
       .title("Pages")
+      .menuItemGroups([
+        S.menuItemGroup().id("update-page").title("Update page"),
+      ])
+      // @TODO: Make this work
+      .menuItems([
+        S.menuItem({
+          title: "Edit",
+          icon: EditIcon,
+          group: "update-page",
+          intent: {
+            type: "edit",
+            params: {
+              type: "page",
+            },
+          },
+        }),
+        S.menuItem({
+          title: "Duplicate",
+          icon: ContentCopyIcon,
+          group: "update-page",
+          intent: {
+            type: "edit",
+            params: {
+              type: "page",
+            },
+          },
+        }),
+        S.menuItem({
+          title: "Delete",
+          icon: TrashIcon,
+          group: "update-page",
+          intent: {
+            type: "edit",
+            params: {
+              type: "page",
+            },
+          },
+        }),
+
+        // SORT DOCUMENT ITEMS - working
+        S.orderingMenuItem({
+          title: "Title",
+          by: [{ field: "title", direction: "asc" }],
+        }),
+        S.orderingMenuItem({
+          title: "Last Edited",
+          by: [{ field: "lastEdited", direction: "desc" }],
+        }),
+        S.orderingMenuItem({
+          title: "Created",
+          by: [{ field: "created", direction: "desc" }],
+        }),
+      ])
       .child((documentId) =>
         S.document()
           .documentId(documentId)
