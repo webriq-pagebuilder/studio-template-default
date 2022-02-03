@@ -1,9 +1,6 @@
-import { MdLibraryBooks } from "react-icons/md";
-
 export default {
-  title: "Page",
-  name: "page",
-  icon: MdLibraryBooks,
+  title: "Reusable Sections",
+  name: "reusableSections",
   type: "document",
   fields: [
     {
@@ -12,18 +9,6 @@ export default {
       description: "What's this page is for?",
       type: "string",
       required: true,
-    },
-    {
-      title: "Slug",
-      name: "slug",
-      type: "slug",
-      description:
-        "On what URL should this be published? e.g: /heres-a-sample-url",
-      validation: (Rule) => Rule.required(),
-      options: {
-        source: "title",
-        maxLength: 96,
-      },
     },
     {
       title: "Sections",
@@ -53,22 +38,7 @@ export default {
         { type: "logoCloud" },
         { type: "signInSignUp" },
         { type: "textComponent" },
-        {
-          title: "Reusable Section",
-          name: "reusableSection",
-          type: "reference",
-          to: [{ type: "reusableSections" }],
-        },
       ],
-    },
-    {
-      title: "SEO Settings",
-      name: "seo",
-      type: "seoSettings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-      },
     },
   ],
 };
