@@ -2,7 +2,14 @@ import S from "@sanity/desk-tool/structure-builder";
 import pages from "./pages";
 import ComposeIcon from "part:@sanity/base/compose-icon";
 
-const hiddenTypes = ["media.tag", "category", "page", "post", "author"];
+const hiddenTypes = [
+  "media.tag",
+  "category",
+  "page",
+  "post",
+  "author",
+  "reusableSections",
+];
 export default () =>
   S.list()
     .title("Content")
