@@ -11,6 +11,7 @@ const baseSchemaArray = Object.values(baseSchema);
 
 import blogSchema from "@webriq-pagebuilder/sanity-plugin-schema-blog";
 import reusableSections from "./documents/reusableSections";
+import reusableHeader from "./custom/sanity-plugin-schema-default/src/schema/sections/header/header";
 const blogSchemaArray = Object.values(blogSchema);
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -22,6 +23,7 @@ export default createSchema({
   types: schemaTypes.concat([
     pages,
     reusableSections,
+    reusableHeader,
     ...baseSchemaArray,
     ...blogSchemaArray, // added blog schema
   ]),

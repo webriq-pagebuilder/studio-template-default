@@ -8,6 +8,7 @@ const hiddenTypes = [
   "post",
   "author",
   "reusableSections",
+  "reusableHeader",
 ];
 export default () =>
   S.list()

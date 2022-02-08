@@ -59,6 +59,12 @@ export default {
           type: "reference",
           to: [{ type: "reusableSections" }],
         },
+        {
+          title: "Reusable Header",
+          name: "reusableHeader",
+          type: "reference",
+          to: [{ type: "reusableHeader" }],
+        },
       ],
     },
     {
