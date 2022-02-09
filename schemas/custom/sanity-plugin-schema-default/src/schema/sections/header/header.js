@@ -14,6 +14,7 @@ import variantBSchema from "./variants/variant_b";
 import variantCSchema from "./variants/variant_c";
 import variantDSchema from "./variants/variant_d";
 import variantESchema from "./variants/variant_e";
+import initialValue from "./initialValue";
 
 // export const variantsList = [
 //   {
@@ -132,6 +133,7 @@ export default {
       type: "object",
       // hidden: ({ parent }) => !parent?.variant,
       // inputComponent: ConditionalFieldsInputComponent,
+      initialValue: initialValue,
       hidden: ({ document }) => !document.variant,
       fields: [
         {
