@@ -51,19 +51,20 @@ export default function createProductsPublishAction(props) {
         props.onComplete();
       },
     };
+  } else {
+    return {
+      disabled: publish.disabled,
+      label: isPublishing ? "Saving..." : "Save",
+      onHandle: () => {
+        // This will update the button text
+        setIsPublishing(true);
+
+        // Perform the publish
+        publish.execute();
+
+        // Signal that the action is completed
+        props.onComplete();
+      },
+    };
   }
-  return {
-    disabled: publish.disabled,
-    label: isPublishing ? "Saving..," : "Save",
-    onHandle: () => {
-      // This will update the button text
-      setIsPublishing(true);
-
-      // Perform the publish
-      publish.execute();
-
-      // Signal that the action is completed
-      props.onComplete();
-    },
-  };
 }
