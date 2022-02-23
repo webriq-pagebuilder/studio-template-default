@@ -4,7 +4,7 @@ import { useToast } from "@sanity/ui";
 import { processData } from "../../stripeActions/process-data";
 
 export default function createProductsPublishAction(props) {
-  const { type } = props;
+  const { type, draft } = props;
   const toast = useToast();
   const { publish } = useDocumentOperation(props.id, props.type);
   const [isPublishing, setIsPublishing] = useState(false);
@@ -53,7 +53,7 @@ export default function createProductsPublishAction(props) {
     };
   } else {
     return {
-      disabled: publish.disabled,
+      disabled: !draft?.label,
       label: isPublishing ? "Saving..." : "Save",
       onHandle: () => {
         // This will update the button text

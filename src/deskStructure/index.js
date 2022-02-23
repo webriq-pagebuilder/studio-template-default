@@ -1,4 +1,5 @@
 import S from "@sanity/desk-tool/structure-builder";
+import { sections } from "../badges/sectionBadge";
 import pages from "./pages";
 
 const hiddenTypes = [
@@ -7,26 +8,7 @@ const hiddenTypes = [
   "page",
   "post",
   "author",
-  "navigation",
-  "blog",
-  "appPromo",
-  "callToAction",
-  "contact",
-  "cookies",
-  "faqs",
-  "features",
-  "footer",
-  "header",
-  "howItWorks",
-  "logoCloud",
-  "portfolio",
-  "pricing",
-  "stats",
-  "signInSignUp",
-  "team",
-  "testimonial",
-  "textComponent",
-  "newsletter",
+  ...sections,
 ];
 export default () =>
   S.list()
