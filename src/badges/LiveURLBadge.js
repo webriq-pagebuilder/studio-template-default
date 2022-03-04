@@ -5,28 +5,31 @@ import {
 } from "../config";
 
 export function LiveURLBadge(props) {
+  const { type } = props;
   let siteUrl = SANITY_STUDIO_DEV_SITE_URL;
   if (!window.location.hostname.includes("localhost")) {
     siteUrl = SANITY_STUDIO_PRODUCTION_SITE_URL;
   }
   const isPublished = !props.draft;
 
-  return {
-    label: (
-      <Link
-        target={`${siteUrl}/${
-          isPublished
-            ? props?.published?.slug?.current
-            : props?.draft?.slug?.current ?? ""
-        }`}
-        isPublished={isPublished}
-      />
-    ),
-    title: isPublished
-      ? "Open LIVE URL in a new window!"
-      : "Publish document first to open LIVE URL",
-    color: isPublished ? "success" : "caution",
-  };
+  if (type === "page") {
+    return {
+      label: (
+        <Link
+          target={`${siteUrl}/${
+            isPublished
+              ? props?.published?.slug?.current
+              : props?.draft?.slug?.current ?? ""
+          }`}
+          isPublished={isPublished}
+        />
+      ),
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  }
 }
 
 const Link = ({ target, isPublished }) => {
