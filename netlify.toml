@@ -1,0 +1,10 @@
+# Ref: https://docs.netlify.com/configure-builds/file-based-configuration
+[context.production]
+  environment = { SANITY_STUDIO_API_DATASET = "production" }
+
+[context.branch-deploy]
+  environment = { SANITY_STUDIO_API_DATASET = "staging" }
+
+# additionally if enabled, we'll use staging dataset for these deploy previews
+[context.deploy-preview]
+  environment = { SANITY_STUDIO_API_DATASET = "staging" }
