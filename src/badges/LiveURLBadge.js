@@ -24,8 +24,10 @@ export function LiveURLBadge(props) {
           isPublished={isPublished}
         />
       ),
-      title: "Open LIVE URL in a new window!",
-      color: isPublished ? "success" : "default",
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
     };
   }
 }
@@ -40,7 +42,7 @@ const Link = ({ target, isPublished }) => {
         padding: 8,
         fontSize: "1.5em",
         textTransform: "lowercase",
-        color: "var(--card-fg-color)",
+        color: isPublished ? "#31975e" : "#958228",
         cursor: isPublished ? "pointer" : "default",
       }}
     >
