@@ -4,6 +4,7 @@ import { useToast } from "@sanity/ui";
 import { processData } from "../../stripeActions/process-data";
 
 export default function createProductsPublishAction(props) {
+  const { type, draft } = props;
   const toast = useToast();
   const { publish } = useDocumentOperation(props.id, props.type);
   const [isPublishing, setIsPublishing] = useState(false);
@@ -35,18 +36,35 @@ export default function createProductsPublishAction(props) {
       create();
   }, [isPublishing]);
 
-  return {
-    disabled: publish.disabled,
-    label: isPublishing ? "Publishing…" : "Publish",
-    onHandle: () => {
-      // This will update the button text
-      setIsPublishing(true);
+  if (type === "page") {
+    return {
+      disabled: publish.disabled,
+      label: isPublishing ? "Publishing…" : "Publish",
+      onHandle: () => {
+        // This will update the button text
+        setIsPublishing(true);
 
-      // Perform the publish
-      publish.execute();
+        // Perform the publish
+        publish.execute();
 
-      // Signal that the action is completed
-      props.onComplete();
-    },
-  };
+        // Signal that the action is completed
+        props.onComplete();
+      },
+    };
+  } else {
+    return {
+      disabled: !draft?.label,
+      label: isPublishing ? "Saving..." : "Save",
+      onHandle: () => {
+        // This will update the button text
+        setIsPublishing(true);
+
+        // Perform the publish
+        publish.execute();
+
+        // Signal that the action is completed
+        props.onComplete();
+      },
+    };
+  }
 }
