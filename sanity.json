@@ -26,8 +26,7 @@
     "dashboard-widget-netlify",
     "dashboard-widget-document-list",
     "google-analytics",
-    "@sanity/production-preview",
-    "seo-pane"
+    "@sanity/production-preview"
   ],
   "parts": [
     {
