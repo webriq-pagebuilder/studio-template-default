@@ -2668,10 +2668,10 @@
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.3-alpha.0":
-  version "1.0.3-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.3-alpha.0.tgz#58cbf5d60de478f58e06b6a46d74db82a44a5579"
-  integrity sha512-lMGPAu05qZRxbyHxeDTgOoFPWJkNYxT2XeWzuQeiH0KJJySuN4xXWvtn5OY9ttpxSNN3fecXLaXmcZ7jhKdrqw==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.4-alpha.0":
+  version "1.0.4-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.4-alpha.0.tgz#bd43a4f5a55e58aadc5426e300e6cb311488ab80"
+  integrity sha512-OteQXge8fXom6gSGfg1S6l91/1Ikot7JsYXU2+aflkqbeK2fI3Er+SgYmqj1JwiQ6HqMxzRRaZkHxw9tOe55wA==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^1.0.0-alpha.0"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.4"
