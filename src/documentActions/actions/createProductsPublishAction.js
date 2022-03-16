@@ -36,7 +36,7 @@ export default function createProductsPublishAction(props) {
       create();
   }, [isPublishing]);
 
-  if (type === "page") {
+  if (["page", "post", "category", "author"].includes(type)) {
     return {
       disabled: publish.disabled,
       label: isPublishing ? "Publishing…" : "Publish",
