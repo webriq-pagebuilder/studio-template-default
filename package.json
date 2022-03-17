@@ -27,7 +27,7 @@
     "@sanity/vision": "^2.29.1",
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields": "^1.0.0-alpha.0",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "^1.0.0-alpha.0",
-    "@webriq-pagebuilder/sanity-plugin-schema-default": "^1.0.8-alpha.0",
+    "@webriq-pagebuilder/sanity-plugin-schema-default": "^1.0.9-alpha.0",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog": "^1.0.0-alpha.0",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "^1.0.1-alpha.0",
     "@webriq-pagebuilder/sanity-plugin-webriq-payments": "^1.0.0-alpha.0",
