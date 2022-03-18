@@ -35,7 +35,24 @@ export default {
       type: "slug",
       description:
         "On what URL should this be published? e.g: /heres-a-sample-url",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().custom((slug) => {
+          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
+
+          if (regex.test(slug.current)) {
+            return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
+          }
+
+          if (slug.current !== slug.current.toLowerCase()) {
+            return "Slug must be in lowercase";
+          }
+
+          if (slug.current.indexOf(" ") !== -1) {
+            return "Slug cannot contain spaces";
+          }
+
+          return true;
+        }),
       options: {
         source: "title",
         maxLength: 96,
