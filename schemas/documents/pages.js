@@ -1,10 +1,26 @@
 import { MdLibraryBooks } from "react-icons/md";
+import sanityClient from "part:@sanity/base/client";
+
+const client = sanityClient.withConfig({ apiVersion: "2021-10-21" });
 
 export default {
   title: "Page",
   name: "page",
   icon: MdLibraryBooks,
   type: "document",
+  validation: (Rule) =>
+    Rule.required().custom(async (fields) => {
+      const allSlug = await client.fetch(
+        `*[(_type == "page" || _type == "post") && _id != $id].slug.current`,
+        { id: fields._id }
+      );
+
+      if (allSlug.includes(fields.slug.current)) {
+        return "Slug is already in use in another page or post";
+      }
+
+      return true;
+    }),
   fields: [
     {
       title: "Title",
