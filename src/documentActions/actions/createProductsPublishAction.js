@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import { useDocumentOperation } from "@sanity/react-hooks";
-import { useToast } from "@sanity/ui";
+import React, { useState, useEffect } from "react";
+import { useToast, Tooltip, Box, Text } from "@sanity/ui";
+import { useDocumentOperation, useValidationStatus } from "@sanity/react-hooks";
 import { processData } from "../../stripeActions/process-data";
 
 export default function createProductsPublishAction(props) {
   const { type, draft } = props;
   const toast = useToast();
+  const { isValidating, markers } = useValidationStatus(props.id, props.type);
   const { publish } = useDocumentOperation(props.id, props.type);
   const [isPublishing, setIsPublishing] = useState(false);
 
@@ -36,10 +37,17 @@ export default function createProductsPublishAction(props) {
       create();
   }, [isPublishing]);
 
+  const isDisabled = markers.length !== 0 || publish?.disabled || isPublishing;
+
   if (["page", "post", "category", "author"].includes(type)) {
     return {
-      disabled: publish.disabled,
-      label: isPublishing ? "Publishing…" : "Publish",
+      disabled: isDisabled,
+      label: (
+        <CustomPublishLabel
+          hasErrors={isDisabled}
+          isPublishing={isPublishing}
+        />
+      ),
       onHandle: () => {
         // This will update the button text
         setIsPublishing(true);
@@ -53,7 +61,7 @@ export default function createProductsPublishAction(props) {
     };
   } else {
     return {
-      disabled: !draft?.label,
+      disabled: isDisabled || !draft?.label,
       label: isPublishing ? "Saving..." : "Save",
       onHandle: () => {
         // This will update the button text
@@ -67,4 +75,27 @@ export default function createProductsPublishAction(props) {
       },
     };
   }
+}
+
+function CustomPublishLabel({ hasErrors = false, isPublishing = false }) {
+  if (hasErrors) {
+    return (
+      <Tooltip
+        content={
+          <Box padding={2}>
+            <Text size={2}>
+              There are validation errors that needs to be fixed
+              <br /> before this document can be published!
+            </Text>
+          </Box>
+        }
+        placement="top"
+        portal
+      >
+        <span>Publish</span>
+      </Tooltip>
+    );
+  }
+
+  return isPublishing ? <span>Publishing...</span> : <span>Publish</span>;
 }
