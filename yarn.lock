@@ -2450,10 +2450,10 @@
     prop-types "15.7.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-webriq-forms@^1.0.1-alpha.0":
-  version "1.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-1.0.1-alpha.0.tgz#cca157953b4430a877cb0815a0e813b716bc4dd9"
-  integrity sha512-R0/ctSckFgH3hqkhn1Cpef2/5WPmvXUzqRoNjtXSA3MvS3F/Zhhkt9z+T5zdXsTRSgC3omy6I72gRTpqX8Luzg==
+"@webriq-pagebuilder/sanity-plugin-webriq-forms@^1.0.2-alpha.0":
+  version "1.0.2-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-1.0.2-alpha.0.tgz#3d2ee20ff5761aa014f45fcd1c36c6f4b158fc56"
+  integrity sha512-6RhaTFe8V09PZ1n4kNAB6tHKhL1cS/JNodYCV9Rg8sHfECHfgpWjyqMZJo2Sp59PRt+ASG2nO9PoNmEDYLuSIQ==
   dependencies:
     "@sanity/icons" "^1.1.1"
     "@sanity/ui" "0.33.29"
