@@ -84,7 +84,7 @@ function CustomPublishLabel({ hasErrors = false, isPublishing = false }) {
         content={
           <Box padding={2}>
             <Text size={2}>
-              There are validation errors that needs to be fixed
+              There are validation errors that need to be fixed
               <br /> before this document can be published!
             </Text>
           </Box>
