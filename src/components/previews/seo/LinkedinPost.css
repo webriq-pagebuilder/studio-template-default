@@ -3,50 +3,49 @@
   margin-top: 50px;
 }
 
-.facebookWrapper {
-  background-color: #f2f3f5;
+.linkedinWrapper {
+  background-color: #394350;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.facebookImageContainer {
+.linkedinImageContainer {
   display: flex;
   width: 100%;
   overflow: hidden;
 }
 
-.facebookCardImage {
-  max-height: 410px;
+.linkedinCardImage {
+  max-height: 256px;
   width: 100%;
   object-fit: cover;
 }
 
-.facebookCardContent {
+.linkedinCardContent {
   padding: 10px 12px;
-  color: #606770;
+  color: #394350;
 }
 
-.facebookCardUrl {
-  color: #606770;
+.linkedinCardUrl {
+  color: #9ca3ac;
   flex-shrink: 0;
   font-size: 12px;
   line-height: 16px;
   overflow: hidden;
   padding: 0;
   text-overflow: ellipsis;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
-.facebookCardTitle {
+.linkedinCardTitle {
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
   overflow: hidden;
 }
 
-.facebookCardTitle a {
-  color: #1d2129;
+.linkedinCardTitle a {
+  color: #dfe4ea;
   font-family: inherit;
   font-size: 16px;
   font-weight: bold;
@@ -56,7 +55,7 @@
   text-decoration: none;
 }
 
-.facebookCardDescription {
+.linkedinCardDescription {
   color: #606770;
   font-size: 14px;
   line-height: 20px;

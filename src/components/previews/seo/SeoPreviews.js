@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import GoogleSearchResult from "./GoogleSearchResult";
 import TwitterCard from "./TwitterCard";
 import FacebookShare from "./FacebookShare";
+import LinkedinPost from "./LinkedinPost";
 
 class SeoPreviews extends React.PureComponent {
   static propTypes = {
@@ -23,6 +24,7 @@ class SeoPreviews extends React.PureComponent {
         <GoogleSearchResult document={displayed} options={options} />
         <TwitterCard document={displayed} options={options} />
         <FacebookShare document={displayed} options={options} />
+        <LinkedinPost document={displayed} options={options} />
       </>
     );
   }
