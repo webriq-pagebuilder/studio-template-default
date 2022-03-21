@@ -39,42 +39,26 @@ export default function createProductsPublishAction(props) {
 
   const isDisabled = markers.length !== 0 || publish?.disabled || isPublishing;
 
-  if (["page", "post", "category", "author"].includes(type)) {
-    return {
-      disabled: isDisabled,
-      label: (
-        <CustomPublishLabel
-          hasErrors={isDisabled}
-          isPublishing={isPublishing}
-        />
-      ),
-      onHandle: () => {
-        // This will update the button text
-        setIsPublishing(true);
+  return {
+    disabled: isDisabled || !draft,
+    label: ["page", "post", "category", "author"].includes(type) ? (
+      <CustomPublishLabel hasErrors={isDisabled} isPublishing={isPublishing} />
+    ) : isPublishing ? (
+      "Saving..."
+    ) : (
+      "Save"
+    ),
+    onHandle: () => {
+      // This will update the button text
+      setIsPublishing(true);
 
-        // Perform the publish
-        publish.execute();
+      // Perform the publish
+      publish.execute();
 
-        // Signal that the action is completed
-        props.onComplete();
-      },
-    };
-  } else {
-    return {
-      disabled: isDisabled || !draft?.label,
-      label: isPublishing ? "Saving..." : "Save",
-      onHandle: () => {
-        // This will update the button text
-        setIsPublishing(true);
-
-        // Perform the publish
-        publish.execute();
-
-        // Signal that the action is completed
-        props.onComplete();
-      },
-    };
-  }
+      // Signal that the action is completed
+      props.onComplete();
+    },
+  };
 }
 
 function CustomPublishLabel({ hasErrors = false, isPublishing = false }) {

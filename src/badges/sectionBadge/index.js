@@ -45,7 +45,7 @@ export function SectionBadge(props) {
   if (sections.includes(type)) {
     return {
       label: String(`${sectionName(type)} Section`).toUpperCase(),
-      title: `${sectionName(type)} Section`,
+      title: `${sectionName(type).toUpperCase()} SECTION`,
       color: "success",
     };
   }
