@@ -15,7 +15,11 @@ export default {
         { id: fields._id }
       );
 
-      if (allSlug.includes(fields.slug.current)) {
+      let match = [];
+
+      allSlug.map((slug) => fields.slug.current === slug && match.push(slug));
+
+      if (match.length >= 2) {
         return "Slug is already in use in another page or post";
       }
 
