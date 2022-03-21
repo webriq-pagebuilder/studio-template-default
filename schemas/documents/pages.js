@@ -37,6 +37,12 @@ export default {
         "On what URL should this be published? e.g: /heres-a-sample-url",
       validation: (Rule) =>
         Rule.required().custom((slug) => {
+          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
+
+          if (regex.test(slug.current)) {
+            return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
+          }
+
           if (slug.current !== slug.current.toLowerCase()) {
             return "Slug must be in lowercase";
           }
