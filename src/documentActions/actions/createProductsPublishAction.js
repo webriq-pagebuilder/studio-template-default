@@ -37,7 +37,7 @@ export default function createProductsPublishAction(props) {
       create();
   }, [isPublishing]);
 
-  const isDisabled = markers.length !== 0 || publish?.disabled || isPublishing;
+  const isDisabled = markers.length !== 0 || isPublishing;
 
   return {
     disabled: isDisabled || !draft,
