@@ -2416,18 +2416,18 @@
     prop-types "15.7.2"
     styled-components "^5.3.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-blog@^1.0.3-alpha.0":
-  version "1.0.3-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-blog/-/sanity-plugin-schema-blog-1.0.3-alpha.0.tgz#2e97a9ad458cbce673c3e09c1b05c1c9296c6a01"
-  integrity sha512-6wjghOVrA/KWkuA3QPYMMlJ80st62VIfC399Z8GullMhFqYOJurHtR4aD2iYUaDiEtnl6MG+EF0OcHOsrYolIQ==
+"@webriq-pagebuilder/sanity-plugin-schema-blog@^1.0.4-alpha.0":
+  version "1.0.4-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-blog/-/sanity-plugin-schema-blog-1.0.4-alpha.0.tgz#e5a95241b272364dcc72beb1a953586c73e44e10"
+  integrity sha512-pkEFhpYdSpYV170jA6pDqGls4iobnkIPYTr5ILTjFcbvbSMNY58JjEhIQh9dLJPw6srnOeVoOB1APEaWht9AIQ==
   dependencies:
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.13-alpha.0":
-  version "1.0.13-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.13-alpha.0.tgz#8365fd70a22457d7f70af00cb95ba4711494e8d3"
-  integrity sha512-De+i7ChkDlYFz2vHgO1dFl0obxry7HIkQLh2Li1Wmj2/INutDxDRFIdnFnfhYPUSob00fLwIv4txYgv8MfM+qw==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.14-alpha.0":
+  version "1.0.14-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.14-alpha.0.tgz#9fb1e9fcd242bbbd0bb41d37b5ed4aa642417673"
+  integrity sha512-CUDmPhMTT2N8fpvJob5yzo+z1A/C/nOrbztzUI9bI5wr/NXD8h8cH7LoFXgg2r7dBcVJnmlpB7cMYissndtLkw==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^1.0.0-alpha.0"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.4"
@@ -2435,10 +2435,10 @@
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-webriq-blog@^1.0.3-alpha.0":
-  version "1.0.3-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-blog/-/sanity-plugin-webriq-blog-1.0.3-alpha.0.tgz#1a28be5e8eaa834d60457f7d9aa41645f965ecd0"
-  integrity sha512-WIESmIAthJI0WdWQ3Oc0T8N5TlW/wXXUakToLixKdQQ/cBR3S3ABz7bM3GbvoKpEAaelQdP47LCOUNUPXi01Sg==
+"@webriq-pagebuilder/sanity-plugin-webriq-blog@^1.0.4-alpha.0":
+  version "1.0.4-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-blog/-/sanity-plugin-webriq-blog-1.0.4-alpha.0.tgz#806b91b4c35d9aa9325d2cdd49e7dd30bf6087c6"
+  integrity sha512-lgJ0oe8Tm/+ZHgaY2EGMvy3QU7rz/oE4BQ4J92Uktrv1RGgX+rstSgt+SjWbCM6GIqT8bwFH8MuwNS7UOIvQ2A==
   dependencies:
     "@sanity/block-content-to-react" "^3.0.0"
     "@sanity/desk-tool" "^2.17.2"
@@ -2446,7 +2446,7 @@
     "@sanity/image-url" "^1.0.1"
     "@sanity/react-hooks" "^2.17.1"
     "@sanity/ui" "^0.36.12"
-    "@webriq-pagebuilder/sanity-plugin-schema-blog" "^1.0.3-alpha.0"
+    "@webriq-pagebuilder/sanity-plugin-schema-blog" "^1.0.4-alpha.0"
     prop-types "15.7.2"
     react-icons "^4.2.0"
 
