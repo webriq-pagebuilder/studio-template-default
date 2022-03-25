@@ -2418,10 +2418,10 @@
     prop-types "15.7.2"
     styled-components "^5.3.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-blog@^1.0.4-alpha.0":
-  version "1.0.4-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-blog/-/sanity-plugin-schema-blog-1.0.4-alpha.0.tgz#e5a95241b272364dcc72beb1a953586c73e44e10"
-  integrity sha512-pkEFhpYdSpYV170jA6pDqGls4iobnkIPYTr5ILTjFcbvbSMNY58JjEhIQh9dLJPw6srnOeVoOB1APEaWht9AIQ==
+"@webriq-pagebuilder/sanity-plugin-schema-blog@^1.0.5-alpha.0":
+  version "1.0.5-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-blog/-/sanity-plugin-schema-blog-1.0.5-alpha.0.tgz#3749bfe1cb0f6e0606ce14cc50f449939bc876ab"
+  integrity sha512-pyqsfRLHMmgsY4DgkwMzoKToXXPKoqscD4iiPP8DusOw+LpgXYM5ZKOPXcQzN895AIuNrhvugpCQ+vueE72Kxg==
   dependencies:
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
@@ -2437,10 +2437,10 @@
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-webriq-blog@^1.0.4-alpha.0":
-  version "1.0.4-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-blog/-/sanity-plugin-webriq-blog-1.0.4-alpha.0.tgz#806b91b4c35d9aa9325d2cdd49e7dd30bf6087c6"
-  integrity sha512-lgJ0oe8Tm/+ZHgaY2EGMvy3QU7rz/oE4BQ4J92Uktrv1RGgX+rstSgt+SjWbCM6GIqT8bwFH8MuwNS7UOIvQ2A==
+"@webriq-pagebuilder/sanity-plugin-webriq-blog@^1.0.5-alpha.0":
+  version "1.0.5-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-blog/-/sanity-plugin-webriq-blog-1.0.5-alpha.0.tgz#4091371fd61a37633a934b9f3b74bbe57040037e"
+  integrity sha512-iE9pOoQPB4gobOhjwfweWonqfu76GkLc7+GwJDIiVOjsNptB3UcaHjt7QcKrj9bGWbNIPwstwLISddCCnW3NdA==
   dependencies:
     "@sanity/block-content-to-react" "^3.0.0"
     "@sanity/desk-tool" "^2.17.2"
@@ -2448,7 +2448,7 @@
     "@sanity/image-url" "^1.0.1"
     "@sanity/react-hooks" "^2.17.1"
     "@sanity/ui" "^0.36.12"
-    "@webriq-pagebuilder/sanity-plugin-schema-blog" "^1.0.4-alpha.0"
+    "@webriq-pagebuilder/sanity-plugin-schema-blog" "^1.0.5-alpha.0"
     prop-types "15.7.2"
     react-icons "^4.2.0"
 
