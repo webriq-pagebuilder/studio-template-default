@@ -15,12 +15,10 @@ export default {
         { id: fields._id }
       );
 
-      let match = [];
-
-      allSlug.map((slug) => fields.slug.current === slug && match.push(slug));
-
-      if (match.length >= 2) {
-        return "Slug is already in use in another page or post";
+      if (fields?.slug?.current !== undefined) {
+        if (allSlug?.includes(fields?.slug?.current)) {
+          return "Slug is already in use in another page or post";
+        }
       }
 
       return true;
@@ -43,16 +41,18 @@ export default {
         Rule.required().custom((slug) => {
           const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
 
-          if (regex.test(slug.current)) {
-            return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
-          }
+          if (slug?.current !== undefined) {
+            if (regex.test(slug.current)) {
+              return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
+            }
 
-          if (slug.current !== slug.current.toLowerCase()) {
-            return "Slug must be in lowercase";
-          }
+            if (slug?.current !== slug.current.toLowerCase()) {
+              return "Slug must be in lowercase";
+            }
 
-          if (slug.current.indexOf(" ") !== -1) {
-            return "Slug cannot contain spaces";
+            if (slug?.current.indexOf(" ") !== -1) {
+              return "Slug cannot contain spaces";
+            }
           }
 
           return true;
