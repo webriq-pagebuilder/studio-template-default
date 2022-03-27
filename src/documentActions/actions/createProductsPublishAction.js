@@ -20,11 +20,12 @@ export default function createProductsPublishAction(props) {
 
   useEffect(() => {
     const payload = !props.draft
-      ? props?.publish?.sections
-      : props.draft.sections;
+      ? { data: props?.published?.variants, variant: props?.published?.variant }
+      : { data: props?.draft?.variants, variant: props?.draft?.variant };
 
     async function create() {
       const response = await processData(payload);
+
       if (response) {
         toast.push({
           status: response.status === 500 ? "error" : "success",
@@ -32,6 +33,7 @@ export default function createProductsPublishAction(props) {
         });
       }
     }
+
     publish.disabled !== "ALREADY_PUBLISHED" &&
       publish.disabled !== "NO_CHANGES" &&
       create();
