@@ -20,8 +20,16 @@ export default function createProductsPublishAction(props) {
 
   useEffect(() => {
     const payload = !props.draft
-      ? { data: props?.published?.variants, variant: props?.published?.variant }
-      : { data: props?.draft?.variants, variant: props?.draft?.variant };
+      ? {
+          data: props?.published?.variants,
+          variant: props?.published?.variant,
+          type: props?.published?.type,
+        }
+      : {
+          data: props?.draft?.variants,
+          variant: props?.draft?.variant,
+          type: props?.published?.type,
+        };
 
     async function create() {
       const response = await processData(payload);
