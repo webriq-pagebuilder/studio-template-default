@@ -23,12 +23,12 @@ export default function createProductsPublishAction(props) {
       ? {
           data: props?.published?.variants,
           variant: props?.published?.variant,
-          type: props?.published?.type,
+          type: props?.published?._type,
         }
       : {
           data: props?.draft?.variants,
           variant: props?.draft?.variant,
-          type: props?.published?.type,
+          type: props?.draft?._type,
         };
 
     async function create() {
