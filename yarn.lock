@@ -2426,10 +2426,10 @@
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.17-alpha.0":
-  version "1.0.17-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.17-alpha.0.tgz#a3f0fc9ec912eb716b8f59b3d48bb162585d16cd"
-  integrity sha512-pZWS1VaQ1GTSS5mHS29G1P7QYrtsZ8X7aG/kyWr9CBkm90ZLLdaufTBde9bIEU/PT+IIWld0Fbeyop134m+UIg==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.18-alpha.0":
+  version "1.0.18-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.18-alpha.0.tgz#ca77e3708d69e056f9e12e3ca1709f3b297c891f"
+  integrity sha512-Vavr4IEaBbqC4Kg0V+pCnb5b9i89bm6LESIevs2jBOm2Td+8ljywr8vE0NBhhrL5C5kG+4UVsHfvL0I1elYFcw==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^1.0.0-alpha.0"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.4"
@@ -2452,10 +2452,10 @@
     prop-types "15.7.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-webriq-forms@^1.0.6-alpha.0":
-  version "1.0.6-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-1.0.6-alpha.0.tgz#5a153467bf3d2e439aa2cc34819aba6777a62094"
-  integrity sha512-iPJJ0RW0OYB+kmTwswVrmiun95KojH4iBHN+IlWE46IEhzfN0ptktBPEjJgv9VJX7JpO23o2L4MfvINB7s+MQw==
+"@webriq-pagebuilder/sanity-plugin-webriq-forms@^1.0.7-alpha.0":
+  version "1.0.7-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-1.0.7-alpha.0.tgz#c16aa4361ea853c74b89cef0e49bceb9bf9a603f"
+  integrity sha512-xir5b1MFToIxRmIc1Rok1raHHdRijBvxiGWQ3hAC8G5xJJM5Jwa+DiGL8AQrsoI07WFQsfbG5hwm/nRIZzAxYQ==
   dependencies:
     "@sanity/icons" "^1.1.1"
     "@sanity/ui" "0.33.29"
