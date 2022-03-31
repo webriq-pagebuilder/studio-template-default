@@ -2420,14 +2420,14 @@
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.20-alpha.0":
-  version "1.0.20-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.20-alpha.0.tgz#766789ec9a7d3740a044152030ffb9ba252fb8ac"
-  integrity sha512-MdxGIanYD/BCNY5rPdYdN7efscJMwbxI/aFdG8++zbibC3oOU+EMI/OZETiEWm04k2AQvnIX2pPuE/3zdazVGg==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.22-alpha.0":
+  version "1.0.22-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.22-alpha.0.tgz#c9236134deb4e8851625640a7a657b25cd8d3703"
+  integrity sha512-Wu0rY8k6x+tUrlyLJVHInmxaFkI7yMo5W0TRks22tD1N3D7zJdIbC+29Q9hkbRsAT1gNXZ8JkaxPtP8MkI9ooQ==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^1.0.0-alpha.0"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.4"
-    "@webriq-pagebuilder/sanity-plugin-webriq-payments" "^1.0.1-alpha.0"
+    "@webriq-pagebuilder/sanity-plugin-webriq-payments" "^1.0.2-alpha.0"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
@@ -2462,6 +2462,18 @@
   version "1.0.1-alpha.0"
   resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-payments/-/sanity-plugin-webriq-payments-1.0.1-alpha.0.tgz#375400619270feff495be021b58081824f498fd3"
   integrity sha512-XKsBBxl8j0b1U+n0zgh4AXNuEyvo02+2R/nJVD6j/hGp+EWSmhIhkpK8A+NEz0UpBakTFaAZS/c3gvOeFiMmyQ==
+  dependencies:
+    "@sanity/base" "^2.13.1"
+    "@sanity/react-hooks" "^2.13.1"
+    "@sanity/ui" "^0.35.0"
+    crypto-js "^4.1.1"
+    nanoid "^3.1.25"
+    react-icons "^4.2.0"
+
+"@webriq-pagebuilder/sanity-plugin-webriq-payments@^1.0.2-alpha.0":
+  version "1.0.2-alpha.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-payments/-/sanity-plugin-webriq-payments-1.0.2-alpha.0.tgz#03e4230d1f701e4f5cd7ccd9805eecc675b09c13"
+  integrity sha512-f4Cw986Tv7gh/jr2AD4qgde9sEIl+6Mi65VvCOwfbcfBurVyFwyFd6Jei+Gx5zwQ5/Gs63nUB8v26puoEVtmOw==
   dependencies:
     "@sanity/base" "^2.13.1"
     "@sanity/react-hooks" "^2.13.1"
