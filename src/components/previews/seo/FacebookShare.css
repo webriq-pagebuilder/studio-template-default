@@ -4,7 +4,8 @@
 }
 
 .facebookWrapper {
-  background-color: #f6f6f6;
+  background-color: #f2f3f5;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -15,7 +16,7 @@
 }
 
 .facebookCardImage {
-  max-height: 262px;
+  max-height: 410px;
   width: 100%;
   object-fit: cover;
 }

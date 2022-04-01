@@ -1,244 +1,513 @@
 import { SANITY_STUDIO_APP_URL } from "../../config";
 
+const retrieveProducts = `${
+  SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+}/api/payments/stripe?resource=products&action=retrieve`;
+
+const createProducts = `${
+  SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+}/api/payments/stripe?resource=products&action=create`;
+
+const createPriceForProduct = `${
+  SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+}/api/payments/stripe?resource=prices&action=create`;
+
+// const updateProducts = `${
+//   SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+// }/api/payments/stripe?resource=products&action=update`;
+
+const updatePriceForProduct = `${
+  SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+}/api/payments/stripe?resource=prices&action=update`;
+
+const listOfPrices = `${
+  SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
+}/api/payments/stripe?resource=prices&action=list`;
+
 export const processData = async (payload) => {
-  let pricings = [];
-  let plans = [];
+  const { data, variant, type } = payload;
 
-  // Filtering out all pricing under this section into pricings array
-  if (payload) {
-    payload.map((section) => {
-      section._type === "pricing" && pricings.push(section);
-    });
-  }
-
-  // Filtering out again all plans and stripeSKey into plans array
-  if (pricings) {
-    let i = 0;
-    for (; i < pricings.length; ) {
-      const variant = pricings[i].variants.condition;
-
-      // Validate if plans and stripe account is not undefined
-      if (
-        !pricings[i].variants[variant]?.plans ||
-        pricings[i].variants[variant]?.plans?.length === 0 ||
-        !pricings[i].variants[variant].stripeAccount
-      ) {
-        return {
-          status: 500,
-          statusText: `You must create at least 1 plan, and a valid Stripe Account on Pricing - ${
-            i + 1
-          }`,
-        };
-      }
-
-      // else it will add the stripeSKey into plans object and push it to plans array
-      pricings[i].variants[variant].plans["stripeSKey"] =
-        pricings[i].variants[variant]?.stripeAccount?.stripeSKey;
-      pricings[i].variants[variant].plans["hashKey"] =
-        pricings[i].variants[variant]?.stripeAccount?.hashKey;
-      pricings[i].variants[variant].plans["apiVersion"] =
-        pricings[i].variants[variant]?.stripeAccount?.apiVersion;
-      pricings[i].variants[variant].plans["variant"] = variant;
-      plans.push(pricings[i].variants[variant].plans);
-      i++;
+  if (type === "pricing") {
+    let stripeAcc;
+    if (data?.stripeAccount) {
+      stripeAcc = JSON.parse(data.stripeAccount);
     }
-  }
 
-  // Looping our plans array to create the products
-  if (plans) {
-    let i = 0;
-    for (; i < plans.length; ) {
-      let index = 0;
-      do {
-        if (plans[i].variant === "variant_b") {
-          if (
-            !plans[i][index]?.planType ||
-            !plans[i][index]?.price ||
-            !plans[i][index]?.checkoutButtonName
-          ) {
-            return {
-              status: 500,
-              statusText: `"Plan Type, Prices and Checkout Button Name" should not be blank in Pricing - ${
-                i + 1
-              }`,
-            };
-          }
-        } else {
-          if (
-            !plans[i][index]?.planType ||
-            !plans[i][index]?.monthlyPrice ||
-            !plans[i][index]?.yearlyPrice ||
-            !plans[i][index]?.checkoutButtonName
-          ) {
-            return {
-              status: 500,
-              statusText: `"Plan Type, Prices and Checkout Button Name" should not be blank in Pricing - ${
-                i + 1
-              }`,
-            };
-          }
+    if (!stripeAcc && data) {
+      return {
+        status: 500,
+        statusText: `Select a stripe account. If you haven't had any, please create under payments`,
+      };
+    }
+
+    if (variant !== "variant_d" && !data?.plans && data) {
+      return {
+        status: 500,
+        statusText: `You should add at least one plan for your pricing.`,
+      };
+    }
+
+    if (
+      variant === "variant_d" &&
+      (!data?.monthlyBilling || !data?.annualBilling) &&
+      data
+    ) {
+      return {
+        status: 500,
+        statusText: `"Monthly Billing" and "Annual Billing" should not be blank.`,
+      };
+    }
+
+    // If variant is equal to a, b and c, then it will create the plans under pricing else it will create the annual and monthly billing
+    if (
+      variant === "variant_a" ||
+      (variant === "variant_c" && stripeAcc && data?.plans && data)
+    ) {
+      // iterate all over the plan to create the product that is ready for checkout
+      let i = 0;
+      const { plans } = data;
+      for (; i < plans.length; ) {
+        if (!plans[i].planType) {
+          return {
+            status: 500,
+            statusText: `Plan Type should not be blank on plan ${i + 1}`,
+          };
+        } else if (!plans[i].monthlyPrice || !plans[i].yearlyPrice) {
+          return {
+            status: 500,
+            statusText: `Monthly Price and Yearly Price should not be blank on plan "${plans[i].planType}"`,
+          };
         }
-        /*------- Creating Stripe Products --------*/
 
         const credentials = {
-          stripeSecretKey: plans[i].stripeSKey,
-          hashKey: plans[i].hashKey,
-          apiVersion: plans[i].apiVersion,
+          stripeSKey: stripeAcc.stripeSKey,
+          hashKey: stripeAcc.hashKey,
+          apiVersion: stripeAcc.apiVersion,
         };
-        const id =
-          plans[i].variant === "variant_b"
-            ? `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
-                index
-              ].planType.replace(/ /g, "-")}-oneTimePrice-${
-                plans[i][index].price
-              }`
-            : `dxpstudio-pricing-${plans[i][index]._key}-${plans[i][
-                index
-              ].planType.replace(/ /g, "-")}-recurring-monthlyPrice-${
-                plans[i][index].monthlyPrice
-              }-yearlyPrice-${plans[i][index].yearlyPrice}`;
 
-        const checkProductPayload = {
-          credentials,
-          id,
-        };
+        const productId = `webriq-studio-pricing-${plans[i]._key}-${
+          i + 1
+        }-${plans[i].planType.replace(/ /g, "-")}-recurring-monthlyPrice-${
+          plans[i].monthlyPrice
+        }-yearlyPrice-${plans[i].yearlyPrice}`;
 
         try {
-          const checkProductURL = `${
-            SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
-          }/api/payments/stripe?resource=products&action=retrieve`;
-          const response = await fetch(checkProductURL, {
+          const productPayload = {
+            credentials,
+            stripeParams: {
+              id: productId,
+            },
+          };
+
+          const response = await fetch(retrieveProducts, {
             headers: {
               "Content-Type": "application/json",
             },
             method: "POST",
-            body: JSON.stringify(checkProductPayload),
+            body: JSON.stringify(productPayload),
           });
-          const checkProductStatus = await response.json();
-          if (checkProductStatus.id) {
-            const updateProductPayload = {
-              credentials,
-              id,
-              metadata: !plans[i][index].planIncludes
-                ? {}
-                : plans[i][index].planIncludes,
-              name: plans[i][index].planType,
-              description: plans[i][index].description,
-            };
-            const updateProductURL = `${
-              SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
-            }/api/payments/stripe?resource=products&action=update`;
-            try {
-              await fetch(updateProductURL, {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                method: "POST",
-                body: JSON.stringify(updateProductPayload),
-              });
-            } catch (error) {
-              console.log(error);
-            }
-          } else {
+          const { meta } = await response.json();
+
+          if (meta.status === 404) {
+            // If Product not found it will create it
+
             const createProductPayload = {
               credentials,
-              id,
-              metadata: !plans[i][index].planIncludes
-                ? {}
-                : plans[i][index].planIncludes,
-              name: plans[i][index].planType,
-              description: plans[i][index].description,
+              stripeParams: {
+                id: productId,
+                metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
+                name: plans[i].planType,
+                description: plans[i].description,
+              },
             };
-            const createProductURL = `${
-              SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
-            }/api/payments/stripe?resource=products&action=create`;
-            try {
-              const response = await fetch(createProductURL, {
+
+            const createProduct = await fetch(createProducts, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+              method: "POST",
+              body: JSON.stringify(createProductPayload),
+            });
+            const { id } = await createProduct.json();
+
+            // Create price if successully created a product
+            if (id) {
+              // Yearly Price
+              const yearlyPricePayload = {
+                credentials,
+                stripeParams: {
+                  product: id,
+                  currency: "usd",
+                  metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
+
+                  unit_amount: isNaN(parseInt(plans[i].yearlyPrice))
+                    ? 0
+                    : plans[i].yearlyPrice * 100,
+                  recurring: {
+                    interval: "year",
+                  },
+                },
+              };
+              const createYearlyPrice = await fetch(createPriceForProduct, {
                 headers: {
                   "Content-Type": "application/json",
                 },
                 method: "POST",
-                body: JSON.stringify(createProductPayload),
+                body: JSON.stringify(yearlyPricePayload),
               });
-              const createProduct = await response.json();
-              if (createProduct.id) {
-                const createPriceURL = `${
-                  SANITY_STUDIO_APP_URL || "https://dxpstudio.webriq.com"
-                }/api/payments/stripe?resource=prices&action=create`;
 
-                if (plans[i].variant === "variant_b") {
-                  const createPricePayload_VariantB = {
+              await createYearlyPrice.json();
+
+              // Monthly Price
+              const monthlyPricePayload = {
+                credentials,
+                stripeParams: {
+                  product: id,
+                  currency: "usd",
+                  metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
+
+                  unit_amount: isNaN(parseInt(plans[i].monthlyPrice))
+                    ? 0
+                    : plans[i].monthlyPrice * 100,
+                  recurring: {
+                    interval: "month",
+                  },
+                },
+              };
+              const createMonthlyPrice = await fetch(createPriceForProduct, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(monthlyPricePayload),
+              });
+
+              await createMonthlyPrice.json();
+            }
+          } else {
+            const payload = {
+              credentials,
+              stripeParams: {},
+            };
+            // // If Product not found it will update it
+            const getPrices = await fetch(listOfPrices, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+              method: "POST",
+              body: JSON.stringify(payload),
+            });
+
+            const { data } = await getPrices.json();
+
+            const price = data.filter((item) => {
+              if (item.product === productId) {
+                return item;
+              }
+            });
+
+            if (price.length >= 2) {
+              price.forEach(async (price) => {
+                if (price.recurring.interval === "month") {
+                  const monthlyPricePayload = {
                     credentials,
-                    product: createProduct.id,
-                    currency: "usd",
-                    metadata: !plans[i][index].planIncludes
-                      ? {}
-                      : plans[i][index].planIncludes,
-                    unit_amount: plans[i][index].price * 100,
+                    stripeParams: {
+                      id: price.id,
+                      currency: "usd",
+                      metadata: !plans[i].planIncludes
+                        ? {}
+                        : plans[i].planIncludes,
+
+                      unit_amount: isNaN(parseInt(plans[i].monthlyPrice))
+                        ? 0
+                        : plans[i].monthlyPrice * 100,
+                      recurring: {
+                        interval: "month",
+                      },
+                    },
                   };
-                  try {
-                    const response = await fetch(createPriceURL, {
+
+                  const updateMonthlyPrice = await fetch(
+                    updatePriceForProduct,
+                    {
                       headers: {
                         "Content-Type": "application/json",
                       },
                       method: "POST",
-                      body: JSON.stringify(createPricePayload_VariantB),
-                    });
-                    await response.json();
-                  } catch (error) {}
+                      body: JSON.stringify(monthlyPricePayload),
+                    }
+                  );
+
+                  await updateMonthlyPrice.json();
                 } else {
-                  const createPricePayload_VariantAC_Monthly = {
+                  const yearlyPricePayload = {
                     credentials,
-                    product: createProduct.id,
-                    currency: "usd",
-                    metadata: !plans[i][index].planIncludes
-                      ? {}
-                      : plans[i][index].planIncludes,
-                    unit_amount: plans[i][index].monthlyPrice * 100,
-                    recurring: {
-                      interval: "month",
+                    stripeParams: {
+                      id: price.id,
+                      currency: "usd",
+                      metadata: !plans[i].planIncludes
+                        ? {}
+                        : plans[i].planIncludes,
+
+                      unit_amount: isNaN(parseInt(plans[i].yearlyPrice))
+                        ? 0
+                        : plans[i].yearlyPrice * 100,
+                      recurring: {
+                        interval: "year",
+                      },
                     },
                   };
-                  const createPricePayload_Variant_AC_Yearly = {
-                    credentials,
-                    product: createProduct.id,
-                    currency: "usd",
-                    metadata: !plans[i][index].planIncludes
-                      ? {}
-                      : plans[i][index].planIncludes,
-                    unit_amount: plans[i][index].yearlyPrice * 100,
-                    recurring: {
-                      interval: "year",
-                    },
-                  };
-                  const responseMonthly = await fetch(createPriceURL, {
+
+                  const updateYearlyPrice = await fetch(updatePriceForProduct, {
                     headers: {
                       "Content-Type": "application/json",
                     },
                     method: "POST",
-                    body: JSON.stringify(createPricePayload_VariantAC_Monthly),
+                    body: JSON.stringify(yearlyPricePayload),
                   });
-                  await responseMonthly.json();
-                  const responseYearly = await fetch(createPriceURL, {
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    method: "POST",
-                    body: JSON.stringify(createPricePayload_Variant_AC_Yearly),
-                  });
-                  await responseYearly.json();
+
+                  await updateYearlyPrice.json();
                 }
-              }
-            } catch (error) {
-              console.log(error);
+              });
             }
           }
         } catch (error) {
-          console.log(error);
+          console.log("error", error);
         }
-        index++;
-      } while (index < plans[i].length);
-      i++;
+        i++;
+      }
+    } else if (variant === "variant_b" && stripeAcc && data?.plans && data) {
+      // iterate all over the plan to create the product that is ready for checkout
+      let i = 0;
+      const { plans } = data;
+      for (; i < plans.length; ) {
+        if (!plans[i].planType) {
+          return {
+            status: 500,
+            statusText: `Plan Type should not be blank on plan ${i + 1}`,
+          };
+        } else if (!plans[i].price || isNaN(parseInt(plans[i].price))) {
+          return {
+            status: 500,
+            statusText: `Price should not be blank and it should be a number on plan "${plans[i].planType}"`,
+          };
+        }
+
+        const credentials = {
+          stripeSKey: stripeAcc.stripeSKey,
+          hashKey: stripeAcc.hashKey,
+          apiVersion: stripeAcc.apiVersion,
+        };
+
+        const productId = `webriq-studio-pricing-${plans[i]._key}-${
+          i + 1
+        }-${plans[i].planType.replace(/ /g, "-")}-oneTime-Payment-${
+          plans[i].price
+        }`;
+
+        try {
+          const productPayload = {
+            credentials,
+            stripeParams: {
+              id: productId,
+            },
+          };
+
+          const response = await fetch(retrieveProducts, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(productPayload),
+          });
+          const { meta } = await response.json();
+
+          if (meta.status === 404) {
+            // If Product not found it will create it
+
+            const createProductPayload = {
+              credentials,
+              stripeParams: {
+                id: productId,
+                metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
+                name: plans[i].planType,
+                description: plans[i].description,
+              },
+            };
+
+            const createProduct = await fetch(createProducts, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+              method: "POST",
+              body: JSON.stringify(createProductPayload),
+            });
+            const { id } = await createProduct.json();
+
+            // Create price if successully created a product
+            if (id) {
+              // OneTime Price
+
+              const oneTimePaymentPayload = {
+                credentials,
+                stripeParams: {
+                  product: id,
+                  currency: "usd",
+                  metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
+                  unit_amount: plans[i].price * 100,
+                },
+              };
+              await fetch(createPriceForProduct, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(oneTimePaymentPayload),
+              });
+            }
+          } else {
+            const payload = {
+              credentials,
+              stripeParams: {},
+            };
+            // // If Product found it will update it
+            const getPrices = await fetch(listOfPrices, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+              method: "POST",
+              body: JSON.stringify(payload),
+            });
+
+            const { data } = await getPrices.json();
+
+            const price = data.filter((item) => {
+              if (item.product === productId) {
+                return item;
+              }
+            });
+
+            if (price) {
+              const updaterOneTimePaymentPayload = {
+                credentials,
+                stripeParams: {
+                  product: price.id,
+                  currency: "usd",
+                  metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
+                  unit_amount: plans[i].price * 100,
+                },
+              };
+              await fetch(updatePriceForProduct, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(updaterOneTimePaymentPayload),
+              });
+            }
+          }
+        } catch (error) {
+          console.log("error", error);
+        }
+        i++;
+      }
+    } else if (
+      variant === "variant_d" &&
+      stripeAcc &&
+      data?.monthlyBilling &&
+      data?.annualBilling &&
+      data
+    ) {
+      // Create the products
+
+      if (!data.form.id) {
+        return {
+          status: 500,
+          statusText: `Form ID should not be blank`,
+        };
+      } else if (!data.monthlyBilling || !data.monthlyBilling) {
+        return {
+          status: 500,
+          statusText: `Price should not be blank on plan "${plans[i].planType}"`,
+        };
+      }
+
+      const credentials = {
+        stripeSKey: stripeAcc.stripeSKey,
+        hashKey: stripeAcc.hashKey,
+        apiVersion: stripeAcc.apiVersion,
+      };
+
+      const productId = `webriq-studio-pricing-formPayment-${data.form.id}-recurring-monthlyPrice-${data.monthlyBilling}-yearlyPrice-${data.annualBilling}`;
+
+      const createProductPayload = {
+        credentials,
+        stripeParams: {
+          id: productId,
+          name: "Form Payment",
+          description: data?.form?.name || "",
+        },
+      };
+
+      const createProduct = await fetch(createProducts, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(createProductPayload),
+      });
+      const { id } = await createProduct.json();
+
+      if (id) {
+        // Yearly Price
+        const yearlyPricePayload = {
+          credentials,
+          stripeParams: {
+            product: id,
+            currency: "usd",
+            unit_amount: isNaN(parseInt(data.annualBilling))
+              ? 0
+              : data.annualBilling * 100,
+            recurring: {
+              interval: "year",
+            },
+          },
+        };
+
+        const createYearlyPrice = await fetch(createPriceForProduct, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(yearlyPricePayload),
+        });
+
+        await createYearlyPrice.json();
+
+        // Monthly Price
+        const monthlyPricePayload = {
+          credentials,
+          stripeParams: {
+            product: id,
+            currency: "usd",
+            unit_amount: isNaN(parseInt(data.monthlyBilling))
+              ? 0
+              : data.monthlyBilling * 100,
+            recurring: {
+              interval: "month",
+            },
+          },
+        };
+        const createMonthlyPrice = await fetch(createPriceForProduct, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(monthlyPricePayload),
+        });
+
+        await createMonthlyPrice.json();
+      }
     }
   }
 };

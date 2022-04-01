@@ -6,11 +6,17 @@ import {
 
 export default function resolveProductionUrl(document) {
   const previewUrl = `api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=${document?.slug?.current}`;
-  if (window.location.hostname.includes("localhost")) {
-    return `${
-      SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
-    }/${previewUrl}`;
+
+  // only show the "Open Preview" option for page and post documents
+  if (["page", "post"].includes(document?._type)) {
+    if (window.location.hostname.includes("localhost")) {
+      return `${
+        SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
+      }/${previewUrl}`;
+    }
+
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/${previewUrl}`;
   }
 
-  return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/${previewUrl}`;
+  return undefined;
 }

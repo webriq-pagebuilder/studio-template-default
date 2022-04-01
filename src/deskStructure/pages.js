@@ -7,7 +7,6 @@ import { MdAccessibility, MdDashboard } from "react-icons/md";
 // Web preview
 import IframePreview from "../components/previews/iframe/IframePreview";
 import SeoPreview from "../components/previews/seo/SeoPreviews";
-import SeoPane from "sanity-plugin-seo-pane";
 import resolveProductionUrl from "../resolvePreviewUrl";
 
 // a11y preview
@@ -52,15 +51,6 @@ export default S.listItem()
               .options({ previewURL, publishedURL })
               .icon(EyeIcon)
               .title("SEO Preview"),
-            S.view
-              .component(SeoPane)
-              .options({
-                keywords: `seo.seoKeywords`,
-                synonyms: `seo.seoSynonyms`,
-                url: (document) => resolveProductionUrl(document),
-              })
-              .icon(EyeIcon)
-              .title("SEO Analysis"),
             S.view
               .component(ColorblindPreview)
               .options({ previewURL })

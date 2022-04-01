@@ -54,6 +54,8 @@ class TwitterCard extends React.PureComponent {
               />
               <span className={styles.tweetAuthorName}>{author.name}</span>
               <span className={styles.tweetAuthorHandle}>@{author.handle}</span>
+              <span className={styles.tweetBullet}>•</span>
+              <span className={styles.tweetAuthorHandle}>44m</span>
             </div>
           )}
 
@@ -62,26 +64,27 @@ class TwitterCard extends React.PureComponent {
               The card for your website will look a little something like this!
             </p>
           </div>
-          <a href={url} className={styles.tweetUrlWrapper}>
-            <div className={styles.tweetCardPreview}>
-              <div className={styles.tweetCardImage}>
-                {seo?.seoImage && (
-                  <img src={urlFor(seo?.seoImage)?.width(300)?.url()} />
-                )}
+          <div className={styles.tweetCardPreview} style={{ width }}>
+            <div className={styles.tweetCardImageContainer}>
+              {seo?.seoImage && (
+                <img
+                  className={styles.tweetCardImage}
+                  src={urlFor(seo?.seoImage)?.width(500)?.url()}
+                />
+              )}
+            </div>
+            <div className={styles.tweetCardContent}>
+              <div className={styles.tweetUrlWrapper}>
+                {websiteUrlWithoutProtocol}
               </div>
-              <div className={styles.tweetCardContent}>
-                <h2 className={styles.tweetCardTitle}>{title}</h2>
-                {seo?.seoDescription && (
-                  <div className={styles.tweetCardDescription}>
-                    {seo?.seoDescription}
-                  </div>
-                )}
-                <div className={styles.tweetCardDestination}>
-                  {websiteUrlWithoutProtocol}
-                </div>
+              <div className={styles.tweetCardTitle}>
+                <a href={url}>{title}</a>
+              </div>
+              <div className={styles.tweetCardDescription}>
+                {seo?.seoDescription}
               </div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     );
