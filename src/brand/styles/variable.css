@@ -155,3 +155,10 @@
   --pane-header-height: 3.4375rem; /* 55px */
   --avatar-height: 23px;
 }
+
+/* Hide manage project from menu */
+a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"],
+a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"] + hr
+{
+  display: none;
+}
