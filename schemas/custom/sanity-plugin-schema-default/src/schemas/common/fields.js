@@ -5,7 +5,7 @@ import {
   BsCollection,
   BsPerson,
 } from "react-icons/bs";
-import { hideIfVariantIn } from "./hideIfVariantIn";
+import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default/lib/schemas/common/hideIfVariantIn";
 
 export const signInLink = (hidden) => {
   return {

@@ -1,6 +1,5 @@
 import {
   arrayOfImages,
-  arrayOfImageTitleTextAndButton,
   description,
   formLinks,
   mainImage,
@@ -10,9 +9,8 @@ import {
   subtitle,
   webriqForms,
   youtubeLink,
-  backgroundImage,
 } from "../../../common/fields";
-import { hideIfVariantIn } from "../../../common/hideIfVariantIn";
+import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default/lib/schemas/common/hideIfVariantIn";
 
 export const headerSchema = [
   subtitle(
@@ -33,17 +31,6 @@ export const headerSchema = [
       "variant_d",
       "variant_e",
       "variant_f",
-      "variant_g",
-      "variant_h",
-    ])
-  ),
-  arrayOfImageTitleTextAndButton(
-    hideIfVariantIn([
-      "variant_a",
-      "variant_b",
-      "variant_c",
-      "variant_d",
-      "variant_e",
       "variant_g",
       "variant_h",
     ])
@@ -92,14 +79,4 @@ export const headerSchema = [
   description(hideIfVariantIn(["variant_c", "variant_f", "variant_h"])),
   primaryButton(hideIfVariantIn(["variant_f"])),
   secondaryButton(hideIfVariantIn(["variant_f", "variant_g", "variant_h"])),
-  backgroundImage(
-    hideIfVariantIn([
-      "variant_a",
-      "variant_b",
-      "variant_c",
-      "variant_d",
-      "variant_e",
-      "variant_h",
-    ])
-  ),
 ];
