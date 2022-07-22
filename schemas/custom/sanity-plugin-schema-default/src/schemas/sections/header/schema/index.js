@@ -6,77 +6,27 @@ import {
   primaryButton,
   secondaryButton,
   title,
-  subtitle,
   webriqForms,
   youtubeLink,
 } from "../../../common/fields";
 import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default/lib/schemas/common/hideIfVariantIn";
 
 export const headerSchema = [
-  subtitle(
-    hideIfVariantIn([
-      "variant_a",
-      "variant_b",
-      "variant_c",
-      "variant_d",
-      "variant_e",
-      "variant_f",
-    ])
-  ),
-  title(hideIfVariantIn(["variant_f"])),
+  title(),
+  description(hideIfVariantIn(["variant_c"])),
+  primaryButton(),
+  secondaryButton(),
   arrayOfImages(
-    hideIfVariantIn([
-      "variant_a",
-      "variant_c",
-      "variant_d",
-      "variant_e",
-      "variant_f",
-      "variant_g",
-      "variant_h",
-    ])
+    hideIfVariantIn(["variant_a", "variant_c", "variant_d", "variant_e"])
   ),
-  mainImage(
-    hideIfVariantIn([
-      "variant_b",
-      "variant_c",
-      "variant_e",
-      "variant_f",
-      "variant_h",
-    ])
-  ),
+  mainImage(hideIfVariantIn(["variant_b", "variant_c", "variant_e"])),
   webriqForms(
-    hideIfVariantIn([
-      "variant_a",
-      "variant_b",
-      "variant_c",
-      "variant_d",
-      "variant_f",
-      "variant_g",
-      "variant_h",
-    ])
+    hideIfVariantIn(["variant_a", "variant_b", "variant_c", "variant_d"])
   ),
   formLinks(
-    hideIfVariantIn([
-      "variant_a",
-      "variant_b",
-      "variant_c",
-      "variant_d",
-      "variant_f",
-      "variant_g",
-      "variant_h",
-    ])
+    hideIfVariantIn(["variant_a", "variant_b", "variant_c", "variant_d"])
   ),
   youtubeLink(
-    hideIfVariantIn([
-      "variant_a",
-      "variant_b",
-      "variant_d",
-      "variant_e",
-      "variant_f",
-      "variant_g",
-    ])
+    hideIfVariantIn(["variant_a", "variant_b", "variant_d", "variant_e"])
   ),
-  description(hideIfVariantIn(["variant_c", "variant_f", "variant_h"])),
-  primaryButton(hideIfVariantIn(["variant_f"])),
-  secondaryButton(hideIfVariantIn(["variant_f", "variant_g", "variant_h"])),
 ];
