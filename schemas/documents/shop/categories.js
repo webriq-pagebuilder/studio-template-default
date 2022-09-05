@@ -1,16 +1,16 @@
-import { MdLibraryBooks } from "react-icons/md";
-import { isSlugUnique } from "../../src/isSlugUnique";
+import { MdTag } from "react-icons/md";
+import { isSlugUnique } from "../../../src/isSlugUnique";
 
 export default {
-  title: "Page",
-  name: "page",
-  icon: MdLibraryBooks,
+  name: "categories",
+  title: "Categories",
+  icon: MdTag,
   type: "document",
   fields: [
     {
-      title: "Title",
-      name: "title",
-      description: "What's this page is for?",
+      title: "Name",
+      name: "name",
+      description: "Add the category name",
       type: "string",
       required: true,
     },
@@ -41,10 +41,16 @@ export default {
           return true;
         }),
       options: {
-        source: "title",
+        source: "name",
         maxLength: 96,
         isUnique: isSlugUnique,
       },
+    },
+    {
+      name: "description",
+      title: "Description",
+      description: "Add a category summary or description.",
+      type: "text",
     },
     {
       title: "Sections",
@@ -192,4 +198,16 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      title: "name",
+      subtitle: "description",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title,
+        subtitle,
+      };
+    },
+  },
 };

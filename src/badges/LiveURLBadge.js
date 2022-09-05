@@ -12,7 +12,7 @@ export function LiveURLBadge(props) {
   }
   const isPublished = !props.draft;
 
-  if (["page", "post"].includes(type)) {
+  if (["page", "post", "products", "categories"].includes(type)) {
     return {
       label: (
         <Link

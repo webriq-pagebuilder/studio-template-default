@@ -1,54 +1,16 @@
-import { MdLibraryBooks } from "react-icons/md";
-import { isSlugUnique } from "../../src/isSlugUnique";
+import { MdTune } from "react-icons/md";
 
 export default {
-  title: "Page",
-  name: "page",
-  icon: MdLibraryBooks,
+  title: "Site Settings",
+  name: "siteSettings",
+  icon: MdTune,
   type: "document",
   fields: [
     {
-      title: "Title",
-      name: "title",
-      description: "What's this page is for?",
-      type: "string",
-      required: true,
-    },
-    {
-      title: "Slug",
-      name: "slug",
-      type: "slug",
-      description:
-        "On what URL should this be published? e.g: /heres-a-sample-url",
-      validation: (Rule) =>
-        Rule.required().custom((slug) => {
-          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
-
-          if (slug?.current !== undefined) {
-            if (regex.test(slug.current)) {
-              return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
-            }
-
-            if (slug?.current !== slug.current.toLowerCase()) {
-              return "Slug must be in lowercase";
-            }
-
-            if (slug?.current.indexOf(" ") !== -1) {
-              return "Slug cannot contain spaces";
-            }
-          }
-
-          return true;
-        }),
-      options: {
-        source: "title",
-        maxLength: 96,
-        isUnique: isSlugUnique,
-      },
-    },
-    {
       title: "Sections",
       name: "sections",
+      description:
+        "These will be the default sections on all shop pages that have not set their own",
       type: "array",
       options: {
         editModal: "fullscreen",
@@ -139,12 +101,6 @@ export default {
           to: [{ type: "pricing" }],
         },
         {
-          title: "Shop",
-          name: "shop",
-          type: "reference",
-          to: [{ type: "shop" }],
-        },
-        {
           title: "Statistics",
           name: "stats",
           type: "reference",
@@ -185,6 +141,8 @@ export default {
     {
       title: "SEO Settings",
       name: "seo",
+      description:
+        "These will be the default SEO on all shop pages that have not set their own",
       type: "seoSettings",
       options: {
         collapsible: true,
@@ -192,4 +150,18 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      title: "name",
+      subtitle: "description",
+      media: "productPreview.image",
+    },
+    prepare({ title, subtitle, media }) {
+      return {
+        title,
+        subtitle,
+        media,
+      };
+    },
+  },
 };

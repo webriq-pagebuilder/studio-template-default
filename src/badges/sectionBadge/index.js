@@ -14,6 +14,7 @@ export const sections = [
   "portfolio",
   "pricing",
   "stats",
+  "shop",
   "signInSignUp",
   "team",
   "testimonial",

@@ -5,6 +5,7 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 import pages from "./documents/pages";
+import getShop from "./documents/shop";
 
 import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default";
 const baseSchemaArray = Object.values(baseSchema);
@@ -20,6 +21,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     pages,
+    ...getShop,
     ...baseSchemaArray,
     ...blogSchemaArray, // added blog schema
   ]),

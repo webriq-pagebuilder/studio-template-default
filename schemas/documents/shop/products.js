@@ -1,16 +1,16 @@
-import { MdLibraryBooks } from "react-icons/md";
-import { isSlugUnique } from "../../src/isSlugUnique";
+import { MdShoppingBasket } from "react-icons/md";
+import { isSlugUnique } from "../../../src/isSlugUnique";
 
 export default {
-  title: "Page",
-  name: "page",
-  icon: MdLibraryBooks,
+  title: "Products",
+  name: "products",
+  icon: MdShoppingBasket,
   type: "document",
   fields: [
     {
-      title: "Title",
-      name: "title",
-      description: "What's this page is for?",
+      title: "Name",
+      name: "name",
+      description: "Add the product name",
       type: "string",
       required: true,
     },
@@ -41,10 +41,49 @@ export default {
           return true;
         }),
       options: {
-        source: "title",
+        source: "name",
         maxLength: 96,
         isUnique: isSlugUnique,
       },
+    },
+    {
+      name: "pid",
+      title: "Product ID",
+      type: "string",
+    },
+    {
+      name: "category",
+      title: "Product category",
+      description: "Select from available categories to group this product",
+      type: "reference",
+      to: [{ type: "categories" }],
+    },
+    {
+      name: "productPreview",
+      title: "Product preview",
+      description: "Add the image preview to display for this product",
+      type: "object",
+      fields: [
+        {
+          name: "image",
+          title: "Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+        {
+          name: "altText",
+          title: "Alternative text",
+          type: "string",
+        },
+      ],
+    },
+    {
+      name: "description",
+      title: "Description",
+      description: "Add a product summary or description.",
+      type: "text",
     },
     {
       title: "Sections",
@@ -192,4 +231,18 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      title: "name",
+      subtitle: "description",
+      media: "productPreview.image",
+    },
+    prepare({ title, subtitle, media }) {
+      return {
+        title,
+        subtitle,
+        media,
+      };
+    },
+  },
 };
