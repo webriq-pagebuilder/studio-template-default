@@ -1,16 +1,16 @@
-import { MdShoppingBasket } from "react-icons/md";
+import { MdTag } from "react-icons/md";
 import { isSlugUnique } from "../../../src/isSlugUnique";
 
 export default {
-  title: "Products",
-  name: "products",
-  icon: MdShoppingBasket,
+  name: "categories",
+  title: "Categories",
+  icon: MdTag,
   type: "document",
   fields: [
     {
       title: "Name",
       name: "name",
-      description: "Add the product name",
+      description: "Add the category name",
       type: "string",
       required: true,
     },
@@ -47,42 +47,15 @@ export default {
       },
     },
     {
-      name: "pid",
-      title: "Product ID",
+      name: "categoryID",
+      title: "Category ID",
+      description: "Add the Ecwid ID for this category",
       type: "string",
-    },
-    {
-      name: "category",
-      title: "Product category",
-      description: "Select from available categories to group this product",
-      type: "reference",
-      to: [{ type: "categories" }],
-    },
-    {
-      name: "productPreview",
-      title: "Product preview",
-      description: "Add the image preview to display for this product",
-      type: "object",
-      fields: [
-        {
-          name: "image",
-          title: "Image",
-          type: "image",
-          options: {
-            hotspot: true,
-          },
-        },
-        {
-          name: "altText",
-          title: "Alternative text",
-          type: "string",
-        },
-      ],
     },
     {
       name: "description",
       title: "Description",
-      description: "Add a product summary or description.",
+      description: "Add a category summary or description.",
       type: "text",
     },
     {
@@ -235,13 +208,11 @@ export default {
     select: {
       title: "name",
       subtitle: "description",
-      media: "productPreview.image",
     },
-    prepare({ title, subtitle, media }) {
+    prepare({ title, subtitle }) {
       return {
         title,
         subtitle,
-        media,
       };
     },
   },

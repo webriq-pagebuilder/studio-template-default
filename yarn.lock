@@ -1191,6 +1191,11 @@
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
+"@indent-oss/sanityio-referenced-by@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@indent-oss/sanityio-referenced-by/-/sanityio-referenced-by-0.1.4.tgz#a173923e209b2e20593ae0a900af06f5984310ef"
+  integrity sha512-DHt1Dvijwco+T3A+l/Lrmapil2c0uIxVH4zilqKFknNKzlwH5MBu7/NbBQs2DAfsk6TLPYwnqM47upeqg3tnxw==
+
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.0.5.tgz#68eb521368db76d040a6315cdb24bf2483037b9c"

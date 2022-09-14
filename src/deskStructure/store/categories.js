@@ -1,13 +1,13 @@
 import S from "@sanity/desk-tool/structure-builder";
+import { ReferencedByView } from "part:@indent-oss/sanityio-referenced-by";
 
 import EyeIcon from "part:@sanity/base/eye-icon";
 import EditIcon from "part:@sanity/base/edit-icon";
-import { MdAccessibility, MdTag } from "react-icons/md";
+import { MdAccessibility, MdTag, MdLink } from "react-icons/md";
 
 // Web preview
 import IframePreview from "../../components/previews/iframe/IframePreview";
 import SeoPreview from "../../components/previews/seo/SeoPreviews";
-import resolveProductionUrl from "../../resolvePreviewUrl";
 
 // a11y preview
 import ColorblindPreview from "../../components/previews/a11y/colorblind-filter/ColorblindPreview";
@@ -41,6 +41,10 @@ export default S.listItem()
           .schemaType("categories")
           .views([
             S.view.form().icon(EditIcon),
+            S.view
+              .component(ReferencedByView)
+              .title("Referenced by")
+              .icon(MdLink),
             S.view
               .component(IframePreview)
               .options({ previewURL })
