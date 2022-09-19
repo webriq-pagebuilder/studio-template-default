@@ -3,23 +3,24 @@ import { ReferencedByView } from "part:@indent-oss/sanityio-referenced-by";
 
 import EyeIcon from "part:@sanity/base/eye-icon";
 import EditIcon from "part:@sanity/base/edit-icon";
-import { MdAccessibility, MdTag, MdLink } from "react-icons/md";
+import { MdAccessibility, MdLink } from "react-icons/md";
+import { BsFillTagFill } from "react-icons/bs";
 
 // Web preview
-import IframePreview from "../../components/previews/iframe/IframePreview";
-import SeoPreview from "../../components/previews/seo/SeoPreviews";
+import IframePreview from "../../../components/previews/iframe/IframePreview";
+import SeoPreview from "../../../components/previews/seo/SeoPreviews";
 
 // a11y preview
-import ColorblindPreview from "../../components/previews/a11y/colorblind-filter/ColorblindPreview";
-import TextToSpeechPreview from "../../components/previews/a11y/text-to-speech/TextToSpeechPreview";
-import BraillePreview from "../../components/previews/a11y/braille/Braille";
+import ColorblindPreview from "../../../components/previews/a11y/colorblind-filter/ColorblindPreview";
+import TextToSpeechPreview from "../../../components/previews/a11y/text-to-speech/TextToSpeechPreview";
+import BraillePreview from "../../../components/previews/a11y/braille/Braille";
 
 import {
   SANITY_STUDIO_PRODUCTION_SITE_URL,
   SANITY_STUDIO_PRODUCTION_NETLIFY_SITE_URL,
   SANITY_STUDIO_PREVIEW_SECRET,
   SANITY_STUDIO_DEV_SITE_URL,
-} from "../../config";
+} from "../../../config";
 
 // Web preview configuration
 const remotePreviewUrl = `${SANITY_STUDIO_PRODUCTION_NETLIFY_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=`;
@@ -28,17 +29,18 @@ const previewURL =
   window.location.hostname === "localhost" ? localPreviewUrl : remotePreviewUrl;
 const publishedURL = SANITY_STUDIO_PRODUCTION_SITE_URL;
 
+/** This shows all collection pages that will replace the preview of the main collection page when their names are matched. **/
 export default S.listItem()
-  .title("Categories")
-  .schemaType("categories")
-  .icon(MdTag)
+  .title("Collections")
+  .schemaType("overridesCollection")
+  .icon(BsFillTagFill)
   .child(
-    S.documentTypeList("categories")
-      .title("Categories")
+    S.documentTypeList("overridesCollection")
+      .title("Collections")
       .child((documentId) =>
         S.document()
           .documentId(documentId)
-          .schemaType("categories")
+          .schemaType("overridesCollection")
           .views([
             S.view.form().icon(EditIcon),
             S.view

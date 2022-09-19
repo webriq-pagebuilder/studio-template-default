@@ -1,94 +1,38 @@
-import { MdShoppingBasket } from "react-icons/md";
-import { isSlugUnique } from "../../../src/isSlugUnique";
+import { BsFillBagFill } from "react-icons/bs";
 
+/** This document will override the main product document when product name is matched **/
 export default {
+  name: "overridesProduct",
   title: "Products",
-  name: "products",
-  icon: MdShoppingBasket,
+  icon: BsFillBagFill,
   type: "document",
   fields: [
     {
       title: "Name",
       name: "name",
-      description: "Add the product name",
+      description:
+        "Add the same product name from Settings > Products to overwrite",
       type: "string",
       required: true,
     },
     {
-      title: "Slug",
-      name: "slug",
-      type: "slug",
+      name: "collections",
+      title: "Collections",
       description:
-        "On what URL should this be published? e.g: /heres-a-sample-url",
-      validation: (Rule) =>
-        Rule.required().custom((slug) => {
-          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
-
-          if (slug?.current !== undefined) {
-            if (regex.test(slug.current)) {
-              return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
-            }
-
-            if (slug?.current !== slug.current.toLowerCase()) {
-              return "Slug must be in lowercase";
-            }
-
-            if (slug?.current.indexOf(" ") !== -1) {
-              return "Slug cannot contain spaces";
-            }
-          }
-
-          return true;
-        }),
-      options: {
-        source: "name",
-        maxLength: 96,
-        isUnique: isSlugUnique,
-      },
-    },
-    {
-      name: "pid",
-      title: "Product ID",
-      description: "Add the Ecwid ID of this product",
-      type: "string",
-    },
-    {
-      name: "category",
-      title: "Product category",
-      description: "Select from available categories to group this product",
+        "Define collections here to overwrite what is added from matching product name in Settings > Products",
       type: "reference",
-      to: [{ type: "categories" }],
-    },
-    {
-      name: "productPreview",
-      title: "Product preview",
-      description: "Add the image preview to display for this product",
-      type: "object",
-      fields: [
+      to: [
         {
-          name: "image",
-          title: "Image",
-          type: "image",
-          options: {
-            hotspot: true,
-          },
-        },
-        {
-          name: "altText",
-          title: "Alternative text",
-          type: "string",
+          type: "overridesCollection",
+          hidden: ({ document }) => console.log(document),
         },
       ],
     },
     {
-      name: "description",
-      title: "Description",
-      description: "Add a product summary or description.",
-      type: "text",
-    },
-    {
       title: "Sections",
       name: "sections",
+      description:
+        "Added sections here will replace ALL the sections on matching product name in Settings > Products",
       type: "array",
       options: {
         editModal: "fullscreen",
@@ -222,28 +166,8 @@ export default {
         },
       ],
     },
-    {
-      title: "SEO Settings",
-      name: "seo",
-      type: "seoSettings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-      },
-    },
   ],
   preview: {
-    select: {
-      title: "name",
-      subtitle: "description",
-      media: "productPreview.image",
-    },
-    prepare({ title, subtitle, media }) {
-      return {
-        title,
-        subtitle,
-        media,
-      };
-    },
+    select: { title: "name" },
   },
 };

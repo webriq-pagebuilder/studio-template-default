@@ -1,7 +1,7 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { sections } from "../badges/sectionBadge";
 import pages from "./pages";
-import shop from "./shop";
+import store from "./store/";
 
 const hiddenTypes = [
   "media.tag",
@@ -9,9 +9,12 @@ const hiddenTypes = [
   "page",
   "post",
   "author",
-  "products",
-  "categories",
-  "siteSettings",
+  "mainProduct",
+  "mainCollection",
+  "overridesProduct",
+  "overridesCollection",
+  "mainCart",
+  "mainCheckout",
   ...sections,
 ];
 export default () =>
@@ -20,7 +23,7 @@ export default () =>
     .items([
       pages,
       S.divider(),
-      shop,
+      store,
       ...S.documentTypeListItems().filter(
         (listItem) => !hiddenTypes.includes(listItem.getId())
       ),

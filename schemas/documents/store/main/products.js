@@ -1,16 +1,96 @@
-import { MdTune } from "react-icons/md";
+import { BsFillBagFill } from "react-icons/bs";
+import { isSlugUnique } from "../../../../src/isSlugUnique";
 
+/** This is the main product page. If a document with the same name is added from overrides/products, it will replace the values here. **/
 export default {
-  title: "Site Settings",
-  name: "siteSettings",
-  icon: MdTune,
+  name: "mainProduct",
+  title: "Products",
+  icon: BsFillBagFill,
   type: "document",
   fields: [
     {
+      title: "Name",
+      name: "name",
+      description: "Add the product name",
+      type: "string",
+      required: true,
+    },
+    {
+      title: "Slug",
+      name: "slug",
+      type: "slug",
+      description:
+        "On what URL should this be published? e.g: /heres-a-sample-url",
+      validation: (Rule) =>
+        Rule.required().custom((slug) => {
+          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
+
+          if (slug?.current !== undefined) {
+            if (regex.test(slug.current)) {
+              return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
+            }
+
+            if (slug?.current !== slug.current.toLowerCase()) {
+              return "Slug must be in lowercase";
+            }
+
+            if (slug?.current.indexOf(" ") !== -1) {
+              return "Slug cannot contain spaces";
+            }
+          }
+
+          return true;
+        }),
+      options: {
+        source: "name",
+        maxLength: 96,
+        isUnique: isSlugUnique,
+      },
+    },
+    {
+      name: "pid",
+      title: "Product ID",
+      description: "Add the Ecwid ID of this product",
+      type: "string",
+    },
+    {
+      name: "collections",
+      title: "Collections",
+      description:
+        "Select from available collections where this product belongs",
+      type: "reference",
+      to: [{ type: "mainCollection" }],
+    },
+    {
+      name: "productPreview",
+      title: "Product preview",
+      description: "Add the image preview to display for this product",
+      type: "object",
+      fields: [
+        {
+          name: "image",
+          title: "Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+        {
+          name: "altText",
+          title: "Alternative text",
+          type: "string",
+        },
+      ],
+    },
+    {
+      name: "description",
+      title: "Description",
+      description: "Add a product summary or description.",
+      type: "text",
+    },
+    {
       title: "Sections",
       name: "sections",
-      description:
-        "These will be the default sections on all shop pages that have not set their own",
       type: "array",
       options: {
         editModal: "fullscreen",
@@ -101,6 +181,12 @@ export default {
           to: [{ type: "pricing" }],
         },
         {
+          title: "Shop",
+          name: "shop",
+          type: "reference",
+          to: [{ type: "shop" }],
+        },
+        {
           title: "Statistics",
           name: "stats",
           type: "reference",
@@ -141,8 +227,6 @@ export default {
     {
       title: "SEO Settings",
       name: "seo",
-      description:
-        "These will be the default SEO on all shop pages that have not set their own",
       type: "seoSettings",
       options: {
         collapsible: true,

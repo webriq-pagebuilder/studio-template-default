@@ -1,10 +1,11 @@
-import { MdTag } from "react-icons/md";
-import { isSlugUnique } from "../../../src/isSlugUnique";
+import { BsFillTagFill } from "react-icons/bs";
+import { isSlugUnique } from "../../../../src/isSlugUnique";
 
+/** This is the main collection page. If a document with the same name is added from overrides/collections, it will replace the values here. **/
 export default {
-  name: "categories",
-  title: "Categories",
-  icon: MdTag,
+  name: "mainCollection",
+  title: "Collections",
+  icon: BsFillTagFill,
   type: "document",
   fields: [
     {
