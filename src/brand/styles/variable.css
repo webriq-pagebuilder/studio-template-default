@@ -156,9 +156,25 @@
   --avatar-height: 23px;
 }
 
-/* Hide manage project from menu */
+/* Cosmetic: Remove border-right of tools menu */
+div[data-ui="Navbar"] > div > div:first-child > div:last-child {
+  border-right: 0 !important;
+}
+
+/* Hide every thing in the right navbar */
+div[data-ui="Navbar"] > div > div:last-child {
+  display: none !important;
+}
+
+/*  Fallback: Hide manage project from menu */
 a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"],
 a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"] + hr
 {
-  display: none;
+  display: none !important;
+}
+
+/* Fallback: Hide user and logout popover from menu */
+button#presence-menu,
+button#login-status-menu {
+  display: none !important;
 }
