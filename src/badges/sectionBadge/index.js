@@ -1,8 +1,11 @@
 export const sections = [
   "navigation",
+  "bestChoice",
   "blog",
   "appPromo",
+  "cart",
   "callToAction",
+  "checkout",
   "contact",
   "cookies",
   "faqs",
@@ -13,6 +16,7 @@ export const sections = [
   "logoCloud",
   "portfolio",
   "pricing",
+  "productInfo",
   "stats",
   "shop",
   "signInSignUp",
@@ -25,12 +29,16 @@ export const sections = [
 function sectionName(section) {
   if (section === "appPromo") {
     return "App Promo";
+  } else if (section === "bestChoice") {
+    return "Best Choice";
   } else if (section === "callToAction") {
     return "Call To Action";
   } else if (section === "howItWorks") {
     return "How It Works";
   } else if (section === "logoCloud") {
     return "Logo Cloud";
+  } else if (section === "productInfo") {
+    return "Product Info";
   } else if (section === "signInSignUp") {
     return "Sign In Sign Up";
   } else if (section === "textComponent") {

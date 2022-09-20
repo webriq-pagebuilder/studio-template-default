@@ -69,6 +69,36 @@ export default {
           to: [{ type: "callToAction" }],
         },
         {
+          title: "Best Choice",
+          name: "bestChoice",
+          type: "reference",
+          to: [{ type: "bestChoice" }],
+        },
+        {
+          title: "Cart",
+          name: "cart",
+          type: "reference",
+          to: [{ type: "cart" }],
+        },
+        {
+          title: "Checkout",
+          name: "checkout",
+          type: "reference",
+          to: [{ type: "checkout" }],
+        },
+        {
+          title: "Pricing",
+          name: "pricing",
+          type: "reference",
+          to: [{ type: "pricing" }],
+        },
+        {
+          title: "Product Info",
+          name: "productInfo",
+          type: "reference",
+          to: [{ type: "productInfo" }],
+        },
+        {
           title: "Contact",
           name: "contact",
           type: "reference",
@@ -115,18 +145,6 @@ export default {
           name: "portfolio",
           type: "reference",
           to: [{ type: "portfolio" }],
-        },
-        {
-          title: "Pricing",
-          name: "pricing",
-          type: "reference",
-          to: [{ type: "pricing" }],
-        },
-        {
-          title: "Shop",
-          name: "shop",
-          type: "reference",
-          to: [{ type: "shop" }],
         },
         {
           title: "Statistics",
