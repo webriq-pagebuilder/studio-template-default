@@ -3,7 +3,6 @@ import { GiShop } from "react-icons/gi";
 import { mainProduct, mainCollection } from "./main";
 import { overridesProduct, overridesCollection } from "./overrides";
 import cart from "./cart";
-import checkout from "./checkout";
 import { MdSettings } from "react-icons/md";
 
 export default S.listItem()
@@ -22,7 +21,7 @@ export default S.listItem()
           .child(
             S.list()
               .title("Settings")
-              .items([mainProduct, mainCollection, cart, checkout])
+              .items([mainProduct, mainCollection, cart])
           ),
       ])
   );

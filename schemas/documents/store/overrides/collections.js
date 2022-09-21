@@ -56,22 +56,16 @@ export default {
           to: [{ type: "callToAction" }],
         },
         {
-          title: "Best Choice",
-          name: "bestChoice",
+          title: "Featured products",
+          name: "featuredProducts",
           type: "reference",
-          to: [{ type: "bestChoice" }],
+          to: [{ type: "featuredProducts" }],
         },
         {
           title: "Cart",
           name: "cart",
           type: "reference",
           to: [{ type: "cart" }],
-        },
-        {
-          title: "Checkout",
-          name: "checkout",
-          type: "reference",
-          to: [{ type: "checkout" }],
         },
         {
           title: "Pricing",

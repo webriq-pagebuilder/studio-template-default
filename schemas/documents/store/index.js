@@ -8,7 +8,6 @@ import { default as overridesCollection } from "./overrides/collections";
 
 // other store items
 import { default as cart } from "./cart";
-import { default as checkout } from "./checkout";
 
 const getStore = [
   mainProduct,
@@ -16,6 +15,5 @@ const getStore = [
   overridesProduct,
   overridesCollection,
   cart,
-  checkout,
 ];
 export default getStore;

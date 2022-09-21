@@ -33,5 +33,32 @@ export default S.listItem()
   .schemaType("mainCart")
   .icon(FaShoppingCart)
   .child(
-    S.document().title("Cart").schemaType("mainCart").documentId("mainCart")
+    S.document()
+      .title("Cart")
+      .schemaType("mainCart")
+      .documentId("mainCart")
+      .views([
+        S.view.form().icon(EditIcon),
+        S.view
+          .component(IframePreview)
+          .options({ previewURL })
+          .title("Web Preview")
+          .icon(EyeIcon),
+        S.view
+          .component(SeoPreview)
+          .options({ previewURL, publishedURL })
+          .icon(EyeIcon)
+          .title("SEO Preview"),
+        S.view
+          .component(ColorblindPreview)
+          .options({ previewURL })
+          .icon(EyeIcon)
+          .title("Colorblind"),
+        S.view
+          .component(TextToSpeechPreview)
+          .options({ fields: ["title", "excerpt", "body"] })
+          .icon(MdAccessibility)
+          .title("Text to speech"),
+        S.view.component(BraillePreview).icon(MdAccessibility).title("Braille"),
+      ])
   );

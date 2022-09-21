@@ -1,6 +1,6 @@
 export const sections = [
   "navigation",
-  "bestChoice",
+  "featuredProducts",
   "blog",
   "appPromo",
   "cart",
@@ -29,8 +29,8 @@ export const sections = [
 function sectionName(section) {
   if (section === "appPromo") {
     return "App Promo";
-  } else if (section === "bestChoice") {
-    return "Best Choice";
+  } else if (section === "featuredProducts") {
+    return "Featured Products";
   } else if (section === "callToAction") {
     return "Call To Action";
   } else if (section === "howItWorks") {
