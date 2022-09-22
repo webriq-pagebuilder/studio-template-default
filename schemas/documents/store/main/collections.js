@@ -48,9 +48,9 @@ export default {
       },
     },
     {
-      name: "categoryID",
-      title: "Category ID",
-      description: "Add the Ecwid ID for this category",
+      name: "collectionID",
+      title: "Collection ID",
+      description: "Add the Ecwid ID for this collection",
       type: "string",
     },
     {
