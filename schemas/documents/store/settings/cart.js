@@ -203,18 +203,4 @@ export default {
       },
     },
   ],
-  preview: {
-    select: {
-      title: "name",
-      subtitle: "description",
-      media: "productPreview.image",
-    },
-    prepare({ title, subtitle, media }) {
-      return {
-        title,
-        subtitle,
-        media,
-      };
-    },
-  },
 };

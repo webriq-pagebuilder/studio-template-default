@@ -25,7 +25,7 @@ export default function resolveProductionUrl(document) {
       }`;
     }
 
-    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/products/${previewUrl}`;
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&type=products&slug=${document?.slug?.current}`;
   } else if (document?._type === "mainCollection") {
     if (window.location.hostname.includes("localhost")) {
       return `${
@@ -35,7 +35,7 @@ export default function resolveProductionUrl(document) {
       }`;
     }
 
-    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/collections/${previewUrl}`;
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&type=collections&slug=${document?.slug?.current}`;
   }
 
   return undefined;
