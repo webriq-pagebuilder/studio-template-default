@@ -1,38 +1,61 @@
-import { BsFillBagFill } from "react-icons/bs";
+import { BsFillTagFill } from "react-icons/bs";
+import { isSlugUnique } from "../../../../src/isSlugUnique";
 
-/** This document will override the main product document when product name is matched **/
+/** This is the main collection page. If a document with the same name is added from overrides/collections, it will replace the values here. **/
 export default {
-  name: "overridesProduct",
-  title: "Products",
-  icon: BsFillBagFill,
+  name: "mainCollection",
+  title: "Collections",
+  icon: BsFillTagFill,
   type: "document",
   fields: [
     {
       title: "Name",
       name: "name",
-      description:
-        "Add the same product name from Settings > Products to overwrite",
+      description: "Add the category name",
       type: "string",
       required: true,
     },
     {
-      name: "collections",
-      title: "Collections",
+      title: "Slug",
+      name: "slug",
+      type: "slug",
       description:
-        "Define collections here to overwrite what is added from matching product name in Settings > Products",
-      type: "reference",
-      to: [
-        {
-          type: "overridesCollection",
-          hidden: ({ document }) => console.log(document),
-        },
-      ],
+        "On what URL should this be published? e.g: /heres-a-sample-url",
+      validation: (Rule) =>
+        Rule.required().custom((slug) => {
+          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
+
+          if (slug?.current !== undefined) {
+            if (regex.test(slug.current)) {
+              return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
+            }
+
+            if (slug?.current !== slug.current.toLowerCase()) {
+              return "Slug must be in lowercase";
+            }
+
+            if (slug?.current.indexOf(" ") !== -1) {
+              return "Slug cannot contain spaces";
+            }
+          }
+
+          return true;
+        }),
+      options: {
+        source: "name",
+        maxLength: 96,
+        isUnique: isSlugUnique,
+      },
+    },
+    {
+      name: "collectionID",
+      title: "Collection ID",
+      description: "Add the Ecwid ID for this collection",
+      type: "string",
     },
     {
       title: "Sections",
       name: "sections",
-      description:
-        "Added sections here will replace ALL the sections on matching product name in Settings > Products",
       type: "array",
       options: {
         editModal: "fullscreen",
@@ -78,7 +101,7 @@ export default {
           title: "Cart",
           name: "cart",
           type: "reference",
-          to: [{ type: "cart" }],
+          to: [{ type: "cartSection" }],
         },
         {
           title: "Pricing",
@@ -178,8 +201,26 @@ export default {
         },
       ],
     },
+    {
+      title: "SEO Settings",
+      name: "seo",
+      type: "seoSettings",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
   ],
   preview: {
-    select: { title: "name" },
+    select: {
+      title: "name",
+      subtitle: "description",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title,
+        subtitle,
+      };
+    },
   },
 };

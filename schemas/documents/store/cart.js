@@ -1,10 +1,9 @@
 import { FaShoppingCart } from "react-icons/fa";
-import { isSlugUnique } from "../../../src/isSlugUnique";
 
 /** This is the cart page. **/
 export default {
   title: "Cart",
-  name: "mainCart",
+  name: "cartPage",
   icon: FaShoppingCart,
   type: "document",
   fields: [
@@ -44,7 +43,6 @@ export default {
       options: {
         source: "name",
         maxLength: 96,
-        isUnique: isSlugUnique,
       },
     },
     {
@@ -95,7 +93,7 @@ export default {
           title: "Cart",
           name: "cart",
           type: "reference",
-          to: [{ type: "cart" }],
+          to: [{ type: "cartSection" }],
         },
         {
           title: "Pricing",

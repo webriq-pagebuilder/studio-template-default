@@ -3,7 +3,7 @@ export const sections = [
   "featuredProducts",
   "blog",
   "appPromo",
-  "cart",
+  "cartSection",
   "callToAction",
   "checkout",
   "contact",
@@ -43,6 +43,8 @@ function sectionName(section) {
     return "Sign In Sign Up";
   } else if (section === "textComponent") {
     return "Text Component";
+  } else if (section === "cartSection") {
+    return "Cart";
   } else {
     return section;
   }

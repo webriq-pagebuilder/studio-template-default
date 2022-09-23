@@ -30,13 +30,13 @@ const publishedURL = SANITY_STUDIO_PRODUCTION_SITE_URL;
 
 export default S.listItem()
   .title("Cart")
-  .schemaType("mainCart")
+  .schemaType("cartPage")
   .icon(FaShoppingCart)
   .child(
     S.document()
       .title("Cart")
-      .schemaType("mainCart")
-      .documentId("mainCart")
+      .schemaType("cartPage")
+      .documentId("cartPage")
       .views([
         S.view.form().icon(EditIcon),
         S.view

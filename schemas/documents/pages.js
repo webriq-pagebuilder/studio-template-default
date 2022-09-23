@@ -94,7 +94,7 @@ export default {
           title: "Cart",
           name: "cart",
           type: "reference",
-          to: [{ type: "cart" }],
+          to: [{ type: "cartSection" }],
         },
         {
           title: "Pricing",

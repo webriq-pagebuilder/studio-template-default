@@ -1,67 +1,23 @@
-import { BsFillTagFill } from "react-icons/bs";
-import { isSlugUnique } from "../../../../src/isSlugUnique";
+import { BsFillBagFill } from "react-icons/bs";
 
-/** This is the main collection page. If a document with the same name is added from overrides/collections, it will replace the values here. **/
+/** This document will replace the main product sections when ECWID ID is matched **/
 export default {
-  name: "mainCollection",
-  title: "Collections",
-  icon: BsFillTagFill,
+  name: "recordOfProducts",
+  title: "Products",
+  icon: BsFillBagFill,
   type: "document",
   fields: [
     {
-      title: "Name",
-      name: "name",
-      description: "Add the category name",
+      name: "pid",
+      title: "Product ID",
+      description: "Add the matching product ECWID ID from Settings > Products",
       type: "string",
-      required: true,
-    },
-    {
-      title: "Slug",
-      name: "slug",
-      type: "slug",
-      description:
-        "On what URL should this be published? e.g: /heres-a-sample-url",
-      validation: (Rule) =>
-        Rule.required().custom((slug) => {
-          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
-
-          if (slug?.current !== undefined) {
-            if (regex.test(slug.current)) {
-              return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
-            }
-
-            if (slug?.current !== slug.current.toLowerCase()) {
-              return "Slug must be in lowercase";
-            }
-
-            if (slug?.current.indexOf(" ") !== -1) {
-              return "Slug cannot contain spaces";
-            }
-          }
-
-          return true;
-        }),
-      options: {
-        source: "name",
-        maxLength: 96,
-        isUnique: isSlugUnique,
-      },
-    },
-    {
-      name: "collectionID",
-      title: "Collection ID",
-      description: "Add the Ecwid ID for this collection",
-      type: "string",
-    },
-    {
-      name: "description",
-      title: "Description",
-      description: "Add a category summary or description.",
-      type: "text",
     },
     {
       title: "Sections",
       name: "sections",
+      description:
+        "Added sections here will replace ALL the sections of the same ECWID ID in Settings > Products",
       type: "array",
       options: {
         editModal: "fullscreen",
@@ -107,7 +63,7 @@ export default {
           title: "Cart",
           name: "cart",
           type: "reference",
-          to: [{ type: "cart" }],
+          to: [{ type: "cartSection" }],
         },
         {
           title: "Pricing",
@@ -207,26 +163,5 @@ export default {
         },
       ],
     },
-    {
-      title: "SEO Settings",
-      name: "seo",
-      type: "seoSettings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-      },
-    },
   ],
-  preview: {
-    select: {
-      title: "name",
-      subtitle: "description",
-    },
-    prepare({ title, subtitle }) {
-      return {
-        title,
-        subtitle,
-      };
-    },
-  },
 };

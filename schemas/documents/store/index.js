@@ -1,19 +1,19 @@
 // default store products and collections
-import { default as mainProduct } from "./main/products";
-import { default as mainCollection } from "./main/collections";
+import { default as mainProduct } from "./common/products";
+import { default as mainCollection } from "./common/collections";
 
 // overrides the default store products and collections when defined
-import { default as overridesProduct } from "./overrides/products";
-import { default as overridesCollection } from "./overrides/collections";
+import { default as recordOfProducts } from "./records/products";
+import { default as recordOfCollections } from "./records/collections";
 
 // other store items
-import { default as cart } from "./cart";
+import { default as cartPage } from "./cart";
 
 const getStore = [
   mainProduct,
   mainCollection,
-  overridesProduct,
-  overridesCollection,
-  cart,
+  recordOfProducts,
+  recordOfCollections,
+  cartPage,
 ];
 export default getStore;

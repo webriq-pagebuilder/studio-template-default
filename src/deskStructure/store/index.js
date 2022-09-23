@@ -1,8 +1,8 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { GiShop } from "react-icons/gi";
-import { mainProduct, mainCollection } from "./main";
-import { overridesProduct, overridesCollection } from "./overrides";
-import cart from "./cart";
+import { mainProduct, mainCollection } from "./common";
+import { recordOfCollections, recordOfProducts } from "./records";
+import cartPage from "./cart";
 import { MdSettings } from "react-icons/md";
 
 export default S.listItem()
@@ -12,8 +12,8 @@ export default S.listItem()
     S.list()
       .title("Store")
       .items([
-        overridesProduct,
-        overridesCollection,
+        recordOfProducts,
+        recordOfCollections,
         S.divider(),
         S.listItem()
           .title("Settings")
@@ -21,7 +21,7 @@ export default S.listItem()
           .child(
             S.list()
               .title("Settings")
-              .items([mainProduct, mainCollection, cart])
+              .items([mainProduct, mainCollection, cartPage])
           ),
       ])
   );

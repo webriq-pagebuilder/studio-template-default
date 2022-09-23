@@ -1,96 +1,24 @@
-import { BsFillBagFill } from "react-icons/bs";
-import { isSlugUnique } from "../../../../src/isSlugUnique";
+import { BsFillTagFill } from "react-icons/bs";
 
-/** This is the main product page. If a document with the same name is added from overrides/products, it will replace the values here. **/
+/** This document will replace the sections from the main collections when ECWID ID is matched **/
 export default {
-  name: "mainProduct",
-  title: "Products",
-  icon: BsFillBagFill,
+  name: "recordOfCollections",
+  title: "Collections",
+  icon: BsFillTagFill,
   type: "document",
   fields: [
     {
-      title: "Name",
-      name: "name",
-      description: "Add the product name",
-      type: "string",
-      required: true,
-    },
-    {
-      title: "Slug",
-      name: "slug",
-      type: "slug",
+      name: "collectionID",
+      title: "Collection ID",
       description:
-        "On what URL should this be published? e.g: /heres-a-sample-url",
-      validation: (Rule) =>
-        Rule.required().custom((slug) => {
-          const regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
-
-          if (slug?.current !== undefined) {
-            if (regex.test(slug.current)) {
-              return `Slug cannot contain these special characters [!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]`;
-            }
-
-            if (slug?.current !== slug.current.toLowerCase()) {
-              return "Slug must be in lowercase";
-            }
-
-            if (slug?.current.indexOf(" ") !== -1) {
-              return "Slug cannot contain spaces";
-            }
-          }
-
-          return true;
-        }),
-      options: {
-        source: "name",
-        maxLength: 96,
-        isUnique: isSlugUnique,
-      },
-    },
-    {
-      name: "pid",
-      title: "Product ID",
-      description: "Add the Ecwid ID of this product",
+        "Add the matching collection ECWID ID from Settings > Collections",
       type: "string",
-    },
-    {
-      name: "collections",
-      title: "Collections",
-      description:
-        "Select from available collections where this product belongs",
-      type: "reference",
-      to: [{ type: "mainCollection" }],
-    },
-    {
-      name: "productPreview",
-      title: "Product preview",
-      description: "Add the image preview to display for this product",
-      type: "object",
-      fields: [
-        {
-          name: "image",
-          title: "Image",
-          type: "image",
-          options: {
-            hotspot: true,
-          },
-        },
-        {
-          name: "altText",
-          title: "Alternative text",
-          type: "string",
-        },
-      ],
-    },
-    {
-      name: "description",
-      title: "Description",
-      description: "Add a product summary or description.",
-      type: "text",
     },
     {
       title: "Sections",
       name: "sections",
+      description:
+        "Added sections here will replace ALL the sections of the same ECWID ID in Settings > Collections",
       type: "array",
       options: {
         editModal: "fullscreen",
@@ -136,7 +64,7 @@ export default {
           title: "Cart",
           name: "cart",
           type: "reference",
-          to: [{ type: "cart" }],
+          to: [{ type: "cartSection" }],
         },
         {
           title: "Pricing",
@@ -236,28 +164,5 @@ export default {
         },
       ],
     },
-    {
-      title: "SEO Settings",
-      name: "seo",
-      type: "seoSettings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-      },
-    },
   ],
-  preview: {
-    select: {
-      title: "name",
-      subtitle: "description",
-      media: "productPreview.image",
-    },
-    prepare({ title, subtitle, media }) {
-      return {
-        title,
-        subtitle,
-        media,
-      };
-    },
-  },
 };

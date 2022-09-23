@@ -9,7 +9,9 @@ export default function resolveProductionUrl(document) {
 
   // only show the "Open Preview" option for page and post documents
   if (
-    ["page", "post", "mainProduct", "mainCollection"].includes(document?._type)
+    ["page", "post", "mainProduct", "mainCollection", "cartPage"].includes(
+      document?._type
+    )
   ) {
     if (window.location.hostname.includes("localhost")) {
       return `${

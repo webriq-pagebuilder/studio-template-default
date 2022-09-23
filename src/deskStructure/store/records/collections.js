@@ -32,15 +32,15 @@ const publishedURL = SANITY_STUDIO_PRODUCTION_SITE_URL;
 /** This shows all collection pages that will replace the preview of the main collection page when their names are matched. **/
 export default S.listItem()
   .title("Collections")
-  .schemaType("overridesCollection")
+  .schemaType("recordOfCollections")
   .icon(BsFillTagFill)
   .child(
-    S.documentTypeList("overridesCollection")
+    S.documentTypeList("recordOfCollections")
       .title("Collections")
       .child((documentId) =>
         S.document()
           .documentId(documentId)
-          .schemaType("overridesCollection")
+          .schemaType("recordOfCollections")
           .views([
             S.view.form().icon(EditIcon),
             S.view

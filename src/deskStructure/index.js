@@ -11,9 +11,9 @@ const hiddenTypes = [
   "author",
   "mainProduct",
   "mainCollection",
-  "overridesProduct",
-  "overridesCollection",
-  "mainCart",
+  "recordOfCollections",
+  "recordOfProducts",
+  "cartPage",
   ...sections,
 ];
 export default () =>

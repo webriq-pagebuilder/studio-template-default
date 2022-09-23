@@ -31,15 +31,15 @@ const publishedURL = SANITY_STUDIO_PRODUCTION_SITE_URL;
 /** This shows all product pages that will replace the preview of the main product page when their names are matched. **/
 export default S.listItem()
   .title("Products")
-  .schemaType("overridesProduct")
+  .schemaType("recordOfProducts")
   .icon(BsFillBagFill)
   .child(
-    S.documentTypeList("overridesProduct")
+    S.documentTypeList("recordOfProducts")
       .title("Products")
       .child((documentId) =>
         S.document()
           .documentId(documentId)
-          .schemaType("overridesProduct")
+          .schemaType("recordOfProducts")
           .views([
             S.view.form().icon(EditIcon),
             S.view
