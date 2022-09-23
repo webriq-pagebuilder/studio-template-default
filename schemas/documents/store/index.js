@@ -3,17 +3,15 @@ import { default as mainProduct } from "./common/products";
 import { default as mainCollection } from "./common/collections";
 
 // overrides the default store products and collections when defined
-import { default as recordOfProducts } from "./records/products";
-import { default as recordOfCollections } from "./records/collections";
-
-// other store items
-import { default as cartPage } from "./cart";
+import { default as productSettings } from "./settings/products";
+import { default as collectionSettings } from "./settings/collections";
+import { default as cartPage } from "./settings/cart";
 
 const getStore = [
   mainProduct,
   mainCollection,
-  recordOfProducts,
-  recordOfCollections,
+  productSettings,
+  collectionSettings,
   cartPage,
 ];
 export default getStore;

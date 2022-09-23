@@ -1,23 +1,24 @@
-import { BsFillBagFill } from "react-icons/bs";
+import { BsFillTagFill } from "react-icons/bs";
 
-/** This document will replace the main product sections when ECWID ID is matched **/
+/** This document will replace the sections from the main collections when ECWID ID is matched **/
 export default {
-  name: "recordOfProducts",
-  title: "Products",
-  icon: BsFillBagFill,
+  name: "collectionSettings",
+  title: "Collections",
+  icon: BsFillTagFill,
   type: "document",
   fields: [
     {
-      name: "pid",
-      title: "Product ID",
-      description: "Add the matching product ECWID ID from Settings > Products",
+      name: "collectionID",
+      title: "Collection ID",
+      description:
+        "Add the matching collection ECWID ID from Settings > Collections",
       type: "string",
     },
     {
       title: "Sections",
       name: "sections",
       description:
-        "Added sections here will replace ALL the sections of the same ECWID ID in Settings > Products",
+        "Added sections here will replace ALL the sections of the same ECWID ID in Settings > Collections",
       type: "array",
       options: {
         editModal: "fullscreen",

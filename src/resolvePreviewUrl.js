@@ -7,12 +7,8 @@ import {
 export default function resolveProductionUrl(document) {
   const previewUrl = `api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=${document?.slug?.current}`;
 
-  // only show the "Open Preview" option for page and post documents
-  if (
-    ["page", "post", "mainProduct", "mainCollection", "cartPage"].includes(
-      document?._type
-    )
-  ) {
+  // only show the "Open Preview" option for the following documents
+  if (["page", "post", "cartPage"].includes(document?._type)) {
     if (window.location.hostname.includes("localhost")) {
       return `${
         SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
@@ -20,6 +16,26 @@ export default function resolveProductionUrl(document) {
     }
 
     return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/${previewUrl}`;
+  } else if (document?._type === "mainProduct") {
+    if (window.location.hostname.includes("localhost")) {
+      return `${
+        SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
+      }/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&type=products&slug=${
+        document?.slug?.current
+      }`;
+    }
+
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/products/${previewUrl}`;
+  } else if (document?._type === "mainCollection") {
+    if (window.location.hostname.includes("localhost")) {
+      return `${
+        SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
+      }/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&type=collections&slug=${
+        document?.slug?.current
+      }`;
+    }
+
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/collections/${previewUrl}`;
   }
 
   return undefined;

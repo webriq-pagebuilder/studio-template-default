@@ -11,8 +11,8 @@ const hiddenTypes = [
   "author",
   "mainProduct",
   "mainCollection",
-  "recordOfCollections",
-  "recordOfProducts",
+  "productSettings",
+  "collectionSettings",
   "cartPage",
   ...sections,
 ];

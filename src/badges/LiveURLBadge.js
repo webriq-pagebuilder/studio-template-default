@@ -12,13 +12,45 @@ export function LiveURLBadge(props) {
   }
   const isPublished = !props.draft;
 
-  if (
-    ["page", "post", "mainProduct", "mainCollection", "cartPage"].includes(type)
-  ) {
+  if (["page", "post", "cartPage"].includes(type)) {
     return {
       label: (
         <Link
           target={`${siteUrl}/${
+            isPublished
+              ? props?.published?.slug?.current
+              : props?.draft?.slug?.current ?? ""
+          }`}
+          isPublished={isPublished}
+        />
+      ),
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  } else if (type === "mainProduct") {
+    return {
+      label: (
+        <Link
+          target={`${siteUrl}/products/${
+            isPublished
+              ? props?.published?.slug?.current
+              : props?.draft?.slug?.current ?? ""
+          }`}
+          isPublished={isPublished}
+        />
+      ),
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  } else if (type === "mainCollection") {
+    return {
+      label: (
+        <Link
+          target={`${siteUrl}/collections/${
             isPublished
               ? props?.published?.slug?.current
               : props?.draft?.slug?.current ?? ""
