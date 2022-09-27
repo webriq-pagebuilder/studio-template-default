@@ -8,7 +8,7 @@ import pages from "./documents/pages";
 
 import { mergeReplaceAndAdd } from "../src/utils";
 
-import commerceSchema from "../../sanity-packages/packages/sanity-plugin-schema-commerce";
+import commerceSchema from "@webriq-pagebuilder/sanity-plugin-schema-commerce";
 const commerceSchemaArray = Object.values(commerceSchema);
 
 import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default";
