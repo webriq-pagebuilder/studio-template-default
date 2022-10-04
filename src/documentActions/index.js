@@ -15,16 +15,27 @@ export default function resolveDocumentActions(props) {
       "mainProduct",
       "mainCollection",
       "cartPage",
+      "wishlistPage",
       "productSettings",
       "collectionSettings",
       // c-studio sections
       "featuredProducts",
       "cartSection",
+      "wishlistSection",
       "productInfo",
     ]?.includes(type) &&
     SANITY_STUDIO_IN_CSTUDIO === "false"
   ) {
     return [createProductsPublishAction];
+  } else if (
+    [
+      "cartPage",
+      "wishlistPage",
+      "productSettings",
+      "collectionSettings",
+    ]?.includes(type)
+  ) {
+    return [createProductsPublishAction, DiscardChangesAction, UnpublishAction];
   }
 
   return [

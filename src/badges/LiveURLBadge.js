@@ -12,7 +12,7 @@ export function LiveURLBadge(props) {
   }
   const isPublished = !props.draft;
 
-  if (["page", "post", "cartPage", "wishlistPage"].includes(type)) {
+  if (["page", "post"].includes(type)) {
     return {
       label: (
         <Link
@@ -58,6 +58,22 @@ export function LiveURLBadge(props) {
           isPublished={isPublished}
         />
       ),
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  } else if (type === "cartPage") {
+    return {
+      label: <Link target={`${siteUrl}/cart`} isPublished={isPublished} />,
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  } else if (type === "wishlistPage") {
+    return {
+      label: <Link target={`${siteUrl}/wishlist`} isPublished={isPublished} />,
       title: isPublished
         ? "Open LIVE URL in a new window!"
         : "Publish document first to open LIVE URL",

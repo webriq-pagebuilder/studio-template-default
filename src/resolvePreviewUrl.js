@@ -8,7 +8,7 @@ export default function resolveProductionUrl(document) {
   const previewUrl = `api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=${document?.slug?.current}`;
 
   // only show the "Open Preview" option for the following documents
-  if (["page", "post", "cartPage", "wishlistPage"].includes(document?._type)) {
+  if (["page", "post"].includes(document?._type)) {
     if (window.location.hostname.includes("localhost")) {
       return `${
         SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
@@ -36,6 +36,22 @@ export default function resolveProductionUrl(document) {
     }
 
     return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&type=collections&slug=${document?.slug?.current}`;
+  } else if (document?._type === "cartPage") {
+    if (window.location.hostname.includes("localhost")) {
+      return `${
+        SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
+      }/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=cart`;
+    }
+
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=cart`;
+  } else if (document?._type === "wishlistPage") {
+    if (window.location.hostname.includes("localhost")) {
+      return `${
+        SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
+      }/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=wishlist`;
+    }
+
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=wishlist`;
   }
 
   return undefined;
