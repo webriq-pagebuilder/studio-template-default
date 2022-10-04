@@ -109,6 +109,12 @@ export default {
           to: [{ type: "productInfo" }],
         },
         {
+          title: "Wishlist",
+          name: "wishlist",
+          type: "reference",
+          to: [{ type: "wishlistSection" }],
+        },
+        {
           title: "Contact",
           name: "contact",
           type: "reference",

@@ -8,7 +8,7 @@ export default function resolveProductionUrl(document) {
   const previewUrl = `api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=${document?.slug?.current}`;
 
   // only show the "Open Preview" option for the following documents
-  if (["page", "post", "cartPage"].includes(document?._type)) {
+  if (["page", "post", "cartPage", "wishlistPage"].includes(document?._type)) {
     if (window.location.hostname.includes("localhost")) {
       return `${
         SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"

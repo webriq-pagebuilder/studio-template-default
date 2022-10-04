@@ -24,6 +24,7 @@ export const sections = [
   "testimonial",
   "textComponent",
   "newsletter",
+  "wishlistSection",
 ];
 
 function sectionName(section) {
@@ -45,6 +46,8 @@ function sectionName(section) {
     return "Text Component";
   } else if (section === "cartSection") {
     return "Cart";
+  } else if (section === "wishlistSection") {
+    return "Wishlist";
   } else {
     return section;
   }

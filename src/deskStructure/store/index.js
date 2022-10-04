@@ -1,7 +1,12 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { GiShop } from "react-icons/gi";
-import { mainProduct, mainCollection } from "./common";
-import { collectionSettings, productSettings, cartPage } from "./settings";
+import { mainProduct, mainCollection } from "./main";
+import {
+  collectionSettings,
+  productSettings,
+  cartPage,
+  wishlistPage,
+} from "./settings";
 import { MdSettings } from "react-icons/md";
 
 export default S.listItem()
@@ -20,7 +25,12 @@ export default S.listItem()
           .child(
             S.list()
               .title("Settings")
-              .items([productSettings, collectionSettings, cartPage])
+              .items([
+                productSettings,
+                collectionSettings,
+                cartPage,
+                wishlistPage,
+              ])
           ),
       ])
   );
