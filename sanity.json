@@ -19,6 +19,7 @@
     "visual-options",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms",
     "@webriq-pagebuilder/sanity-plugin-schema-default",
+    "@webriq-pagebuilder/sanity-plugin-schema-commerce",
     "@webriq-pagebuilder/sanity-plugin-schema-blog",
     "@webriq-pagebuilder/sanity-plugin-webriq-payments",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog",
