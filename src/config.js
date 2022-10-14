@@ -16,3 +16,6 @@ export const SANITY_STUDIO_PREVIEW_SECRET =
 
 // LIVE App URL
 export const SANITY_STUDIO_APP_URL = process.env.SANITY_STUDIO_APP_URL;
+
+// Helps check if current studio is in C-Studio or W-Studio
+export const SANITY_STUDIO_IN_CSTUDIO = process.env.SANITY_STUDIO_IN_CSTUDIO;

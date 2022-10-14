@@ -29,6 +29,56 @@ export function LiveURLBadge(props) {
         : "Publish document first to open LIVE URL",
       color: isPublished ? "success" : "caution",
     };
+  } else if (type === "mainProduct") {
+    return {
+      label: (
+        <Link
+          target={`${siteUrl}/products/${
+            isPublished
+              ? props?.published?.slug?.current
+              : props?.draft?.slug?.current ?? ""
+          }`}
+          isPublished={isPublished}
+        />
+      ),
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  } else if (type === "mainCollection") {
+    return {
+      label: (
+        <Link
+          target={`${siteUrl}/collections/${
+            isPublished
+              ? props?.published?.slug?.current
+              : props?.draft?.slug?.current ?? ""
+          }`}
+          isPublished={isPublished}
+        />
+      ),
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  } else if (type === "cartPage") {
+    return {
+      label: <Link target={`${siteUrl}/cart`} isPublished={isPublished} />,
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
+  } else if (type === "wishlistPage") {
+    return {
+      label: <Link target={`${siteUrl}/wishlist`} isPublished={isPublished} />,
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
   }
 }
 

@@ -1,8 +1,11 @@
 export const sections = [
   "navigation",
+  "featuredProducts",
   "blog",
   "appPromo",
+  "cartSection",
   "callToAction",
+  "checkout",
   "contact",
   "cookies",
   "faqs",
@@ -13,27 +16,38 @@ export const sections = [
   "logoCloud",
   "portfolio",
   "pricing",
+  "productInfo",
   "stats",
+  "shop",
   "signInSignUp",
   "team",
   "testimonial",
   "textComponent",
   "newsletter",
+  "wishlistSection",
 ];
 
 function sectionName(section) {
   if (section === "appPromo") {
     return "App Promo";
+  } else if (section === "featuredProducts") {
+    return "Featured Products";
   } else if (section === "callToAction") {
     return "Call To Action";
   } else if (section === "howItWorks") {
     return "How It Works";
   } else if (section === "logoCloud") {
     return "Logo Cloud";
+  } else if (section === "productInfo") {
+    return "Product Info";
   } else if (section === "signInSignUp") {
     return "Sign In Sign Up";
   } else if (section === "textComponent") {
     return "Text Component";
+  } else if (section === "cartSection") {
+    return "Cart";
+  } else if (section === "wishlistSection") {
+    return "Wishlist";
   } else {
     return section;
   }

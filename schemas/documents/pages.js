@@ -85,6 +85,36 @@ export default {
           to: [{ type: "callToAction" }],
         },
         {
+          title: "Featured products",
+          name: "featuredProducts",
+          type: "reference",
+          to: [{ type: "featuredProducts" }],
+        },
+        {
+          title: "Cart",
+          name: "cart",
+          type: "reference",
+          to: [{ type: "cartSection" }],
+        },
+        {
+          title: "Pricing",
+          name: "pricing",
+          type: "reference",
+          to: [{ type: "pricing" }],
+        },
+        {
+          title: "Product Info",
+          name: "productInfo",
+          type: "reference",
+          to: [{ type: "productInfo" }],
+        },
+        {
+          title: "Wishlist",
+          name: "wishlist",
+          type: "reference",
+          to: [{ type: "wishlistSection" }],
+        },
+        {
           title: "Contact",
           name: "contact",
           type: "reference",
@@ -131,12 +161,6 @@ export default {
           name: "portfolio",
           type: "reference",
           to: [{ type: "portfolio" }],
-        },
-        {
-          title: "Pricing",
-          name: "pricing",
-          type: "reference",
-          to: [{ type: "pricing" }],
         },
         {
           title: "Statistics",
