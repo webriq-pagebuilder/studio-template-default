@@ -91,12 +91,6 @@ export default {
           to: [{ type: "featuredProducts" }],
         },
         {
-          title: "Cart",
-          name: "cart",
-          type: "reference",
-          to: [{ type: "cartSection" }],
-        },
-        {
           title: "Pricing",
           name: "pricing",
           type: "reference",
