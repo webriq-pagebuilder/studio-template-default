@@ -106,12 +106,26 @@ export default function createProductsPublishAction(props) {
                 });
               });
 
+            // show toast notification on successful request
+            toast.push({
+              status: "success",
+              title: `Successfully ${
+                !props?.published ? "added" : "updated"
+              } product on Ecwid store!`,
+            });
+
             // for mainProduct, only execute publish actions when API request is successful
             setIsPublishing(true); // This will update the button text
             publish.execute(); // Perform the publish
             props.onComplete(); // Signal that the action is completed
           } catch (error) {
             console.log("Error: ", error);
+
+            // show toast notification on failed request
+            toast.push({
+              status: "error",
+              title: "Unable to proceed with request! Please see logs.",
+            });
           }
         }
       } else {
