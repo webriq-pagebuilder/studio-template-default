@@ -19,3 +19,7 @@ export const SANITY_STUDIO_APP_URL = process.env.SANITY_STUDIO_APP_URL;
 
 // Helps check if current studio is in C-Studio or W-Studio
 export const SANITY_STUDIO_IN_CSTUDIO = process.env.SANITY_STUDIO_IN_CSTUDIO;
+
+// Studio secret token to authenticate Ecwid API endpoint requests
+export const SANITY_STUDIO_STORE_PREVIEW_SECRET =
+  process.env.SANITY_STUDIO_STORE_PREVIEW_SECRET;

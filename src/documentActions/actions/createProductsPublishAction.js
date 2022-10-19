@@ -6,6 +6,7 @@ import sanityClient from "part:@sanity/base/client";
 import {
   SANITY_STUDIO_DEV_SITE_URL,
   SANITY_STUDIO_PRODUCTION_SITE_URL,
+  SANITY_STUDIO_STORE_PREVIEW_SECRET,
 } from "../../config";
 import { useSecrets } from "sanity-secrets";
 import { namespace, getAuthHeaders } from "../sanity-secrets/config";
@@ -18,10 +19,12 @@ export default function createProductsPublishAction(props) {
   const { isValidating, markers } = useValidationStatus(props.id, props.type);
   const { publish } = useDocumentOperation(props.id, props.type);
   const [isPublishing, setIsPublishing] = useState(false);
-  const { secrets } = useSecrets(namespace);
 
+  let { secrets } = useSecrets(namespace);
+  secrets = SANITY_STUDIO_STORE_PREVIEW_SECRET; // store the secret token into sanity-secrets
+
+  // return the siteURL to use on development or production
   let siteUrl = SANITY_STUDIO_DEV_SITE_URL;
-
   if (!window.location.hostname.includes("localhost")) {
     siteUrl = SANITY_STUDIO_PRODUCTION_SITE_URL;
   }
@@ -88,31 +91,39 @@ export default function createProductsPublishAction(props) {
       if (type === "mainProduct") {
         const id = props?.draft?._id || props?.id;
 
-        if (secrets) {
+        // make sure we have our secrets and id values
+        if (secrets && id) {
           try {
+            // fetch for the required document data by doing a query using the document ID
             await client
               .fetch("*[_id==$documentId]", { documentId: id })
               .then(async (result) => {
+                // with data available, do the API request and pass the required data as payload
                 await fetch(`${siteUrl}/api/ecwid/products/`, {
                   method: !props?.published ? "POST" : "PUT", // check if our page has been published or has unpublished edits
-                  headers: getAuthHeaders(namespace), // pass sanity secrets to header
+                  headers: getAuthHeaders(secrets), // pass sanity secrets to header
                   body: { ...result },
                 });
               });
+
+            // for mainProduct, only execute publish actions when API request is successful
+            setIsPublishing(true); // This will update the button text
+            publish.execute(); // Perform the publish
+            props.onComplete(); // Signal that the action is completed
           } catch (error) {
             console.log("Error: ", error);
           }
         }
+      } else {
+        // This will update the button text
+        setIsPublishing(true);
+
+        // Perform the publish
+        publish.execute();
+
+        // Signal that the action is completed
+        props.onComplete();
       }
-
-      // This will update the button text
-      setIsPublishing(true);
-
-      // Perform the publish
-      publish.execute();
-
-      // Signal that the action is completed
-      props.onComplete();
     },
   };
 }
