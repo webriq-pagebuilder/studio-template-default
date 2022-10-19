@@ -6,7 +6,7 @@ import {
   productSettings,
   cartPage,
   wishlistPage,
-} from "./settings";
+} from "./pages";
 import { MdSettings } from "react-icons/md";
 
 export default S.listItem()
@@ -20,11 +20,11 @@ export default S.listItem()
         mainCollection,
         S.divider(),
         S.listItem()
-          .title("Settings")
+          .title("Pages")
           .icon(MdSettings)
           .child(
             S.list()
-              .title("Settings")
+              .title("Pages")
               .items([
                 productSettings,
                 collectionSettings,

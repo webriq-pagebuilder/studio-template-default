@@ -29,6 +29,10 @@ export const sections = [
   // C-Studio sections for page documents only
   "pages_featuredProducts",
   "pages_productInfo",
+
+  // C-Studio dynamic sections for Store > Pages
+  "dynamic_featuredProducts",
+  "dynamic_productInfo",
 ];
 
 function sectionName(section) {
@@ -55,6 +59,10 @@ function sectionName(section) {
     return "Cart";
   } else if (section === "wishlistSection") {
     return "Wishlist";
+  } else if (section === "dynamic_featuredProducts") {
+    return "Dynamic Featured Products";
+  } else if (section === "dynamic_productInfo") {
+    return "Dynamic Product Info";
   } else {
     return section;
   }
