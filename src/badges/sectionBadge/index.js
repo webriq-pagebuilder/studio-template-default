@@ -25,12 +25,19 @@ export const sections = [
   "textComponent",
   "newsletter",
   "wishlistSection",
+
+  // C-Studio sections for page documents only
+  "pages_featuredProducts",
+  "pages_productInfo",
 ];
 
 function sectionName(section) {
   if (section === "appPromo") {
     return "App Promo";
-  } else if (section === "featuredProducts") {
+  } else if (
+    section === "featuredProducts" ||
+    section === "pages_featuredProducts"
+  ) {
     return "Featured Products";
   } else if (section === "callToAction") {
     return "Call To Action";
@@ -38,7 +45,7 @@ function sectionName(section) {
     return "How It Works";
   } else if (section === "logoCloud") {
     return "Logo Cloud";
-  } else if (section === "productInfo") {
+  } else if (section === "productInfo" || section === "pages_productInfo") {
     return "Product Info";
   } else if (section === "signInSignUp") {
     return "Sign In Sign Up";
