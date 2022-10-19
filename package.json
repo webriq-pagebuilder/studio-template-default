@@ -52,6 +52,7 @@
     "sanity-plugin-parts-list": "^1.0.2",
     "sanity-plugin-tabs": "^2.0.1",
     "sanity-plugin-visual-options": "^0.8.4",
+    "sanity-secrets": "^0.1.0",
     "styled-components": "^5.2.0",
     "uuidv4": "^6.2.7"
   },

@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useToast, Tooltip, Box, Text } from "@sanity/ui";
 import { useDocumentOperation, useValidationStatus } from "@sanity/react-hooks";
 import { processData } from "../../stripeActions/process-data";
+import sanityClient from "part:@sanity/base/client";
+import {
+  SANITY_STUDIO_DEV_SITE_URL,
+  SANITY_STUDIO_PRODUCTION_SITE_URL,
+} from "../../config";
+import { useSecrets } from "sanity-secrets";
+import { namespace, getAuthHeaders } from "../sanity-secrets/config";
+
+const client = sanityClient.withConfig({ apiVersion: "v2021-10-21" });
 
 export default function createProductsPublishAction(props) {
   const { type, draft } = props;
@@ -9,6 +18,13 @@ export default function createProductsPublishAction(props) {
   const { isValidating, markers } = useValidationStatus(props.id, props.type);
   const { publish } = useDocumentOperation(props.id, props.type);
   const [isPublishing, setIsPublishing] = useState(false);
+  const { secrets } = useSecrets(namespace);
+
+  let siteUrl = SANITY_STUDIO_DEV_SITE_URL;
+
+  if (!window.location.hostname.includes("localhost")) {
+    siteUrl = SANITY_STUDIO_PRODUCTION_SITE_URL;
+  }
 
   useEffect(() => {
     // if the isPublishing state was set to true and the draft has changed
@@ -67,7 +83,28 @@ export default function createProductsPublishAction(props) {
     ) : (
       "Save"
     ),
-    onHandle: () => {
+    onHandle: async () => {
+      // for documents of type 'mainProduct', call addOrUpdate API endpoint on publish
+      if (type === "mainProduct") {
+        const id = props?.draft?._id || props?.id;
+
+        if (secrets) {
+          try {
+            await client
+              .fetch("*[_id==$documentId]", { documentId: id })
+              .then(async (result) => {
+                await fetch(`${siteUrl}/api/ecwid/products/`, {
+                  method: !props?.published ? "POST" : "PUT", // check if our page has been published or has unpublished edits
+                  headers: getAuthHeaders(namespace), // pass sanity secrets to header
+                  body: { ...result },
+                });
+              });
+          } catch (error) {
+            console.log("Error: ", error);
+          }
+        }
+      }
+
       // This will update the button text
       setIsPublishing(true);
 

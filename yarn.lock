@@ -9804,6 +9804,11 @@ sanity-secrets@^0.0.5:
   resolved "https://registry.yarnpkg.com/sanity-secrets/-/sanity-secrets-0.0.5.tgz#edecb35de2e89663d276681de660f93d02d389f6"
   integrity sha512-SOpC3ujiNBBMfmKdtBV+ugZ5244jzZc/gok1NoheWsfmkaqk3E9AmWyZSLp5A3spNby4NoJAJffDHgTHCUQC1Q==
 
+sanity-secrets@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/sanity-secrets/-/sanity-secrets-0.1.0.tgz#87c4ea6e3568957dad98d5b191655e582f0a9cc8"
+  integrity sha512-Lm1c4Cv7+0vLUA8Yp214oABwGkJ0AenYIE/og6Y37I6CUU3zSR62iAeWxhuwYvW9We4mCcEn/JxmcbUqE0Azyw==
+
 sax@~1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
