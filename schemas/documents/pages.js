@@ -88,13 +88,7 @@ export default {
           title: "Featured products",
           name: "featuredProducts",
           type: "reference",
-          to: [{ type: "featuredProducts" }],
-        },
-        {
-          title: "Cart",
-          name: "cart",
-          type: "reference",
-          to: [{ type: "cartSection" }],
+          to: [{ type: "pages_featuredProducts" }],
         },
         {
           title: "Pricing",
@@ -106,7 +100,7 @@ export default {
           title: "Product Info",
           name: "productInfo",
           type: "reference",
-          to: [{ type: "productInfo" }],
+          to: [{ type: "pages_productInfo" }],
         },
         {
           title: "Wishlist",

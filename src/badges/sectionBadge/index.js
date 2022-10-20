@@ -25,12 +25,23 @@ export const sections = [
   "textComponent",
   "newsletter",
   "wishlistSection",
+
+  // C-Studio sections for page documents only
+  "pages_featuredProducts",
+  "pages_productInfo",
+
+  // C-Studio dynamic sections for Store > Pages
+  "dynamic_featuredProducts",
+  "dynamic_productInfo",
 ];
 
 function sectionName(section) {
   if (section === "appPromo") {
     return "App Promo";
-  } else if (section === "featuredProducts") {
+  } else if (
+    section === "featuredProducts" ||
+    section === "pages_featuredProducts"
+  ) {
     return "Featured Products";
   } else if (section === "callToAction") {
     return "Call To Action";
@@ -38,7 +49,7 @@ function sectionName(section) {
     return "How It Works";
   } else if (section === "logoCloud") {
     return "Logo Cloud";
-  } else if (section === "productInfo") {
+  } else if (section === "productInfo" || section === "pages_productInfo") {
     return "Product Info";
   } else if (section === "signInSignUp") {
     return "Sign In Sign Up";
@@ -48,6 +59,10 @@ function sectionName(section) {
     return "Cart";
   } else if (section === "wishlistSection") {
     return "Wishlist";
+  } else if (section === "dynamic_featuredProducts") {
+    return "Dynamic Featured Products";
+  } else if (section === "dynamic_productInfo") {
+    return "Dynamic Product Info";
   } else {
     return section;
   }
