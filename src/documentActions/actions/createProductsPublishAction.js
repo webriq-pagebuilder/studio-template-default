@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useToast, Tooltip, Box, Text } from "@sanity/ui";
 import { useDocumentOperation, useValidationStatus } from "@sanity/react-hooks";
 import { processData } from "../../stripeActions/process-data";
-import sanityClient from "part:@sanity/base/client";
-import {
-  SANITY_STUDIO_DEV_SITE_URL,
-  SANITY_STUDIO_PRODUCTION_SITE_URL,
-  SANITY_STUDIO_STORE_PREVIEW_SECRET,
-} from "../../config";
-import { useSecrets } from "sanity-secrets";
-import { namespace, getAuthHeaders } from "../sanity-secrets/config";
-
-const client = sanityClient.withConfig({ apiVersion: "v2021-10-21" });
 
 export default function createProductsPublishAction(props) {
   const { type, draft } = props;
@@ -19,15 +9,6 @@ export default function createProductsPublishAction(props) {
   const { isValidating, markers } = useValidationStatus(props.id, props.type);
   const { publish } = useDocumentOperation(props.id, props.type);
   const [isPublishing, setIsPublishing] = useState(false);
-
-  let { secrets } = useSecrets(namespace);
-  secrets = SANITY_STUDIO_STORE_PREVIEW_SECRET; // store the secret token into sanity-secrets
-
-  // return the siteURL to use on development or production
-  let siteUrl = SANITY_STUDIO_DEV_SITE_URL;
-  if (!window.location.hostname.includes("localhost")) {
-    siteUrl = SANITY_STUDIO_PRODUCTION_SITE_URL;
-  }
 
   useEffect(() => {
     // if the isPublishing state was set to true and the draft has changed
@@ -75,8 +56,9 @@ export default function createProductsPublishAction(props) {
       "post",
       "category",
       "author",
-      "mainProduct",
       "mainCollection",
+      "productSettings",
+      "collectionSettings",
       "cartPage",
       "wishlistPage",
     ].includes(type) ? (
@@ -87,57 +69,14 @@ export default function createProductsPublishAction(props) {
       "Save"
     ),
     onHandle: async () => {
-      // for documents of type 'mainProduct', call addOrUpdate API endpoint on publish
-      if (type === "mainProduct") {
-        const id = props?.draft?._id || props?.id;
+      // This will update the button text
+      setIsPublishing(true);
 
-        // make sure we have our secrets and id values
-        if (secrets && id) {
-          try {
-            // fetch for the required document data by doing a query using the document ID
-            await client
-              .fetch("*[_id==$documentId]", { documentId: id })
-              .then(async (result) => {
-                // with data available, do the API request and pass the required data as payload
-                await fetch(`${siteUrl}/api/ecwid/products/`, {
-                  method: !props?.published ? "POST" : "PUT", // check if our page has been published or has unpublished edits
-                  headers: getAuthHeaders(secrets), // pass sanity secrets to header
-                  body: { ...result },
-                });
-              });
+      // Perform the publish
+      publish.execute();
 
-            // show toast notification on successful request
-            toast.push({
-              status: "success",
-              title: `Successfully ${
-                !props?.published ? "added" : "updated"
-              } product on Ecwid store!`,
-            });
-
-            // for mainProduct, only execute publish actions when API request is successful
-            setIsPublishing(true); // This will update the button text
-            publish.execute(); // Perform the publish
-            props.onComplete(); // Signal that the action is completed
-          } catch (error) {
-            console.log("Error: ", error);
-
-            // show toast notification on failed request
-            toast.push({
-              status: "error",
-              title: "Unable to proceed with request! Please see logs.",
-            });
-          }
-        }
-      } else {
-        // This will update the button text
-        setIsPublishing(true);
-
-        // Perform the publish
-        publish.execute();
-
-        // Signal that the action is completed
-        props.onComplete();
-      }
+      // Signal that the action is completed
+      props.onComplete();
     },
   };
 }
