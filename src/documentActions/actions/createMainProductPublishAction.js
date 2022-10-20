@@ -5,7 +5,7 @@ import sanityClient from "part:@sanity/base/client";
 import {
   SANITY_STUDIO_DEV_SITE_URL,
   SANITY_STUDIO_PRODUCTION_SITE_URL,
-  SANITY_STUDIO_STORE_PREVIEW_SECRET,
+  SANITY_STUDIO_STORE_CORS_SECRET,
 } from "../../config";
 import { useSecrets } from "sanity-secrets";
 import { namespace, getAuthHeaders } from "../sanity-secrets/config";
@@ -21,7 +21,7 @@ export default function createMainProductPublishAction(props) {
 
   // store the secret token into sanity-secrets
   let { secrets } = useSecrets(namespace);
-  secrets = SANITY_STUDIO_STORE_PREVIEW_SECRET;
+  secrets = SANITY_STUDIO_STORE_CORS_SECRET;
 
   // return the siteURL to use on development or production
   let siteUrl = SANITY_STUDIO_DEV_SITE_URL;
