@@ -16,7 +16,7 @@ export default function createMainProductPublishAction(props) {
   const { type, draft } = props;
   const toast = useToast();
   const { isValidating, markers } = useValidationStatus(props.id, props.type);
-  const { publish } = useDocumentOperation(props.id, props.type);
+  const { patch, publish } = useDocumentOperation(props.id, props.type);
   const [isPublishing, setIsPublishing] = useState(false);
 
   // store the secret token into sanity-secrets
@@ -43,6 +43,9 @@ export default function createMainProductPublishAction(props) {
     disabled: isDisabled || !draft,
     label: isPublishing ? <span>Publishing...</span> : <span>Publish</span>,
     onHandle: async () => {
+      // This will update the button text
+      setIsPublishing(true);
+
       // for documents of type 'mainProduct', call addOrUpdate API endpoint on publish
       const id = props?.draft?._id || props?.id;
 
@@ -58,22 +61,30 @@ export default function createMainProductPublishAction(props) {
           if (getData) {
             await fetch(`${siteUrl}/api/ecwid/products`, {
               method: !props?.published ? "POST" : "PUT", // check if out page has been published or is a draft
-              headers: getAuthHeaders(secrets), // pass sanity secrets to header
+              headers: {
+                ...getAuthHeaders(secrets),
+                "content-type": "application/json",
+              }, // pass sanity secrets to header
               body: JSON.stringify(...getData),
-            }).then((response) => {
+            }).then(async (response) => {
               if (!response.ok) {
                 // show toast notification on failed request
                 console.log(response);
-                toast.push({
-                  status: "error",
-                  title: "Unable to proceed with request! Please see logs.",
-                });
                 throw new Error("Failed to do POST/PUT request");
               } else {
-                // This will update the button text
-                setIsPublishing(true);
+                const product = await response.json();
+                console.log("[INFO] product", product);
+
+                // If product is newly created, we patch the current id of it in the document schema
+                if (!props?.published) {
+                  patch.execute([
+                    { set: { ecwidProductId: product?.data?.id } },
+                  ]);
+                }
+
                 // Perform the publish
                 publish.execute();
+
                 // Signal that the action is completed
                 props.onComplete();
 
@@ -93,8 +104,12 @@ export default function createMainProductPublishAction(props) {
           // show toast notification on failed request
           toast.push({
             status: "error",
-            title: "Unable to proceed with request! Please see logs.",
+            title:
+              "Ooops, unable to complete request! See logs for more info...",
           });
+
+          // Signal that the action is completed
+          props.onComplete();
         }
       }
     },
