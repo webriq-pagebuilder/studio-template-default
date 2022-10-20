@@ -59,7 +59,7 @@ export default function createMainProductPublishAction(props) {
             await fetch(`${siteUrl}/api/ecwid/products`, {
               method: !props?.published ? "POST" : "PUT", // check if out page has been published or is a draft
               headers: getAuthHeaders(secrets), // pass sanity secrets to header
-              body: { ...getData },
+              body: JSON.stringify(...getData),
             }).then((response) => {
               if (!response.ok) {
                 // show toast notification on failed request
@@ -69,15 +69,22 @@ export default function createMainProductPublishAction(props) {
                   title: "Unable to proceed with request! Please see logs.",
                 });
                 throw new Error("Failed to do POST/PUT request");
-              }
+              } else {
+                // This will update the button text
+                setIsPublishing(true);
+                // Perform the publish
+                publish.execute();
+                // Signal that the action is completed
+                props.onComplete();
 
-              // show toast notification on successful request
-              toast.push({
-                status: "success",
-                title: `Successfully ${
-                  !props?.published ? "added" : "updated"
-                } product on Ecwid store!`,
-              });
+                // show toast notification on successful request
+                toast.push({
+                  status: "success",
+                  title: `Successfully ${
+                    !props?.published ? "added" : "updated"
+                  } product on Ecwid store!`,
+                });
+              }
             });
           }
         } catch (error) {
