@@ -1,3 +1,0 @@
-[context.develop.environment]
-  SANITY_STUDIO_PRODUCTION_NETLIFY_SITE_URL = "https://develop--webriq-page-builder-default-template.netlify.app"
-  SANITY_STUDIO_PRODUCTION_SITE_URL = "https://develop--webriq-page-builder-default-template.netlify.app"
