@@ -20,11 +20,11 @@ export default S.listItem()
         mainCollection,
         S.divider(),
         S.listItem()
-          .title("Pages")
+          .title("Commerce Pages")
           .icon(MdSettings)
           .child(
             S.list()
-              .title("Pages")
+              .title("Commerce Pages")
               .items([
                 productSettings,
                 collectionSettings,
