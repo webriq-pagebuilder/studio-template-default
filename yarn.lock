@@ -2313,11 +2313,12 @@
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-commerce@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.8.tgz#654bda955892f3574b4793f0659c5f7a625e2352"
-  integrity sha512-Tth8yYDowLMjc790kaK70VzafVafGbPBJXXfRvE0qoMTq7mJRPg3dQ2enjJ2UtZuP/sfrmh1cR/O+CZc/eRpkA==
+"@webriq-pagebuilder/sanity-plugin-schema-commerce@1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.10.tgz#1918e31047d45d5f5cf0a8af98cf0126a50e8ca5"
+  integrity sha512-9pCbaa27QAEdKU2yFqKylvRtJx5QZw2ELq84SyzspR8/kx85GtcgbsMq2MdK50BGWUqVOnHOD9J2qow87CBj+g==
   dependencies:
+    "@sanity/ui" "^0.37.22"
     "@webriq-pagebuilder/sanity-plugin-schema-default" "^1.0.22"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
