@@ -6,6 +6,7 @@ import {
   productSettings,
   cartPage,
   wishlistPage,
+  searchPage,
 } from "./pages";
 import { MdSettings } from "react-icons/md";
 
@@ -30,6 +31,7 @@ export default S.listItem()
                 collectionSettings,
                 cartPage,
                 wishlistPage,
+                searchPage,
               ])
           ),
       ])

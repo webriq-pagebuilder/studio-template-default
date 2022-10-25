@@ -25,6 +25,7 @@ export const sections = [
   "textComponent",
   "newsletter",
   "wishlistSection",
+  "allProducts",
 
   // C-Studio sections for page documents only
   "pages_featuredProducts",
@@ -63,6 +64,8 @@ function sectionName(section) {
     return "Dynamic Featured Products";
   } else if (section === "dynamic_productInfo") {
     return "Dynamic Product Info";
+  } else if (section === "allProducts") {
+    return "All Products";
   } else {
     return section;
   }

@@ -52,6 +52,14 @@ export default function resolveProductionUrl(document) {
     }
 
     return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=wishlist`;
+  } else if (document?._type === "searchPage") {
+    if (window.location.hostname.includes("localhost")) {
+      return `${
+        SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000"
+      }/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=search`;
+    }
+
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=wishlist`;
   }
 
   return undefined;
