@@ -44,10 +44,6 @@ export default S.listItem()
           .views([
             S.view.form().icon(EditIcon),
             S.view
-              .component(ReferencedByView)
-              .title("Referenced by")
-              .icon(MdLink),
-            S.view
               .component(IframePreview)
               .options({ previewURL })
               .title("Web Preview")
@@ -71,6 +67,10 @@ export default S.listItem()
               .component(BraillePreview)
               .icon(MdAccessibility)
               .title("Braille"),
+            S.view
+              .component(ReferencedByView)
+              .title("Referenced by")
+              .icon(MdLink),
           ])
       )
   );
