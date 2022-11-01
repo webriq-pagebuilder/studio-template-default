@@ -15,6 +15,7 @@ const hiddenTypes = [
   "collectionSettings",
   "cartPage",
   "wishlistPage",
+  "searchPage",
   ...sections,
 ];
 export default () =>

@@ -79,6 +79,14 @@ export function LiveURLBadge(props) {
         : "Publish document first to open LIVE URL",
       color: isPublished ? "success" : "caution",
     };
+  } else if (type === "searchPage") {
+    return {
+      label: <Link target={`${siteUrl}/search`} isPublished={isPublished} />,
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "caution",
+    };
   }
 }
 

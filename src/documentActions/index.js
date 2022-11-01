@@ -17,9 +17,11 @@ export default function resolveDocumentActions(props) {
       "mainCollection",
       "cartPage",
       "wishlistPage",
+      "searchPage",
       "productSettings",
       "collectionSettings",
       // c-studio sections
+      "allProducts",
       "featuredProducts",
       "cartSection",
       "wishlistSection",
@@ -39,6 +41,7 @@ export default function resolveDocumentActions(props) {
     [
       "cartPage",
       "wishlistPage",
+      "searchPage",
       "productSettings",
       "collectionSettings",
     ]?.includes(type)
