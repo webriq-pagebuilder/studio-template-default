@@ -30,7 +30,7 @@
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields": "^1.0.0",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "^1.0.6",
     "@webriq-pagebuilder/sanity-plugin-schema-commerce": "1.0.16",
-    "@webriq-pagebuilder/sanity-plugin-schema-default": "^1.0.22",
+    "@webriq-pagebuilder/sanity-plugin-schema-default": "^1.0.24-gpt3.1",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog": "^1.0.6",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "^1.0.7",
     "@webriq-pagebuilder/sanity-plugin-webriq-payments": "^1.0.2",
