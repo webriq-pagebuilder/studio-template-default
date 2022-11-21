@@ -2486,10 +2486,10 @@
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-commerce@^1.0.17-cstudio.1":
-  version "1.0.17-cstudio.1"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.17-cstudio.1.tgz#eb36d43f20fe8984def4607953008a97a88d7a31"
-  integrity sha512-SsysHdXEsqQIF664PkeMNrJwQh42jY5DYt+zfUA+nvkHm9QnAPxCUAouqnNPWcVz/mlPeTbVSys0anO6i8OoNA==
+"@webriq-pagebuilder/sanity-plugin-schema-commerce@^1.0.17-cstudio.2":
+  version "1.0.17-cstudio.2"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.17-cstudio.2.tgz#c081f284ea404276562ad7c3949085d65a073c53"
+  integrity sha512-+a8slI4huCViZtRNQFvP2E7jUrMeS96VlQeboTIkbJqXk2uEQB6ewQAiXoQOAGvGnO0jJVs/1XmXPtbX627EMQ==
   dependencies:
     "@sanity/base" "^2.35.2"
     "@sanity/form-builder" "^2.35.2"
