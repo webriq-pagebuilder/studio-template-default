@@ -20,6 +20,8 @@ const hiddenTypes = [
   "cartPage",
   "wishlistPage",
   "searchPage",
+  "slotProductInfo",
+  "slotCollectionInfo",
   ...sections,
 ];
 
