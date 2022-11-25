@@ -2458,10 +2458,10 @@
   dependencies:
     prop-types "15.7.2"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^1.0.18-alpha.0":
-  version "1.0.18-alpha.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-1.0.18-alpha.0.tgz#27a6a00033c131146ad759675300fa6df5582ba2"
-  integrity sha512-SF99bA3ThWXJRNfDLq8+qcgETvNiSEedSbCK953DeGui6MFO5auGEPfffGdcZ+48cjjjDggETH2McmEi5u3G0A==
+"@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^1.0.18-y.0":
+  version "1.0.18-y.0"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-1.0.18-y.0.tgz#e520abf27419f7888149c293dfbb45b178e12e91"
+  integrity sha512-vmtgDBjVvUBL+a406kxmxKdamFN/1P1UjAEOpQeafMs7h1BMPGIHIomOvC0LB3JdFVcnpHv6W5pB2houe8mZkA==
   dependencies:
     "@sanity/base" "^2.35.2"
     "@sanity/form-builder" "^2.35.2"
@@ -2507,13 +2507,13 @@
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.24-gpt3.1":
-  version "1.0.24-gpt3.1"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.24-gpt3.1.tgz#2e239dcd6c68a6013255fdb0df423a960de831b6"
-  integrity sha512-l5xpAaf0UKT+LIrTSVab6rgosOAz4MKwHIALecv8SJX7y0MfdJE1kHJHR7ipars6yQ6ecOVSdxb6GVHufh6cBA==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.24-gpt3.2":
+  version "1.0.24-gpt3.2"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.24-gpt3.2.tgz#bda1d96769d76075735c2feb283c3bf182fdfabd"
+  integrity sha512-U5fgb2+5Ufi10mzRokiEDN2uuw98f6/iy3fmgGohh7F35L9K+/+rbDrdRyR58k7EmVSuhMaWl+kjyiOeAzU2JA==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^1.0.0"
-    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^1.0.18-alpha.0"
+    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^1.0.18-y.0"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.4"
     "@webriq-pagebuilder/sanity-plugin-webriq-payments" "^1.0.2"
     nanoid "^3.1.30"
