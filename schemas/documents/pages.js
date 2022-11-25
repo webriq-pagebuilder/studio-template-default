@@ -97,12 +97,6 @@ export default {
           to: [{ type: "pricing" }],
         },
         {
-          title: "All Products",
-          name: "allProducts",
-          type: "reference",
-          to: [{ type: "allProducts" }],
-        },
-        {
           title: "Product Info",
           name: "productInfo",
           type: "reference",
