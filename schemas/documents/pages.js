@@ -88,7 +88,7 @@ export default {
           title: "Featured products",
           name: "featuredProducts",
           type: "reference",
-          to: [{ type: "pages_featuredProducts" }],
+          to: [{ type: "featuredProducts" }],
         },
         {
           title: "Pricing",
