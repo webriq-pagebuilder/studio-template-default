@@ -16,7 +16,6 @@ export const sections = [
   "logoCloud",
   "portfolio",
   "pricing",
-  "productInfo",
   "stats",
   "shop",
   "signInSignUp",
