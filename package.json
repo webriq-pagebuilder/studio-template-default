@@ -29,7 +29,7 @@
     "@sanity/vision": "^2.35.2",
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields": "^1.0.0",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "^1.0.6",
-    "@webriq-pagebuilder/sanity-plugin-schema-commerce": "1.0.17-feat-cstudio.8",
+    "@webriq-pagebuilder/sanity-plugin-schema-commerce": "1.0.17-feat-cstudio.9",
     "@webriq-pagebuilder/sanity-plugin-schema-default": "^1.0.22",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog": "^1.0.6",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "^1.0.7",
