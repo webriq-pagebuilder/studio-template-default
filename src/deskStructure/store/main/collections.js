@@ -1,9 +1,8 @@
 import S from "@sanity/desk-tool/structure-builder";
-import { ReferencedByView } from "part:@indent-oss/sanityio-referenced-by";
 
 import EyeIcon from "part:@sanity/base/eye-icon";
 import EditIcon from "part:@sanity/base/edit-icon";
-import { MdAccessibility, MdLink } from "react-icons/md";
+import { MdAccessibility } from "react-icons/md";
 import { BsFillTagFill } from "react-icons/bs";
 
 // Web preview
@@ -67,10 +66,6 @@ export default S.listItem()
               .component(BraillePreview)
               .icon(MdAccessibility)
               .title("Braille"),
-            S.view
-              .component(ReferencedByView)
-              .title("Referenced by")
-              .icon(MdLink),
           ])
       )
   );

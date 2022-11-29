@@ -1127,11 +1127,6 @@
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.0.0-beta.3.tgz#6a13cecb8d261fee9fc53564e3e4ef6212148f16"
   integrity sha512-sOP+IX7TglN34WbMVt8eRqWgnXAQcvFc4XUU6x3bIiIjTkjV5L3N7sBjff2Ln4QPTMYnmdXaZV2Yf5WxOiC5YQ==
 
-"@indent-oss/sanityio-referenced-by@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@indent-oss/sanityio-referenced-by/-/sanityio-referenced-by-0.1.4.tgz#a173923e209b2e20593ae0a900af06f5984310ef"
-  integrity sha512-DHt1Dvijwco+T3A+l/Lrmapil2c0uIxVH4zilqKFknNKzlwH5MBu7/NbBQs2DAfsk6TLPYwnqM47upeqg3tnxw==
-
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz#e5d2e450306a9491e3bd77e323e38d7aff315996"
