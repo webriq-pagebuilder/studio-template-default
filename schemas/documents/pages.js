@@ -106,7 +106,7 @@ export default {
           title: "Wishlist",
           name: "wishlist",
           type: "reference",
-          to: [{ type: "wishlistSection" }],
+          to: [{ type: "slotWishlist" }],
         },
         {
           title: "Contact",
