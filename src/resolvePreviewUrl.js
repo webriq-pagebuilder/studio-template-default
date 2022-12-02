@@ -59,7 +59,7 @@ export default function resolveProductionUrl(document) {
       }/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=search`;
     }
 
-    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=wishlist`;
+    return `${SANITY_STUDIO_PRODUCTION_SITE_URL}/api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=search`;
   }
 
   return undefined;

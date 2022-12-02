@@ -3,7 +3,6 @@ export const sections = [
   "featuredProducts",
   "blog",
   "appPromo",
-  "cartSection",
   "callToAction",
   "checkout",
   "contact",
@@ -16,7 +15,6 @@ export const sections = [
   "logoCloud",
   "portfolio",
   "pricing",
-  "productInfo",
   "stats",
   "shop",
   "signInSignUp",
@@ -24,16 +22,15 @@ export const sections = [
   "testimonial",
   "textComponent",
   "newsletter",
-  "wishlistSection",
   "allProducts",
 
   // C-Studio sections for page documents only
   "pages_featuredProducts",
   "pages_productInfo",
 
-  // C-Studio dynamic sections for Store > Pages
-  "dynamic_featuredProducts",
-  "dynamic_productInfo",
+  // C-Studio slot sections for cart and wishlist
+  "slotCart",
+  "slotWishlist",
 ];
 
 function sectionName(section) {
@@ -56,16 +53,12 @@ function sectionName(section) {
     return "Sign In Sign Up";
   } else if (section === "textComponent") {
     return "Text Component";
-  } else if (section === "cartSection") {
-    return "Cart";
-  } else if (section === "wishlistSection") {
-    return "Wishlist";
-  } else if (section === "dynamic_featuredProducts") {
-    return "Dynamic Featured Products";
-  } else if (section === "dynamic_productInfo") {
-    return "Dynamic Product Info";
   } else if (section === "allProducts") {
     return "All Products";
+  } else if (section === "slotCart") {
+    return "Cart";
+  } else if (section === "slotWishlist") {
+    return "Wishlist";
   } else {
     return section;
   }

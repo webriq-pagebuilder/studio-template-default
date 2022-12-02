@@ -88,19 +88,13 @@ export default {
           title: "Featured products",
           name: "featuredProducts",
           type: "reference",
-          to: [{ type: "pages_featuredProducts" }],
+          to: [{ type: "featuredProducts" }],
         },
         {
           title: "Pricing",
           name: "pricing",
           type: "reference",
           to: [{ type: "pricing" }],
-        },
-        {
-          title: "All Products",
-          name: "allProducts",
-          type: "reference",
-          to: [{ type: "allProducts" }],
         },
         {
           title: "Product Info",
@@ -112,7 +106,7 @@ export default {
           title: "Wishlist",
           name: "wishlist",
           type: "reference",
-          to: [{ type: "wishlistSection" }],
+          to: [{ type: "slotWishlist" }],
         },
         {
           title: "Contact",

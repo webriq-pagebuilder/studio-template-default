@@ -27,8 +27,7 @@
     "dashboard-widget-netlify",
     "dashboard-widget-document-list",
     "google-analytics",
-    "@sanity/production-preview",
-    "@indent-oss/sanityio-referenced-by"
+    "@sanity/production-preview"
   ],
   "parts": [
     {
