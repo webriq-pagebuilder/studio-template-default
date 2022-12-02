@@ -1,5 +1,6 @@
 import { MdLibraryBooks } from "react-icons/md";
 import { isSlugUnique } from "../../src/isSlugUnique";
+import { SANITY_STUDIO_IN_CSTUDIO } from "../../src/config";
 
 export default {
   title: "Page",
@@ -59,6 +60,27 @@ export default {
           name: "navigation",
           type: "reference",
           to: [{ type: "navigation" }],
+          options: {
+            filter: () => {
+              const defaultLabel = "Default C-Studio Navigation";
+
+              // Do not display default navigation if C-Studio is not enabled
+              if (SANITY_STUDIO_IN_CSTUDIO === "false") {
+                return {
+                  filter: "label != $label",
+                  params: { label: defaultLabel },
+                };
+              }
+
+              // When C-Studio is enabled, show all navigation documents
+              return {
+                filter: "_type == $type",
+                params: {
+                  type: "navigation",
+                },
+              };
+            },
+          },
         },
         {
           title: "Header",
@@ -191,6 +213,27 @@ export default {
           name: "footer",
           type: "reference",
           to: [{ type: "footer" }],
+          options: {
+            filter: () => {
+              const defaultLabel = "Default C-Studio Footer";
+
+              // Do not display default footer if C-Studio is not enabled
+              if (SANITY_STUDIO_IN_CSTUDIO === "false") {
+                return {
+                  filter: "label != $label",
+                  params: { label: defaultLabel },
+                };
+              }
+
+              // When C-Studio is enabled, show all footer documents
+              return {
+                filter: "_type == $type",
+                params: {
+                  type: "footer",
+                },
+              };
+            },
+          },
         },
       ],
     },

@@ -24,11 +24,8 @@ export const mergeReplaceAndAdd = (existingItems, newItems) => {
       all = [...all, current];
     }
 
-    // For "staging" dataset and if C-Studio is disabled, then C-Studio fields should be read-only
-    if (
-      SANITY_STUDIO_IN_CSTUDIO === "false" &&
-      SANITY_STUDIO_FROM_STAGING_APP === "true"
-    ) {
+    // If C-Studio is disabled, then C-Studio fields should be read-only
+    if (SANITY_STUDIO_IN_CSTUDIO === "false") {
       return all?.map((items) => ({
         ...items,
         readOnly: true, // sets live editing of C-Studio schema documents to false
