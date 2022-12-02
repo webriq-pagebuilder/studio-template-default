@@ -19,6 +19,10 @@ export const SANITY_STUDIO_PREVIEW_SECRET =
 // LIVE App URL
 export const SANITY_STUDIO_APP_URL = process.env.SANITY_STUDIO_APP_URL;
 
+// Verify if Studio was created via WebriQ App Staging or Live
+export const SANITY_STUDIO_FROM_STAGING_APP =
+  process.env.SANITY_STUDIO_FROM_STAGING_APP;
+
 // Helps check if current studio is in C-Studio or W-Studio
 export const SANITY_STUDIO_IN_CSTUDIO = process.env.SANITY_STUDIO_IN_CSTUDIO;
 

@@ -1,7 +1,10 @@
 /* 
   Call this functional component to update the existing schemas from included plugins with the changes from the custom folder
 */
-import { SANITY_STUDIO_IN_CSTUDIO, SANITY_PROJECT_DATASET } from "../config";
+import {
+  SANITY_STUDIO_IN_CSTUDIO,
+  SANITY_STUDIO_FROM_STAGING_APP,
+} from "../config";
 
 export const mergeReplaceAndAdd = (existingItems, newItems) => {
   const updatedItems = existingItems.map((existingItem) => {
@@ -24,7 +27,7 @@ export const mergeReplaceAndAdd = (existingItems, newItems) => {
     // For "staging" dataset and if C-Studio is disabled, then C-Studio fields should be read-only
     if (
       SANITY_STUDIO_IN_CSTUDIO === "false" &&
-      SANITY_PROJECT_DATASET === "staging"
+      SANITY_STUDIO_FROM_STAGING_APP === "true"
     ) {
       return all?.map((items) => ({
         ...items,
