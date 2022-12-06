@@ -23,6 +23,7 @@
     "@webriq-pagebuilder/sanity-plugin-schema-blog",
     "@webriq-pagebuilder/sanity-plugin-webriq-payments",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog",
+    "@webriq-pagebuilder/sanity-plugin-webriq-page",
     "media",
     "dashboard-widget-netlify",
     "dashboard-widget-document-list",
