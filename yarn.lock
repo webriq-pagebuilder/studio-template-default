@@ -2473,10 +2473,10 @@
     prop-types "15.7.2"
     styled-components "^5.3.0"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-variants@^0.0.5-feat-cstudio.2":
-  version "0.0.5-feat-cstudio.2"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-variants/-/sanity-plugin-input-component-variants-0.0.5-feat-cstudio.2.tgz#934c9dd0794c156a5b1075cfd5dbf8a9bbadbbcd"
-  integrity sha512-bVynKxfP6l0s7gIBScW5eHuZwg2bkoAwAbTQMSl/eSs324FB1YbLYUOxUGvE+Xrb1SzvgvasXn8Jjxt14L7X2w==
+"@webriq-pagebuilder/sanity-plugin-input-component-variants@^0.0.5-feat-cstudio.3":
+  version "0.0.5-feat-cstudio.3"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-variants/-/sanity-plugin-input-component-variants-0.0.5-feat-cstudio.3.tgz#999591e69e2a4d163390a6ced069b5fe9d1a53df"
+  integrity sha512-En7WPd6eweO87BkmmMMWHehRjOXsBB3GAbFubyKFeQyBnoA8hG5drJxVnsDaFQ0P3SMUMVmgXymC6mg6IGu3+Q==
   dependencies:
     "@sanity/icons" "^1.1.1"
     "@sanity/ui" "0.33.29"
@@ -2491,31 +2491,31 @@
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-commerce@1.0.17-feat-cstudio.18":
-  version "1.0.17-feat-cstudio.18"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.17-feat-cstudio.18.tgz#79f0d6290648c8caa0ff16e8a7d13cf0ea099550"
-  integrity sha512-r/RlgPhcJ8f1MVGwDBFq5T7dKxnAocEo+hvQm/85RjN7rf1SQ652nZ45ttjZSj5Goqgk1BidJkSuMAoUcG0D8A==
+"@webriq-pagebuilder/sanity-plugin-schema-commerce@1.0.17-feat-cstudio.19":
+  version "1.0.17-feat-cstudio.19"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.17-feat-cstudio.19.tgz#742d8566f666e88b3bbd8c4a2856e59b37bd388b"
+  integrity sha512-jMl+N1tj0oNxpynWlo/E80Qb6tavZPiQUh2GFd0+lTKNrOoMU/uqJjU7H7PLEf/2iOrly0a+UXO2pabQUjEJhw==
   dependencies:
     "@sanity/base" "^2.35.2"
     "@sanity/form-builder" "^2.35.2"
     "@sanity/ui" "^0.37.22"
-    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.5-feat-cstudio.2"
-    "@webriq-pagebuilder/sanity-plugin-schema-default" "^1.0.23-feat-cstudio.2"
+    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.5-feat-cstudio.3"
+    "@webriq-pagebuilder/sanity-plugin-schema-default" "^1.0.23-feat-cstudio.3"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@1.0.23-feat-cstudio.2":
-  version "1.0.23-feat-cstudio.2"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.23-feat-cstudio.2.tgz#c75d308cc88c6eb45eb5e976c55ea2eb1ed75ab7"
-  integrity sha512-5xoryvKOBnfLibssuJ6dS5hTkHsbuH9MNyotHxJRaJVuZvvC+inVNYHZkzbnq8IYuHwY+vJ2+xxP0arKM60ulQ==
+"@webriq-pagebuilder/sanity-plugin-schema-default@1.0.23-feat-cstudio.3":
+  version "1.0.23-feat-cstudio.3"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.23-feat-cstudio.3.tgz#c67b2e3ce2e2c1e736043b744ba03f48771d28fa"
+  integrity sha512-FHp7zODOhz7qKRmzEGQTJ/H2UVrDwue64aemQsW8ufCOF63EmK1jHCAZXhg9cFLRpdXjO7xx30IZ8/jJMCJjOA==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^1.0.0"
-    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.5-feat-cstudio.2"
+    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.5-feat-cstudio.3"
     "@webriq-pagebuilder/sanity-plugin-webriq-payments" "^1.0.2"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.23-feat-cstudio.2":
+"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.23-feat-cstudio.3":
   version "1.0.23-gpt3.0"
   resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.23-gpt3.0.tgz#66e1d976ebaa6c333001bf59573eb32f97d5c55c"
   integrity sha512-yvmZFFg15qjoHZkd5/MLU7bzqs3TNXG2SIOyxO2f0q5Y0lemsSuarHEf2sLILL3IP+hn8NZYEifwVwX/8T3Xhg==
