@@ -2453,10 +2453,10 @@
   dependencies:
     prop-types "15.7.2"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-variants@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-variants/-/sanity-plugin-input-component-variants-0.0.5.tgz#975502f73c61ff569aed6ac487f30fb9ca87d5ae"
-  integrity sha512-ooD0EVc9y8QqvMzZ0KIOmJJeiUwgJlEOeYyQmESp2tzFCoDe1q+U2DsuZD8UMb8Kil+tXeFWCWS6DM3j+eo6xQ==
+"@webriq-pagebuilder/sanity-plugin-input-component-variants@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-variants/-/sanity-plugin-input-component-variants-0.0.6.tgz#e5e73922c60a95259cb95ea1d0a8089db8a8c451"
+  integrity sha512-v2IZ3dsV766d3aIkHDg5VLQQDBUsQGkeWKOnEB5mqMgPtsJFW3+1sQRGbCG24ba90K0VJhtkENqg36ZY8cmDtQ==
   dependencies:
     "@sanity/icons" "^1.1.1"
     "@sanity/ui" "0.33.29"
@@ -2471,26 +2471,26 @@
     "@sanity/desk-tool" "^2.17.2"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-commerce@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.17.tgz#1cf31dc2316d3a43e8ccb14aa7b9bfbda133ae0a"
-  integrity sha512-8dRQMdujvz7ocElqy9aYF50ltXvREM0S/S0Wm6jcmmUcljjm1VE40yQH0P9QLPKrE94vd+Me7kIrDz6ARqGDCw==
+"@webriq-pagebuilder/sanity-plugin-schema-commerce@^1.0.18":
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-1.0.18.tgz#fea70a81c5d47abb837076c15f72faf6ebaae05d"
+  integrity sha512-AVnVxVdQhOaK/LQGLOsBkE4rw1HKvm4NPJghX7HQU2uJrraGym+pKeADccBltnabnWeDST/Wxdzp46py8Qki4g==
   dependencies:
     "@sanity/base" "^2.35.2"
     "@sanity/form-builder" "^2.35.2"
     "@sanity/ui" "^0.37.22"
-    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.5"
-    "@webriq-pagebuilder/sanity-plugin-schema-default" "^1.0.23"
+    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.6"
+    "@webriq-pagebuilder/sanity-plugin-schema-default" "^1.0.24"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.23":
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.23.tgz#e586763c3cd6dccd709172557d6d9a7c1f8decf1"
-  integrity sha512-1B0LKNJHk0XQ/hHL1oCT8lQVgwMzJ6OPsPVcZLxRjZ73KB9FGnQ14uHcwDgeCYP6mxtcA5x2jYvk71JPMq4bHA==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^1.0.24":
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-1.0.24.tgz#22f975f2361ab52d6c87efe3e250752fa34e54a8"
+  integrity sha512-AebxP2AyPVFJWTgsNfh3n1l7x+7unVQJzK9u4h/UDjqfE/WILCnqaDr/Oc2OcQlPkL2A51pnY6OHQXLcOinh8Q==
   dependencies:
     "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields" "^1.0.0"
-    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.5"
+    "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^0.0.6"
     "@webriq-pagebuilder/sanity-plugin-webriq-payments" "^1.0.2"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
