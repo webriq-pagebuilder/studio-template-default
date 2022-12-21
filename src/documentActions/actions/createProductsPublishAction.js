@@ -51,14 +51,24 @@ export default function createProductsPublishAction(props) {
 
   return {
     disabled: isDisabled || !draft,
-    label: ["page", "post", "category", "author"].includes(type) ? (
+    label: [
+      "page",
+      "post",
+      "category",
+      "author",
+      "mainCollection",
+      "productSettings",
+      "collectionSettings",
+      "cartPage",
+      "wishlistPage",
+    ].includes(type) ? (
       <CustomPublishLabel hasErrors={isDisabled} isPublishing={isPublishing} />
     ) : isPublishing ? (
       "Saving..."
     ) : (
       "Save"
     ),
-    onHandle: () => {
+    onHandle: async () => {
       // This will update the button text
       setIsPublishing(true);
 

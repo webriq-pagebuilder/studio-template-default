@@ -178,3 +178,13 @@ button#presence-menu,
 button#login-status-menu {
   display: none !important;
 }
+
+/* Desktop: when using field groups, we hide the first tab */
+[data-ui="TabList"][data-testid="field-group-tabs"] > div:first-child {
+  display: none;
+}
+
+/* Mobile: when using field groups, hide the first option */
+select[data-testid="field-group-select"] > option:first-child {
+  display: none;
+}
