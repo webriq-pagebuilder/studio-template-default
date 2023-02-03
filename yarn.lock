@@ -2489,16 +2489,6 @@
     prop-types "15.7.2"
     styled-components "^5.3.0"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-variants@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-variants/-/sanity-plugin-input-component-variants-0.0.6.tgz#e5e73922c60a95259cb95ea1d0a8089db8a8c451"
-  integrity sha512-v2IZ3dsV766d3aIkHDg5VLQQDBUsQGkeWKOnEB5mqMgPtsJFW3+1sQRGbCG24ba90K0VJhtkENqg36ZY8cmDtQ==
-  dependencies:
-    "@sanity/icons" "^1.1.1"
-    "@sanity/ui" "0.33.29"
-    prop-types "15.7.2"
-    styled-components "^5.3.0"
-
 "@webriq-pagebuilder/sanity-plugin-schema-blog@^1.0.7-gpt3.1":
   version "1.0.7-gpt3.1"
   resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-blog/-/sanity-plugin-schema-blog-1.0.7-gpt3.1.tgz#9c96ba7de01b9523f57e9e254fac58f90bea7699"
