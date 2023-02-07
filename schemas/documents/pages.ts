@@ -42,7 +42,7 @@ export default defineType({
       options: {
         source: "title",
         maxLength: 96,
-        //isUnique: isSlugUnique,
+        isUnique: isSlugUnique,
       },
     }),
     // defineField({

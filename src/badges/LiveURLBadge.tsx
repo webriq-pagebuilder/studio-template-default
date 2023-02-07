@@ -1,7 +1,7 @@
 import React from "react"
 import { SANITY_STUDIO_DEV_SITE_URL, SANITY_STUDIO_PRODUCTION_SITE_URL } from "../config"
 
-export function LiveURLBadge(props) {
+export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }) {
   const { type } = props
   let siteUrl = SANITY_STUDIO_DEV_SITE_URL
   if (!window.location.hostname.includes("localhost")) {
