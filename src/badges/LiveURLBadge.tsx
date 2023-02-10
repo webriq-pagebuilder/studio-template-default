@@ -81,7 +81,7 @@ export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }
   }
 }
 
-const Link = ({ target, isPublished }) => {
+const Link = ({ target, isPublished }: { target: string; isPublished: boolean }) => {
   return (
     <a
       onClick={() => (isPublished ? window.open(target) : null)}

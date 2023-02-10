@@ -1,4 +1,7 @@
 import pages from "./documents/pages"
+import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default"
+
+const baseSchemaArray = Object.values(baseSchema)
 
 // import { mergeReplaceAndAdd } from "../src/utils";
 
@@ -14,4 +17,4 @@ import pages from "./documents/pages"
 // const allSchemas = mergeReplaceAndAdd(baseSchemaArray, commerceSchemaArray);
 
 //export default [pages, ...allSchemas, ...blogSchemaArray];
-export const schemaTypes = [pages]
+export const schemaTypes = [pages, ...baseSchemaArray]
