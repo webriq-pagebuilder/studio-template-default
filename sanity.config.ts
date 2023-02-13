@@ -11,13 +11,12 @@ import {
   SANITY_STUDIO_API_PROJECT_ID,
 } from "./src/config"
 import { media } from "sanity-plugin-media"
-import baseSchema from "@webriq-pagebuilder/sanity-plugin-schema-default"
 
 export default defineConfig({
   title: SANITY_STUDIO_PROJECT_NAME,
   projectId: SANITY_STUDIO_API_PROJECT_ID,
   dataset: SANITY_STUDIO_DATASET,
-  plugins: [deskStructure, visionTool(), media(), baseSchema],
+  plugins: [deskStructure, visionTool(), media()],
   tools: (prev) => {
     // 👇 Uses environment variables set by Vite in development mode
     if (import.meta.env.DEV) {
