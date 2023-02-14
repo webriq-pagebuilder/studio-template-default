@@ -23,7 +23,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.2.5",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "3.0.1-sanity-v3.0.1",
-    "@webriq-pagebuilder/sanity-plugin-schema-default": "3.0.1-sanity-v3.0.2",
+    "@webriq-pagebuilder/sanity-plugin-schema-default": "3.0.1-sanity-v3.0.4",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog": "3.0.1-sanity-v3.0.2",
     "crypto-js": "^4.1.1",
     "get-it": "^4.1.4",
