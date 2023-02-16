@@ -10,8 +10,9 @@ import {
   SANITY_STUDIO_DATASET,
   SANITY_STUDIO_API_PROJECT_ID,
 } from "./src/config"
-import { media } from "sanity-plugin-media"
+import { media, mediaAssetSource } from "sanity-plugin-media"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
+import { DefaultStudioTheme } from "./src/brand/styles/theme"
 
 export default defineConfig({
   title: SANITY_STUDIO_PROJECT_NAME,
@@ -28,6 +29,12 @@ export default defineConfig({
   studio: {
     components: {
       logo: Logo,
+    },
+  },
+  theme: DefaultStudioTheme,
+  form: {
+    image: {
+      assetSources: () => [mediaAssetSource],
     },
   },
   schema: {
