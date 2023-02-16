@@ -108,12 +108,12 @@ export default defineType({
         //   type: "reference",
         //   to: [{ type: "featuredProducts" }],
         // }),
-        // defineArrayMember({
-        //   title: "Pricing",
-        //   name: "pricing",
-        //   type: "reference",
-        //   to: [{ type: "pricing" }],
-        // }),
+        defineArrayMember({
+          title: "Pricing",
+          name: "pricing",
+          type: "reference",
+          to: [{ type: "pricing" }],
+        }),
         // defineArrayMember({
         //   title: "Product Info",
         //   name: "productInfo",
