@@ -1,0 +1,97 @@
+{
+  "name": "@webriq-pagebuilder/sanity-plugin-schema-commerce",
+  "version": "3.0.0",
+  "description": "Commerce schema for WebriQ Studio in Sanity Studio V3",
+  "keywords": [
+    "sanity",
+    "sanity-plugin",
+    "schema-commerce"
+  ],
+  "homepage": "https://github.com/webriq-pagebuilder/sanity-packages#readme",
+  "bugs": {
+    "url": "https://github.com/webriq-pagebuilder/sanity-packages/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webriq-pagebuilder/sanity-packages.git"
+  },
+  "license": "MIT",
+  "author": "WebriQ <info@webriq.com>",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "source": "./src/index.ts",
+      "require": "./lib/index.js",
+      "import": "./lib/index.esm.js",
+      "default": "./lib/index.esm.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.js",
+  "module": "./lib/index.esm.js",
+  "source": "./src/index.ts",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "sanity.json",
+    "src",
+    "v2-incompatible.js"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict && pkg-utils --strict",
+    "clean": "rimraf lib",
+    "link-watch": "plugin-kit link-watch",
+    "lint": "eslint .",
+    "prepublishOnly": "pkg-utils build",
+    "test": "echo 'no tests'",
+    "watch": "pkg-utils watch --strict",
+    "format": "prettier --write --cache --ignore-unknown .",
+    "verify": "npx @sanity/plugin-kit verify-package"
+  },
+  "dependencies": {
+    "@sanity/client": "^4.0.1",
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/ui": "1.2.4",
+    "@webriq-pagebuilder/sanity-plugin-input-component-variants": "3.0.1-sanity-v3.0.2",
+    "@webriq-pagebuilder/sanity-plugin-schema-default": "3.0.1-sanity-v3.0.5",
+    "nanoid": "^3.1.30",
+    "react-icons": "^4.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18",
+    "sanity": "^3",
+    "styled-components": "^5.2"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "prettier": {
+    "semi": true
+  },
+  "gitHead": "491875fd0f65ee6262cf3957919114f20c19c757",
+  "sanityPlugin": {
+    "linkWatch": {
+      "command": "npm run watch",
+      "extensions": "js,png,svg,gif,jpeg,css"
+    },
+    "verifyPackage": {
+      "packageName": true,
+      "module": true,
+      "tsconfig": true,
+      "tsc": false,
+      "dependencies": true,
+      "rollupConfig": true,
+      "babelConfig": true,
+      "sanityV2Json": true,
+      "eslintImports": false,
+      "scripts": false,
+      "pkg-utils": true,
+      "nodeEngine": true
+    }
+  },
+  "yalcSig": "7a59aa88d1ebdabb3028c0afc86d285d"
+}
