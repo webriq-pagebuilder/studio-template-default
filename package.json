@@ -22,6 +22,7 @@
   "dependencies": {
     "@sanity/icons": "^2.2.2",
     "@sanity/image-url": "^1.0.2",
+    "@sanity/studio-secrets": "^2.0.2",
     "@sanity/vision": "^3.4.0",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "3.0.1-sanity-v3.0.1",
     "@webriq-pagebuilder/sanity-plugin-schema-commerce": "link:.yalc/@webriq-pagebuilder/sanity-plugin-schema-commerce",
@@ -38,7 +39,6 @@
     "sanity": "^3.4.0",
     "sanity-plugin-iframe-pane": "^2.1.1",
     "sanity-plugin-media": "^2.0.5",
-    "sanity-secrets": "^0.1.0",
     "styled-components": "^5.2.0",
     "uuidv4": "^6.2.7"
   },

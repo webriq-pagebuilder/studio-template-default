@@ -1839,6 +1839,14 @@
     scroll-into-view-if-needed "^2.2.20"
     tiny-invariant "1.0.6"
 
+"@sanity/studio-secrets@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@sanity/studio-secrets/-/studio-secrets-2.0.2.tgz#6ed5c81a2d7dbcb1afbe5bcbd67fb36fc8cc48b1"
+  integrity sha512-XVA+08yGwgT4AB87KK6FpNMPfmbvW4VGJywGLQGwvG1WoxjZxnqoy3bKalGNqnMg1CuCKsVoLMtepcr8ylQ6HA==
+  dependencies:
+    "@sanity/incompatible-plugin" "^1.0.4"
+    "@sanity/ui" "^1.0.0"
+
 "@sanity/timed-out@^4.0.2":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@sanity/timed-out/-/timed-out-4.0.2.tgz#c9f61f9a1609baa1eb3e4235a24ea2a775022cdf"
@@ -5907,11 +5915,6 @@ sanity-plugin-media@^2.0.5:
     redux-observable "^2.0.0"
     rxjs "^7.0.0"
     yup "^0.32.11"
-
-sanity-secrets@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/sanity-secrets/-/sanity-secrets-0.1.0.tgz#87c4ea6e3568957dad98d5b191655e582f0a9cc8"
-  integrity sha512-Lm1c4Cv7+0vLUA8Yp214oABwGkJ0AenYIE/og6Y37I6CUU3zSR62iAeWxhuwYvW9We4mCcEn/JxmcbUqE0Azyw==
 
 sanity@^3.4.0:
   version "3.4.0"

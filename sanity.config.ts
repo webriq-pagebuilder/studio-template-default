@@ -13,6 +13,8 @@ import {
 import { media, mediaAssetSource } from "sanity-plugin-media"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
 import { DefaultStudioTheme } from "./src/brand/styles/theme"
+import { ResolveDocumentActions } from "./src/documentActions"
+
 
 export default defineConfig({
   title: SANITY_STUDIO_PROJECT_NAME,
@@ -42,11 +44,6 @@ export default defineConfig({
   },
   document: {
     badges: [LiveURLBadge, SectionBadge],
-    //   actions: (prev, { schemaType }) => {
-    //     if (schemaType === "settings") {
-    //       return prev.filter(({ action }) => !["unpublish", "delete", "duplicate"].includes(action))
-    //     }
-    //     return prev
-    //   },
+    actions: (prev, { schemaType }) => ResolveDocumentActions({prev, schemaType}),
   },
 })
