@@ -12,5 +12,5 @@ tsconfig.tsbuildinfo
 .env*
 
 # pkg-utils
-#.yalc
-#yalc.lock
+.yalc
+yalc.lock

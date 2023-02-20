@@ -2302,10 +2302,10 @@
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-webriq-forms@3.0.3-sanity-v3.2.0":
-  version "3.0.3-sanity-v3.2.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-3.0.3-sanity-v3.2.0.tgz#2a2d9aebe11d29a613701af768d3562be62c7fb7"
-  integrity sha512-G7clO4MekTgTzs3qFSBabR6M1VxAi0IXB+do6BIyC4P9FcX1h0PBIn0FLPRDK9X+IsDW8XxtSxHWbJ7Gy4z1LA==
+"@webriq-pagebuilder/sanity-plugin-webriq-forms@3.0.3-sanity-v3.2.1":
+  version "3.0.3-sanity-v3.2.1"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-forms/-/sanity-plugin-webriq-forms-3.0.3-sanity-v3.2.1.tgz#dfb55541ac65fae8a61bf9ee05587815264fa6d6"
+  integrity sha512-jeZbQGkLK04njUJhNstlbGimsQMYyieLaLmUlPRy6haxWqbHEZFkcIjw/m+egAbZlM1IOCx+QL+0AEauueoyVw==
   dependencies:
     "@sanity/icons" "^2.2.2"
     "@sanity/incompatible-plugin" "^1.0.4"
