@@ -12,6 +12,7 @@ import {
 } from "./src/config"
 import { media, mediaAssetSource } from "sanity-plugin-media"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
+import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
 import { DefaultStudioTheme } from "./src/brand/styles/theme"
 import { ResolveDocumentActions } from "./src/documentActions"
 
@@ -20,7 +21,7 @@ export default defineConfig({
   title: SANITY_STUDIO_PROJECT_NAME,
   projectId: SANITY_STUDIO_API_PROJECT_ID,
   dataset: SANITY_STUDIO_DATASET,
-  plugins: [deskStructure, visionTool(), webriqBlog(), media()],
+  plugins: [deskStructure, visionTool(), webriqForms(), webriqBlog(), media()],
   tools: (prev) => {
     // 👇 Uses environment variables set by Vite in development mode
     if (import.meta.env.DEV) {
