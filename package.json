@@ -26,7 +26,7 @@
     "@sanity/vision": "^3.4.0",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "3.0.3-sanity-v3.2.0",
     "@webriq-pagebuilder/sanity-plugin-schema-commerce": "3.0.3-sanity-v3.2.0",
-    "@webriq-pagebuilder/sanity-plugin-schema-default": "3.0.3-sanity-v3.2.0",
+    "@webriq-pagebuilder/sanity-plugin-schema-default": "3.0.3-sanity-v3.2.1",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog": "3.0.3-sanity-v3.2.0",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "3.0.3-sanity-v3.2.0",
     "crypto-js": "^4.1.1",

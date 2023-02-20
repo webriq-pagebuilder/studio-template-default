@@ -2278,10 +2278,10 @@
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@3.0.3-sanity-v3.2.0":
-  version "3.0.3-sanity-v3.2.0"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-3.0.3-sanity-v3.2.0.tgz#85e9e194cd23429e116b63b0f9bde9f412efe0e2"
-  integrity sha512-UEIVovoMGQNJZZLrJHnSyetBC6JgNFwDTFNeAYeZEljXtk1bVIV//0S75LxTsgzvpaIQ4Y4ondBj7GFH3aNxEA==
+"@webriq-pagebuilder/sanity-plugin-schema-default@3.0.3-sanity-v3.2.1":
+  version "3.0.3-sanity-v3.2.1"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-3.0.3-sanity-v3.2.1.tgz#64767f0103f9faf5bc2bfa56f0ae3dc128569c1d"
+  integrity sha512-FERRtVrWvoGnlJmbWfm9BUZl7Z30Oc9jq49vukHFKJXkIt2QpLRwWMefswc/w7uL/prrf4Zq9uyERbsyx9y//g==
   dependencies:
     "@sanity/client" "^4.0.1"
     "@sanity/incompatible-plugin" "^1.0.4"
