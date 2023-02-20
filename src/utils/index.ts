@@ -3,7 +3,7 @@
 */
 import { SANITY_STUDIO_IN_CSTUDIO } from "../config";
 
-export const mergeReplaceAndAdd = (existingItems, newItems) => {
+export const mergeReplaceAndAdd = (existingItems: any, newItems: any) => {
   const updatedItems = existingItems.map((existingItem) => {
     const searchedIndex = newItems
       .map((newItem) => newItem.name)

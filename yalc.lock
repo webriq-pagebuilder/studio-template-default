@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "@webriq-pagebuilder/sanity-plugin-schema-commerce": {
-      "signature": "7a59aa88d1ebdabb3028c0afc86d285d",
-      "link": true
-    }
-  }
-}
