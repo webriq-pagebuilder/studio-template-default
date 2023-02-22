@@ -23,7 +23,7 @@
     "@sanity/icons": "^2.2.2",
     "@sanity/image-url": "^1.0.2",
     "@sanity/studio-secrets": "^2.0.2",
-    "@sanity/vision": "^3.4.0",
+    "@sanity/vision": "^3.5.0",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "3.0.3-sanity-v3.2.0",
     "@webriq-pagebuilder/sanity-plugin-schema-commerce": "3.0.3-sanity-v3.2.1",
     "@webriq-pagebuilder/sanity-plugin-schema-default": "3.0.3-sanity-v3.2.1",
