@@ -1,0 +1,43 @@
+/* ./src/brand/styles/variables.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+:root {
+  /* Typography */
+  --font-family-sans-serif: "Open Sans";
+  --font-size-base: 18px;
+  --text-color: var(--brand-secondary--inverted);
+}
+
+/* Cosmetic: Remove border-right of tools menu */
+div[data-ui="Navbar"] > div > div:first-child > div:last-child {
+  border-right: 0 !important;
+}
+
+/* Hide every thing in the right navbar */
+div[data-ui="Navbar"] > div > div:last-child {
+  display: none !important;
+}
+
+/*  Fallback: Hide manage project from menu */
+a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"],
+a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"] + hr
+{
+  display: none !important;
+}
+
+/* Fallback: Hide user and logout popover from menu */
+button#presence-menu,
+button#login-status-menu {
+  display: none !important;
+}
+
+/* Desktop: when using field groups, we hide the first tab */
+[data-ui="TabList"][data-testid="field-group-tabs"] > div:first-child {
+  display: none;
+}
+
+/* Mobile: when using field groups, hide the first option */
+select[data-testid="field-group-select"] > option:first-child {
+  display: none;
+}

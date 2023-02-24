@@ -8,7 +8,8 @@ import {
 // desk customization
 import deskStructure from "./src/deskStructure"
 import { Logo } from "./src/brand/logo"
-import { DefaultStudioTheme } from "./src/brand/styles/theme"
+import { DefaultStudioTheme } from "./src/brand/theme"
+import "./global.css"
 
 // document badge and action
 import { LiveURLBadge } from "./src/badges/LiveURLBadge"
@@ -19,8 +20,8 @@ import { ResolveDocumentActions } from "./src/documentActions"
 import { schemaTypes } from "./schemas/schema"
 
 // plugins
-import { visionTool } from "@sanity/vision"
 import { media, mediaAssetSource } from "sanity-plugin-media"
+import { visionTool } from "@sanity/vision"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
 import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
 import { webriqPayments } from "@webriq-pagebuilder/sanity-plugin-webriq-payments"
@@ -30,10 +31,17 @@ export default defineConfig({
   title: SANITY_STUDIO_PROJECT_NAME,
   projectId: SANITY_STUDIO_API_PROJECT_ID,
   dataset: SANITY_STUDIO_DATASET,
-  plugins: [deskStructure, visionTool(), webriqForms(), webriqPayments(), webriqBlog(), media()],
+  plugins: [
+    deskStructure, 
+    visionTool(), 
+    webriqForms(), 
+    webriqPayments(), 
+    webriqBlog(), 
+    media()
+  ],
   tools: (prev) => {
     // 👇 Uses environment variables set by Vite in development mode
-    if (import.meta.env.DEV) {
+    if (process.env.NODE_ENV !== "production") {
       return prev
     }
     return prev.filter((tool) => tool.name !== "vision")

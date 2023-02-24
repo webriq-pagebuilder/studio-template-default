@@ -26,8 +26,8 @@ export const DefaultStudioTheme = buildLegacyTheme({
   "--default-button-color": "#666",
   "--default-button-primary-color": props["--webriq-blue"],
   "--default-button-success-color": props["--webriq-blue"],
-  "--default-button-warning-color": props["--state-warning-color"],
-  "--default-button-danger-color": props["--state-danger-color"],
+  "--default-button-warning-color": props["--webriq-blue"],
+  "--default-button-danger-color": props["--webriq-blue"],
 
   /* State */
   "--state-info-color": props["--webriq-blue"],
@@ -39,5 +39,5 @@ export const DefaultStudioTheme = buildLegacyTheme({
   "--main-navigation-color": props["--brand-secondary"],
   "--main-navigation-color--inverted": props["--studio-white"],
 
-  "--focus-color": props["--webriq-blue"],
+  "--focus-color": props["--webriq-blue"]
 })
