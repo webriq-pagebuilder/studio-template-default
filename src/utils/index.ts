@@ -21,18 +21,18 @@ export const mergeReplaceAndAdd = (existingItems: any, newItems: any) => {
       all = [...all, current];
     }
 
-    // // If C-Studio is disabled, then C-Studio fields should be read-only
-    // if (SANITY_STUDIO_IN_CSTUDIO === "false") {
-    //   return all?.map((items) => ({
-    //     ...items,
-    //     readOnly: true, // sets live editing of C-Studio schema documents to false
-    //     __experimental_actions: [
-    //       // hide options for creating and deleting documents from C-Studio schema
-    //       /*'create',*/ "update",
-    //       /*'delete',*/ "publish",
-    //     ],
-    //   }));
-    // }
+    // If C-Studio is disabled, then C-Studio fields should be read-only
+    if (SANITY_STUDIO_IN_CSTUDIO === "false") {
+      return all?.map((items) => ({
+        ...items,
+        readOnly: true, // sets live editing of C-Studio schema documents to false
+        __experimental_actions: [
+          // hide options for creating and deleting documents from C-Studio schema
+          /*'create',*/ "update",
+          /*'delete',*/ "publish",
+        ],
+      }));
+    }
 
     return all;
   }, []);
