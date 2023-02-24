@@ -3,6 +3,24 @@
 */
 import { SANITY_STUDIO_IN_CSTUDIO } from "../config";
 
+const CStudioSchema = [
+  "allProducts",
+  "featuredProducts",
+  "navigation",
+  "pages_productInfo",
+  "slot_productInfo",
+  "slot_collectionInfo",
+  "slotCart",
+  "slotWishlist",
+  "mainProduct",
+  "mainCollection",
+  "productSettings",
+  "collectionSettings",
+  "cartPage",
+  "wishlistPage",
+  "searchPage"
+]
+
 export const mergeReplaceAndAdd = (existingItems: any, newItems: any) => {
   const updatedItems = existingItems.map((existingItem) => {
     const searchedIndex = newItems
@@ -21,21 +39,28 @@ export const mergeReplaceAndAdd = (existingItems: any, newItems: any) => {
       all = [...all, current];
     }
 
-    // If C-Studio is disabled, then C-Studio fields should be read-only
-    if (SANITY_STUDIO_IN_CSTUDIO === "false") {
-      return all?.map((items) => ({
-        ...items,
-        readOnly: true, // sets live editing of C-Studio schema documents to false
-        __experimental_actions: [
-          // hide options for creating and deleting documents from C-Studio schema
-          /*'create',*/ "update",
-          /*'delete',*/ "publish",
-        ],
-      }));
-    }
-
     return all;
   }, []);
 
-  return [...updatedItems, ...additionalSchemas];
+  const mergedSchemas = [...updatedItems, ...additionalSchemas]
+
+  // If C-Studio is disabled, then C-Studio fields should be read-only
+  if(SANITY_STUDIO_IN_CSTUDIO === "false") {
+    return mergedSchemas?.map((items) => {
+      if(CStudioSchema.includes(items?.name)) {
+        return {
+          ...items,
+          readOnly: true, // sets live editing of C-Studio schema documents to false
+          __experimental_actions: [
+            // hide options for creating and deleting documents from C-Studio schema
+            /*'create',*/ "update",
+            /*'delete',*/ "publish",
+          ],
+        }
+      }
+      return items
+    })
+  }
+
+  return mergedSchemas;
 };
