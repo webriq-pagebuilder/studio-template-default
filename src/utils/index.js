@@ -46,7 +46,7 @@ export const mergeReplaceAndAdd = (existingItems, newItems) => {
 
   // If C-Studio is disabled, then C-Studio fields should be read-only
   if(SANITY_STUDIO_IN_CSTUDIO === "false") {
-    return newSchema?.map((items) => {
+    return mergedSchemas?.map((items) => {
       if(CStudioSchema.includes(items?.name)) {
         return {
           ...items,
