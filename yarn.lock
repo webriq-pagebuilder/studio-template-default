@@ -1910,7 +1910,7 @@
     react-popper "^2.2.5"
     react-refractor "^2.1.4"
 
-"@sanity/ui@^1.0.0", "@sanity/ui@^1.0.14":
+"@sanity/ui@^1.0.0", "@sanity/ui@^1.0.14", "@sanity/ui@^1.2.5":
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.2.5.tgz#256beb18547429490f107d3ee43cb5f84d57164b"
   integrity sha512-4DJNpmZMTrZQSLF8L8FyDjd99F6ovbIbcr0B/83S75zPX36ztgPjVdmdZQVMD7c1QNL+NqLt29fu60hzYM1Ijw==
@@ -3036,7 +3036,7 @@ dataloader@^2.1.0:
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-2.2.2.tgz#216dc509b5abe39d43a9b9d97e6e5e473dfbe3e0"
   integrity sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g==
 
-date-fns@^2.21.3, date-fns@^2.26.1, date-fns@^2.27.0:
+date-fns@^2.21.3, date-fns@^2.26.1, date-fns@^2.27.0, date-fns@^2.29.3:
   version "2.29.3"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.3.tgz#27402d2fc67eb442b511b70bbdf98e6411cd68a8"
   integrity sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==
