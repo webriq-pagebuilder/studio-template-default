@@ -41,6 +41,15 @@ export const ResolveDocumentActions = (props) => {
       ]?.includes(schemaType)
     ) {
       return [createProductsPublishAction, ...prev.filter(({ action }) => ["discardChanges", "unpublish"].includes(action))];
+    } else if (
+      [
+        "slotProductInfo",
+        "slotCollectionInfo",
+        "slotCart",
+        "slotWishlist",
+      ]?.includes(schemaType)
+    ) {
+      return []; // hide document actions for default slot sections (all are read only)
     } else if (schemaType === "mainProduct") {
       // use a custom publish action function for mainProduct documents
       return [createMainProductPublishAction, ...prev.filter(({ action }) => ["discardChanges", "unpublish", "duplicate", "delete"].includes(action))];
