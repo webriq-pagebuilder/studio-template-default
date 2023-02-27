@@ -2286,10 +2286,10 @@
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-commerce@3.0.3-sanity-v3.2.5":
-  version "3.0.3-sanity-v3.2.5"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-3.0.3-sanity-v3.2.5.tgz#e6ff3fa967302fc7d615ffa898751d1890f2f73a"
-  integrity sha512-8BcBelfYGn39CUDe0zOwpjPJna4t4YBUbFf/+62EYomsHL6ec9cBDZl9JN+xmioQ1FBTv+JZgmhpF2K2BnEgYQ==
+"@webriq-pagebuilder/sanity-plugin-schema-commerce@3.0.3-sanity-v3.2.6":
+  version "3.0.3-sanity-v3.2.6"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-3.0.3-sanity-v3.2.6.tgz#e1f72f1b246ad475bb79f8295b069a0a29c3756e"
+  integrity sha512-VaYP9alLsVSvBJaKSDEWuAAcveGpK1fkDr5Sb9rfEqTuTMKZ8csXP9OTNp4vJsGbGxJ6WFYO07X4rF1WSZKo8Q==
   dependencies:
     "@sanity/client" "^4.0.1"
     "@sanity/incompatible-plugin" "^1.0.4"

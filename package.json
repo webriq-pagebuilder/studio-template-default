@@ -25,7 +25,7 @@
     "@sanity/studio-secrets": "^2.0.2",
     "@sanity/vision": "^3.5.0",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "3.0.3-sanity-v3.2.0",
-    "@webriq-pagebuilder/sanity-plugin-schema-commerce": "3.0.3-sanity-v3.2.5",
+    "@webriq-pagebuilder/sanity-plugin-schema-commerce": "3.0.3-sanity-v3.2.6",
     "@webriq-pagebuilder/sanity-plugin-schema-default": "3.0.3-sanity-v3.2.5",
     "@webriq-pagebuilder/sanity-plugin-webriq-blog": "3.0.3-sanity-v3.2.2",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "3.0.3-sanity-v3.2.3",
