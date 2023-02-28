@@ -1,6 +1,8 @@
 /* eslint-disable react/no-multi-comp, react/no-did-mount-set-state, react/prop-types */
+import React from "react"
+import { Select } from "@sanity/ui" 
 import filters from "./filters.svg"
-import styles from "./ColorblindPreview.css"
+import "./ColorblindPreview.css"
 
 const FILTER_ITEMS = [
   { title: "Protanopia", value: "protanopia" },
@@ -14,8 +16,71 @@ const FILTER_ITEMS = [
   { title: "No filter", value: null },
 ]
 
-function ColorblindPreview() {
-  return <div>COLORBLIND PREVIEW</div>
+const assembleProjectUrl = ({ displayed, options }) => {
+  const { slug } = displayed
+  const { previewURL } = options
+  if (!slug || !previewURL) {
+    console.warn("Missing slug or previewURL", { slug, previewURL })
+    return ""
+  }
+  return `${previewURL}${slug.current}`
+}
+
+function ColorblindPreview (props) {
+  const { document, options } = props
+  const { displayed } = document
+
+  const [activeFilter, setActiveFilter] = React.useState(FILTER_ITEMS[0])
+  const url = assembleProjectUrl({ displayed, options })
+
+  const filterStyle = {
+    filter: activeFilter.value
+      ? `url('${filters}#${activeFilter.value}')`
+      : "none",
+  }
+
+  const handleFilterChange = (filter) => {
+    setActiveFilter(filter)
+  }
+
+  if (!displayed) {
+    return (
+      <div className="componentWrapper">
+        <p>There is no document to preview</p>
+      </div>
+    )
+  }
+
+  if (!url) {
+    return (
+      <div className="componentWrapper">
+        <p>Hmm. Having problems constructing the web front-end URL.</p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="componentWrapper">
+      <div className="filterDropdown">
+        <label className="dropdownLabel" htmlFor={"select-filter"}>
+          Select a filter:
+        </label>
+        <Select
+          fontSize={2}
+          onChange={handleFilterChange}
+        >
+          {FILTER_ITEMS?.map((filter, index) => (
+            <option key={index} value={filter.value}>
+              {filter.title}
+            </option>
+          ))}
+        </Select>
+      </div>
+      <div className="iframeContainer" style={filterStyle}>
+        <iframe src={url} />
+      </div>
+    </div>
+  )
 }
 
 export default ColorblindPreview

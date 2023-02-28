@@ -31,6 +31,7 @@
     "@webriq-pagebuilder/sanity-plugin-webriq-blog": "3.0.3-sanity-v3.2.2",
     "@webriq-pagebuilder/sanity-plugin-webriq-forms": "3.0.3-sanity-v3.2.3",
     "@webriq-pagebuilder/sanity-plugin-webriq-payments": "3.0.1-sanity-v3.2.2",
+    "braille": "^1.1.0",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
     "get-it": "^4.1.4",
