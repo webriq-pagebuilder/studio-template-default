@@ -26,6 +26,8 @@ import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
 import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
 import { webriqPayments } from "@webriq-pagebuilder/sanity-plugin-webriq-payments"
 
+// Open preview
+import resolveProductionUrl from "./src/resolvePreviewUrl"
 
 export default defineConfig({
   title: SANITY_STUDIO_PROJECT_NAME,
@@ -63,5 +65,12 @@ export default defineConfig({
   document: {
     badges: [LiveURLBadge, SectionBadge],
     actions: (prev, { schemaType }) => ResolveDocumentActions({prev, schemaType}),
+    // Open preview link
+    productionUrl: async (prev, context) => {
+      // context includes the client and other details
+      const { document } = context
+
+      return resolveProductionUrl(document)
+    }
   },
 })

@@ -3,9 +3,9 @@ import {
   SANITY_STUDIO_DEV_SITE_URL,
   SANITY_STUDIO_PRODUCTION_SITE_URL,
 } from "./config"
-import type { SanityDocument } from "sanity"
+import type { SanityDocumentLike } from "sanity"
 
-export default function resolveProductionUrl(doc: SanityDocument & { slug?: { current: string } }) {
+export default function resolveProductionUrl(doc: SanityDocumentLike & { slug?: { current: string } }) {
   const currentSlug = doc?.slug?.current || ""
   const previewUrl = `api/preview?secret=${SANITY_STUDIO_PREVIEW_SECRET}&slug=${currentSlug}`
 
