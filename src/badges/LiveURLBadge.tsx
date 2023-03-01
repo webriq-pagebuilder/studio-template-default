@@ -1,7 +1,8 @@
 import React from "react"
+import { DocumentBadgeDescription, DocumentBadgeProps } from "sanity"
 import { SANITY_STUDIO_DEV_SITE_URL, SANITY_STUDIO_PRODUCTION_SITE_URL } from "../config"
 
-export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }) {
+export function LiveURLBadge(props: DocumentBadgeProps): DocumentBadgeDescription {
   const { type } = props
   let siteUrl = SANITY_STUDIO_DEV_SITE_URL
   if (!window.location.hostname.includes("localhost")) {
@@ -9,22 +10,7 @@ export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }
   }
   const isPublished = !props.draft
 
-  if (["page", "post"].includes(type)) {
-    return {
-      label: (
-        <Link
-          target={`${siteUrl}/${
-            isPublished ? props?.published?.slug?.current : props?.draft?.slug?.current ?? ""
-          }`}
-          isPublished={isPublished}
-        />
-      ),
-      title: isPublished
-        ? "Open LIVE URL in a new window!"
-        : "Publish document first to open LIVE URL",
-      color: isPublished ? "success" : "caution",
-    }
-  } else if (type === "mainProduct") {
+  if (type === "mainProduct") {
     return {
       label: (
         <Link
@@ -37,7 +23,7 @@ export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }
       title: isPublished
         ? "Open LIVE URL in a new window!"
         : "Publish document first to open LIVE URL",
-      color: isPublished ? "success" : "caution",
+      color: isPublished ? "success" : "warning",
     }
   } else if (type === "mainCollection") {
     return {
@@ -52,7 +38,7 @@ export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }
       title: isPublished
         ? "Open LIVE URL in a new window!"
         : "Publish document first to open LIVE URL",
-      color: isPublished ? "success" : "caution",
+      color: isPublished ? "success" : "warning",
     }
   } else if (type === "cartPage") {
     return {
@@ -60,7 +46,7 @@ export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }
       title: isPublished
         ? "Open LIVE URL in a new window!"
         : "Publish document first to open LIVE URL",
-      color: isPublished ? "success" : "caution",
+      color: isPublished ? "success" : "warning",
     }
   } else if (type === "wishlistPage") {
     return {
@@ -68,7 +54,7 @@ export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }
       title: isPublished
         ? "Open LIVE URL in a new window!"
         : "Publish document first to open LIVE URL",
-      color: isPublished ? "success" : "caution",
+      color: isPublished ? "success" : "warning",
     }
   } else if (type === "searchPage") {
     return {
@@ -76,8 +62,24 @@ export function LiveURLBadge(props: { draft?: any; published?: any; type?: any }
       title: isPublished
         ? "Open LIVE URL in a new window!"
         : "Publish document first to open LIVE URL",
-      color: isPublished ? "success" : "caution",
+      color: isPublished ? "success" : "warning",
     }
+  }
+
+  // page and post or any document type without /sub-route e.g. /[slug]
+  return {
+    label: (
+      <Link
+        target={`${siteUrl}/${
+          isPublished ? props?.published?.slug?.current : props?.draft?.slug?.current ?? ""
+        }`}
+        isPublished={isPublished}
+      />
+    ),
+    title: isPublished
+      ? "Open LIVE URL in a new window!"
+      : "Publish document first to open LIVE URL",
+    color: isPublished ? "success" : "warning",
   }
 }
 

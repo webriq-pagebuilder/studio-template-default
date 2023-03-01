@@ -1,3 +1,5 @@
+import { DocumentBadgeDescription, DocumentBadgeProps } from "sanity"
+
 export const sections = [
   "navigation",
   "featuredProducts",
@@ -61,7 +63,7 @@ function sectionName(section: string) {
   }
 }
 
-export function SectionBadge(props: { type: any }) {
+export function SectionBadge(props: DocumentBadgeProps): DocumentBadgeDescription {
   const { type } = props
 
   if (sections.includes(type)) {
