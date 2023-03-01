@@ -19,6 +19,10 @@ div[data-ui="Navbar"] > div > div:last-child {
   display: none !important;
 }
 
+div[data-ui="Card"] {
+  min-height: fit-content;
+}
+
 /*  Fallback: Hide manage project from menu */
 a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"],
 a[data-ui="MenuItem"][href^="https://sanity.io/manage/project"] + hr
