@@ -1,7 +1,8 @@
 import type { SanityDocument } from "sanity"
 import { StructureBuilder } from "sanity/desk";
 
-import { EditIcon, EyeOpenIcon, EarthGlobeIcon, UserIcon } from "@sanity/icons"
+import { EditIcon, EyeOpenIcon, EarthGlobeIcon } from "@sanity/icons"
+import { BiBody } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md"
 
 import Iframe from "sanity-plugin-iframe-pane"
@@ -66,9 +67,9 @@ export const Page = (S: StructureBuilder) => {
 						S.view
 							.component(TextToSpeechPreview)
 							.options({ fields: ["title", "excerpt", "body"] })
-							.icon(UserIcon)
+							.icon(BiBody)
 							.title("Text to speech"),
-						S.view.component(BraillePreview).icon(UserIcon).title("Braille"),
+						S.view.component(BraillePreview).icon(BiBody).title("Braille"),
 					])
 				)
 		);
