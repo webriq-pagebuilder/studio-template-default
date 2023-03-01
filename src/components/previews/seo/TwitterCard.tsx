@@ -2,6 +2,7 @@
 import React from "react";
 import { useClient } from "sanity";
 import imageUrlBuilder from "@sanity/image-url";
+import { format } from "date-fns"
 import { assemblePageUrl } from "./frontendUtils";
 import "./styles/TwitterCard.css";
 
@@ -24,6 +25,8 @@ function TwitterCard (props) {
   const url = assemblePageUrl({ document, options });
   const websiteUrlWithoutProtocol = url.split("://").pop();
 
+  const date = format(new Date(document?._updatedAt), "MMM dd")
+
   return (
     <div className="seoItem">
       <h3>Twitter card preview</h3>
@@ -41,7 +44,7 @@ function TwitterCard (props) {
             <span className="tweetAuthorName">{author.name}</span>
             <span className="tweetAuthorHandle">@{author.handle}</span>
             <span className="tweetBullet">•</span>
-            <span className="tweetAuthorHandle">44m</span>
+            <span className="tweetAuthorHandle">{date}</span>
           </div>
         )}
 

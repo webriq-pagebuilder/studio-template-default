@@ -8,7 +8,7 @@ function GoogleSearchResult (props) {
   const { document, options, width = 500 } = props;
   const { title, seo } = document;
   const url = assemblePageUrl({ document, options });
-  const date = format(new Date(), "MMM dd, yyyy")
+  const date = format(new Date(document?._updatedAt), "MMM dd, yyyy")
 
   return (
     <div className="seoItem">
