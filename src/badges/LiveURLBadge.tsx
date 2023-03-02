@@ -1,6 +1,8 @@
 import React from "react"
 import { DocumentBadgeDescription, DocumentBadgeProps } from "sanity"
 import { SANITY_STUDIO_DEV_SITE_URL, SANITY_STUDIO_PRODUCTION_SITE_URL } from "../config"
+import { SectionBadge } from "./sectionBadge"
+
 
 export function LiveURLBadge(props: DocumentBadgeProps): DocumentBadgeDescription {
   const { type } = props
@@ -10,7 +12,23 @@ export function LiveURLBadge(props: DocumentBadgeProps): DocumentBadgeDescriptio
   }
   const isPublished = !props.draft
 
-  if (type === "mainProduct") {
+  if(["page", "post"].includes(type)) {
+    // page and post or any document type
+    return {
+      label: (
+        <Link
+          target={`${siteUrl}/${
+            isPublished ? props?.published?.slug?.current : props?.draft?.slug?.current ?? ""
+          }`}
+          isPublished={isPublished}
+        />
+      ),
+      title: isPublished
+        ? "Open LIVE URL in a new window!"
+        : "Publish document first to open LIVE URL",
+      color: isPublished ? "success" : "warning",
+    }
+  } else if (type === "mainProduct") {
     return {
       label: (
         <Link
@@ -64,22 +82,8 @@ export function LiveURLBadge(props: DocumentBadgeProps): DocumentBadgeDescriptio
         : "Publish document first to open LIVE URL",
       color: isPublished ? "success" : "warning",
     }
-  }
-
-  // page and post or any document type without /sub-route e.g. /[slug]
-  return {
-    label: (
-      <Link
-        target={`${siteUrl}/${
-          isPublished ? props?.published?.slug?.current : props?.draft?.slug?.current ?? ""
-        }`}
-        isPublished={isPublished}
-      />
-    ),
-    title: isPublished
-      ? "Open LIVE URL in a new window!"
-      : "Publish document first to open LIVE URL",
-    color: isPublished ? "success" : "warning",
+  } else {
+    return SectionBadge(props)
   }
 }
 

@@ -13,7 +13,6 @@ import "./global.css"
 
 // document badge and action
 import { LiveURLBadge } from "./src/badges/LiveURLBadge"
-import { SectionBadge } from "./src/badges/sectionBadge"
 import { ResolveDocumentActions } from "./src/documentActions"
 
 // schemas
@@ -63,7 +62,7 @@ export default defineConfig({
     types: schemaTypes,
   },
   document: {
-    badges: [LiveURLBadge, SectionBadge],
+    badges: [LiveURLBadge],
     actions: (prev, { schemaType }) => ResolveDocumentActions({prev, schemaType}),
     // Open preview link
     productionUrl: async (prev, context) => {
