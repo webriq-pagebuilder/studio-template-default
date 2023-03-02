@@ -29,8 +29,8 @@ export const processData = async (payload) => {
 
   if (type === "pricing") {
     let stripeAcc;
-    if (data?.stripeAccount) {
-      stripeAcc = JSON.parse(data.stripeAccount);
+    if (data?.selectStripeAccount) {
+      stripeAcc = JSON.parse(data.selectStripeAccount);
     }
 
     if (!stripeAcc && data) {

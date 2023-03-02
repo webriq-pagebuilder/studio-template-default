@@ -47,7 +47,7 @@ export default function createProductsPublishAction(props) {
     publish.disabled !== "ALREADY_PUBLISHED" &&
       publish.disabled !== "NO_CHANGES" &&
       create();
-  }, [isPublishing]);
+  }, [isPublishing, draft, published]);
 
   const isDisabled = validation.length !== 0 || isPublishing;
 
