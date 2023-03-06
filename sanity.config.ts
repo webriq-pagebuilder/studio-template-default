@@ -20,6 +20,7 @@ import { schemaTypes } from "./schemas/schema"
 
 // plugins
 import { media, mediaAssetSource } from "sanity-plugin-media"
+import { openaiImageAsset } from "sanity-plugin-asset-source-openai"
 import { visionTool } from "@sanity/vision"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
 import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
@@ -38,7 +39,10 @@ export default defineConfig({
     webriqForms(), 
     webriqPayments(), 
     webriqBlog(), 
-    media()
+    media(),
+    openaiImageAsset({
+      API_KEY:"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" // TODO: Update personal API key with default from WebriQ
+    })
   ],
   tools: (prev) => {
     // 👇 Uses environment variables set by Vite in development mode
@@ -53,11 +57,12 @@ export default defineConfig({
     },
   },
   theme: DefaultStudioTheme,
-  form: {
-    image: {
-      assetSources: () => [mediaAssetSource],
-    },
-  },
+  // form: {
+  //   image: {
+  //    TODO: Only mediaAssetSource and OpenAI asset source should be added here
+  //     assetSources: () => [mediaAssetSource],
+  //   },
+  // },
   schema: {
     types: schemaTypes,
   },
