@@ -4,33 +4,32 @@ import { useDocumentOperation, useValidationStatus } from "sanity";
 import { processData } from "../../stripeActions/process-data";
 
 export default function createProductsPublishAction(props) {
-  const { id, type, draft, published, onComplete } = props;
-
   const toast = useToast();
-  const { validation } = useValidationStatus(id, type);
-  const { publish } = useDocumentOperation(id, type);
+
+  const { validation } = useValidationStatus(props.id, props.type);
+  const { publish } = useDocumentOperation(props.id, props.type);
 
   const [isPublishing, setIsPublishing] = useState(false);
 
   useEffect(() => {
     // if the isPublishing state was set to true and the draft has changed
     // to become `null` the document has been published
-    if (isPublishing && !draft) {
+    if (isPublishing && !props.draft) {
       setIsPublishing(false);
     }
-  }, [props]);
+  }, [props.draft]);
 
   useEffect(() => {
-    const payload = !draft
+    const payload = !props.draft
       ? {
-          data: published?.variants,
-          variant: published?.variant,
-          type: published?._type,
+          data: props.published?.variants,
+          variant: props.published?.variant,
+          type: props.published?._type,
         }
       : {
-          data: draft?.variants,
-          variant: draft?.variant,
-          type: draft?._type,
+          data: props.draft?.variants,
+          variant: props.draft?.variant,
+          type: props.draft?._type,
         };
 
     async function create() {
@@ -46,13 +45,13 @@ export default function createProductsPublishAction(props) {
 
     publish.disabled !== "ALREADY_PUBLISHED" &&
       publish.disabled !== "NO_CHANGES" &&
-      create();
-  }, [isPublishing, draft, published]);
+    create();
+  }, [isPublishing]);
 
   const isDisabled = validation.length !== 0 || isPublishing;
 
   return {
-    disabled: !draft,
+    disabled: publish.disabled === "ALREADY_PUBLISHED" || publish.disabled === "NOT_READY" || publish.disabled === "NO_CHANGES",
     label: [
       "page",
       "post",
@@ -63,7 +62,7 @@ export default function createProductsPublishAction(props) {
       "collectionSettings",
       "cartPage",
       "wishlistPage",
-    ].includes(type) ? (
+    ].includes(props.type) ? (
       <CustomPublishLabel hasErrors={isDisabled} isPublishing={isPublishing} />
     ) : isPublishing ? (
       "Saving..."
@@ -75,10 +74,10 @@ export default function createProductsPublishAction(props) {
       setIsPublishing(true);
 
       // Perform the publish
-      publish.execute();
+      publish.execute()
 
       // Signal that the action is completed
-      onComplete();
+      props.onComplete()
     },
   };
 }

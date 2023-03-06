@@ -58,7 +58,7 @@ export const processData = async (payload) => {
       };
     }
 
-    // If variant is equal to a, b and c, then it will create the plans under pricing else it will create the annual and monthly billing
+    // If variant is equal to a or c, then will create the annual and monthly billing. Otherwise if variant is b, then it will create the plans under pricing
     if (
       variant === "variant_a" ||
       (variant === "variant_c" && stripeAcc && data?.plans && data)
@@ -286,7 +286,7 @@ export const processData = async (payload) => {
             status: 500,
             statusText: `Plan Type should not be blank on plan ${i + 1}`,
           };
-        } else if (!plans[i].price || isNaN(parseInt(plans[i].price))) {
+        } else if (!plans[i].price) {
           return {
             status: 500,
             statusText: `Price should not be blank and it should be a number on plan "${plans[i].planType}"`,
@@ -354,7 +354,7 @@ export const processData = async (payload) => {
                   product: id,
                   currency: "usd",
                   metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
-                  unit_amount: plans[i].price * 100,
+                  unit_amount: isNaN(parseInt(plans[i].price)) ? 0 : plans[i].price * 100,
                 },
               };
               await fetch(createPriceForProduct, {
@@ -394,7 +394,7 @@ export const processData = async (payload) => {
                   product: price.id,
                   currency: "usd",
                   metadata: !plans[i].planIncludes ? {} : plans[i].planIncludes,
-                  unit_amount: plans[i].price * 100,
+                  unit_amount: isNaN(parseInt(plans[i].price)) ? 0 : plans[i].price * 100,
                 },
               };
               await fetch(updatePriceForProduct, {
