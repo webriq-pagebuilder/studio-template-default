@@ -4,7 +4,7 @@ import {
   defaultButton,
   defaultLinks,
   defaultForm,
-} from "../../../common/defaults";
+} from "../../../common/defaults"
 
 export default {
   title: "Build & Launch without problems",
@@ -50,4 +50,4 @@ export default {
     "Sign Up"
   ),
   formLinks: defaultLinks(["Policy Privacy", "Terms of Use"]),
-};
+}

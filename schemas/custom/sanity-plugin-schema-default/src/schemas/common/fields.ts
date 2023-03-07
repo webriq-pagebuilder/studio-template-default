@@ -4,20 +4,42 @@ import {
   BsCardImage,
   BsCollection,
   BsPerson,
-} from "react-icons/bs";
-import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default/lib/schemas/common/hideIfVariantIn";
+} from "react-icons/bs"
+import { defaultBlogPosts } from "@webriq-pagebuilder/sanity-plugin-schema-default"
+import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default"
 
-export const signInLink = (hidden) => {
+type DocumentProps = {
+  document: {
+    variant: string
+  }
+}
+
+type ParentProps = {
+  parent: {
+    linkType: string
+    linkInternal: {
+      _ref: string
+    }
+    linkExternal: string
+    socialMedia: string
+  }
+}
+
+export const signInLink = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "signInLink",
     title: "Sign In link",
     hidden,
     description: "Add an internal or external link for the Sign In page",
     type: "conditionalLink",
-  };
-};
+  }
+}
 
-export const formLinks = (hidden) => {
+export const formLinks = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "formLinks",
     hidden,
@@ -26,10 +48,12 @@ export const formLinks = (hidden) => {
       "Add link/s below the form. Example: Terms of Use or Policy Privacy",
     type: "array",
     of: [{ type: "conditionalLink" }],
-  };
-};
+  }
+}
 
-export const external_link = (hidden) => {
+export const external_link = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "external_link",
     title: "External Link",
@@ -49,10 +73,12 @@ export const external_link = (hidden) => {
         type: "url",
       },
     ],
-  };
-};
+  }
+}
 
-export const internal_link = (hidden) => {
+export const internal_link = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "internal_link",
     title: "Internal Link",
@@ -73,21 +99,20 @@ export const internal_link = (hidden) => {
         to: [{ type: "page" }],
       },
     ],
-  };
-};
+  }
+}
 
-export const subtitle = (hidden) => {
+export const subtitle = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     name: "subtitle",
     title: "Subtitle",
     description: "Add a subtitle by typing in the text field below",
     hidden,
-    description: "A small text above your title",
     type: "string",
-  };
-};
+  }
+}
 
-export const title = (hidden) => {
+export const title = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     name: "title",
     title: "Title",
@@ -95,10 +120,12 @@ export const title = (hidden) => {
     hidden,
     placeholder: "Build & Launch without problems",
     type: "string",
-  };
-};
+  }
+}
 
-export const description = (hidden) => {
+export const description = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "description",
     title: "Description",
@@ -107,13 +134,13 @@ export const description = (hidden) => {
     placeholder:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque efficitur nisl sodales egestas lobortis.",
     type: "text",
-  };
-};
+  }
+}
 
 export const arrayOfTitleAndDescription = (
-  displayTitle,
-  displayDescription,
-  hidden
+  displayTitle: string | null,
+  displayDescription: string | null,
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   return {
     title: displayTitle,
@@ -137,16 +164,16 @@ export const arrayOfTitleAndDescription = (
         return {
           title: "Featured Items",
           // subtitle: label,
-        };
+        }
       },
     },
-  };
-};
+  }
+}
 
 export const arrayOfTitleAndText = (
-  displayTitle,
-  displayDescription,
-  hidden
+  displayTitle: string | null,
+  displayDescription: string | null,
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   return {
     name: "arrayOfTitleAndText",
@@ -160,13 +187,13 @@ export const arrayOfTitleAndText = (
         fields: [title(), plainText()],
       },
     ],
-  };
-};
+  }
+}
 
 export const arrayOfImageTitleAndText = (
-  displayTitle,
-  displayDescription,
-  hidden
+  displayTitle: string | null,
+  displayDescription: string | null,
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   return {
     name: "arrayOfImageTitleAndText",
@@ -180,20 +207,27 @@ export const arrayOfImageTitleAndText = (
         fields: [mainImage(), title(), plainText()],
       },
     ],
-  };
-};
+  }
+}
 
-export const plainText = (hidden) => {
+export const plainText = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "plainText",
-    title: "Plain text",
+    title: "Body",
     hidden,
     description: "Add a block of text as content.",
     type: "text",
-  };
-};
+  }
+}
 
-export const blockContentNormalStyle = (name, title, description, hidden) => {
+export const blockContentNormalStyle = (
+  name: string | null,
+  title: string | null,
+  description: string | null,
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: name,
     title: title,
@@ -206,10 +240,12 @@ export const blockContentNormalStyle = (name, title, description, hidden) => {
         styles: [{ title: "Normal", value: "normal" }],
       },
     ],
-  };
-};
+  }
+}
 
-export const primaryButton = (hidden) => {
+export const primaryButton = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "primaryButton",
     title: "Primary Button",
@@ -221,10 +257,12 @@ export const primaryButton = (hidden) => {
       collapsible: true,
       collapsed: true,
     },
-  };
-};
+  }
+}
 
-export const secondaryButton = (hidden) => {
+export const secondaryButton = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "secondaryButton",
     title: "Secondary Button",
@@ -236,11 +274,13 @@ export const secondaryButton = (hidden) => {
       collapsible: true,
       collapsed: true,
     },
-  };
-};
+  }
+}
 
 // Use this schema for adding 1 image only
-export const mainImage = (hidden) => {
+export const mainImage = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     title: "Add an Image",
     name: "mainImage",
@@ -263,11 +303,13 @@ export const mainImage = (hidden) => {
         type: "string",
       },
     ],
-  };
-};
+  }
+}
 
 // Use this schema for adding more than 1 image
-export const arrayOfImages = (hidden) => {
+export const arrayOfImages = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "images",
     title: "Images Array",
@@ -302,14 +344,18 @@ export const arrayOfImages = (hidden) => {
       },
     ],
     options: { layout: "grid" },
-  };
-};
+  }
+}
 
-export const tags = (displayTitle, displayDescription, hidden) => {
-  let defaultTitle = !displayTitle ? "Tags" : displayTitle;
+export const tags = (
+  displayTitle?: string | null,
+  displayDescription?: string | null,
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
+  let defaultTitle = !displayTitle ? "Tags" : displayTitle
   let defaultDescription = !displayDescription
     ? "Press Enter when finished typing off a keyword or a sentence."
-    : displayDescription;
+    : displayDescription
   return {
     title: defaultTitle,
     name: "tags",
@@ -320,10 +366,10 @@ export const tags = (displayTitle, displayDescription, hidden) => {
     options: {
       layout: "tags",
     },
-  };
-};
+  }
+}
 
-export const logo = (hidden) => {
+export const logo = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     name: "logo",
     title: "Logo",
@@ -390,7 +436,8 @@ export const logo = (hidden) => {
         fieldset: "link",
         type: "reference",
         to: [{ type: "page" }],
-        hidden: ({ parent }) => parent?.linkType !== "linkInternal",
+        hidden: ({ parent }: ParentProps) =>
+          parent?.linkType !== "linkInternal",
       },
       {
         name: "linkExternal",
@@ -398,7 +445,8 @@ export const logo = (hidden) => {
         fieldset: "link",
         type: "url",
         validation: false,
-        hidden: ({ parent }) => parent?.linkType !== "linkExternal",
+        hidden: ({ parent }: ParentProps) =>
+          parent?.linkType !== "linkExternal",
       },
       {
         name: "linkTarget",
@@ -406,25 +454,25 @@ export const logo = (hidden) => {
         fieldset: "link",
         type: "string",
         initialValue: "_self",
-        hidden: ({ parent }) => {
+        hidden: ({ parent }: ParentProps) => {
           // hide link target when the internal and external links have not been set
           if (
             parent?.linkType === "linkInternal" &&
             !parent?.linkInternal?._ref
           ) {
-            return true;
+            return true
           }
 
           if (parent?.linkType === "linkExternal" && !parent?.linkExternal) {
-            return true;
+            return true
           }
 
           // also hide if the actual link type (internal / external) has not been selected
           if (!parent?.linkType) {
-            return true;
+            return true
           }
 
-          return false;
+          return false
         },
         options: {
           list: [
@@ -444,10 +492,12 @@ export const logo = (hidden) => {
         },
       },
     ],
-  };
-};
+  }
+}
 
-export const dateAdded = (hidden) => {
+export const dateAdded = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     title: "Date Added",
     name: "dateAdded",
@@ -455,10 +505,10 @@ export const dateAdded = (hidden) => {
       "Type date with format YYYY-MM-DD (e.g. 2022-01-01) or select date by clicking the calendar icon.",
     hidden,
     type: "date",
-  };
-};
+  }
+}
 
-export const category = (hidden) => {
+export const category = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     title: "Category",
     name: "category",
@@ -472,10 +522,10 @@ export const category = (hidden) => {
         },
       ],
     },
-  };
-};
+  }
+}
 
-export const postedBy = (hidden) => {
+export const postedBy = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     title: "Posted By",
     name: "postedBy",
@@ -489,16 +539,16 @@ export const postedBy = (hidden) => {
         },
       ],
     },
-  };
-};
+  }
+}
 
 export const customText = (
-  name,
-  displayTitle,
-  displayDescription,
-  displayPlaceholder,
-  numberOfInputFields,
-  hidden
+  name: string | null,
+  displayTitle: string | null,
+  displayDescription: string | null,
+  displayPlaceholder: string | null,
+  numberOfInputFields: number,
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   if (numberOfInputFields === 1) {
     return {
@@ -508,7 +558,7 @@ export const customText = (
       description: displayDescription,
       placeholder: displayPlaceholder,
       type: "string",
-    };
+    }
   } else {
     return {
       name: name,
@@ -543,16 +593,16 @@ export const customText = (
           ],
         },
       ],
-    };
+    }
   }
-};
+}
 
 export const customInteger = (
-  name,
-  displayTitle,
-  displayDescription,
-  displayPlaceholder,
-  hidden
+  name: string | null,
+  displayTitle: string | null,
+  displayDescription: string | null,
+  displayPlaceholder: string | null,
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   return {
     name: name,
@@ -561,15 +611,18 @@ export const customInteger = (
     description: displayDescription,
     placeholder: displayPlaceholder,
     type: "string",
-  };
-};
+  }
+}
 
 export const customDropdown = (
-  name,
-  displayTitle,
-  displayDescription,
-  values,
-  hidden
+  name: string | null,
+  displayTitle: string | null,
+  displayDescription: string | null,
+  values: {
+    title: string
+    value: string
+  }[],
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   return {
     name: name,
@@ -580,10 +633,12 @@ export const customDropdown = (
     options: {
       list: values,
     },
-  };
-};
+  }
+}
 
-export const socialLinks = (hidden) => {
+export const socialLinks = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "socialLinks",
     title: "Social Links",
@@ -616,14 +671,16 @@ export const socialLinks = (hidden) => {
             description:
               "Add another social media platform not in the default list. Example: LinkedIn",
             type: "string",
-            hidden: ({ parent }) => parent?.socialMedia !== "other",
+            hidden: ({ parent }: ParentProps) =>
+              parent?.socialMedia !== "other",
           },
           {
             name: "socialMediaIcon",
             title: "Social Media Icon",
             description:
               "Add the image to identify this social media platform.",
-            hidden: ({ parent }) => parent?.socialMedia !== "other",
+            hidden: ({ parent }: ParentProps) =>
+              parent?.socialMedia !== "other",
             type: "object",
             fields: [
               {
@@ -654,29 +711,35 @@ export const socialLinks = (hidden) => {
             title: "socialMedia",
             socialMediaPlatform: "socialMediaPlatform",
           },
-          prepare({ title, socialMediaPlatform }) {
+          prepare({
+            title,
+            socialMediaPlatform,
+          }: {
+            title: string
+            socialMediaPlatform: string
+          }) {
             if (title === "other") {
               return {
                 title: socialMediaPlatform,
-              };
+              }
             } else {
               return {
                 title,
-              };
+              }
             }
           },
         },
       },
     ],
-  };
-};
+  }
+}
 
 export const arrayOfText = (
-  name,
-  displayTitle,
-  displayDescription,
-  displayPlaceholder,
-  hidden
+  name: string | null,
+  displayTitle: string | null,
+  displayDescription: string | null,
+  displayPlaceholder: string | null,
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   return {
     name: name,
@@ -690,10 +753,12 @@ export const arrayOfText = (
         type: "string",
       },
     ],
-  };
-};
+  }
+}
 
-export const askedQuestions = (hidden) => {
+export const askedQuestions = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "askedQuestions",
     title: "Questions and Answers",
@@ -718,10 +783,12 @@ export const askedQuestions = (hidden) => {
         ],
       },
     ],
-  };
-};
+  }
+}
 
-export const faqsWithCategory = (hidden) => {
+export const faqsWithCategory = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "faqsWithCategory",
     title: "FAQs with Categories",
@@ -749,15 +816,15 @@ export const faqsWithCategory = (hidden) => {
         },
       },
     ],
-  };
-};
+  }
+}
 
 export const portfoliosWithCategories = (
-  name,
-  title,
-  description,
-  items,
-  hidden
+  name: string | null,
+  title: string | null,
+  description: string | null,
+  items: any,
+  hidden?: ({ document }: DocumentProps) => boolean
 ) => {
   return {
     name: name,
@@ -781,10 +848,12 @@ export const portfoliosWithCategories = (
         ],
       },
     ],
-  };
-};
+  }
+}
 
-export const portfolios = (hidden) => {
+export const portfolios = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "portfolios",
     title: "Add Portfolio",
@@ -801,10 +870,12 @@ export const portfolios = (hidden) => {
         fields: [dateAdded(), title(), mainImage(), primaryButton()],
       },
     ],
-  };
-};
+  }
+}
 
-export const appPromostatItems = (hidden) => {
+export const appPromostatItems = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "statItems",
     title: "Add data and label",
@@ -834,19 +905,21 @@ export const appPromostatItems = (hidden) => {
             label: "label",
             value: "value",
           },
-          prepare({ label, value }) {
+          prepare({ label, value }: { label: string; value: string }) {
             return {
               title: `Label: ${label ? label : "Not added"}`,
               subtitle: `Value: ${value ? value : "Not added"}`,
-            };
+            }
           },
         },
       },
     ],
-  };
-};
+  }
+}
 
-export const statItems = (hidden) => {
+export const statItems = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "statItems",
     title: "Add data and label",
@@ -876,39 +949,41 @@ export const statItems = (hidden) => {
             label: "label",
             value: "value",
           },
-          prepare({ label, value }) {
+          prepare({ label, value }: { label: string; value: string }) {
             return {
               title: `Label: ${label ? label : "Not added"}`,
               subtitle: `Value: ${value ? value : "Not added"}`,
-            };
+            }
           },
         },
       },
     ],
-  };
-};
+  }
+}
 
-export const webriqForms = (hidden) => {
+export const webriqForms = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     title: "Form",
     name: "form",
     hidden,
     description: "Specify the fields you want to show in your forms.",
     type: "webriqForm",
-  };
-};
+  }
+}
 
-export const ctaForm = (hidden) => {
+export const ctaForm = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     title: "Call to Action Form",
     name: "ctaForm",
     hidden,
     description: "Specify the fields you want to show in your forms.",
     type: "webriqForm",
-  };
-};
+  }
+}
 
-export const routes = (hidden) => {
+export const routes = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     title: "Add Routes",
     description:
@@ -921,10 +996,12 @@ export const routes = (hidden) => {
       collapsed: true,
     },
     of: [{ type: "conditionalLink" }],
-  };
-};
+  }
+}
 
-export const blockOfText = (hidden) => {
+export const blockOfText = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "block",
     title: "Add block of text",
@@ -936,51 +1013,58 @@ export const blockOfText = (hidden) => {
         type: "block",
         styles: [{ title: "Normal", value: "normal" }],
         lists: [],
-        marks: {
-          decorators: [
-            { title: "Strong", value: "strong" },
-            { title: "Emphasis", value: "em" },
-            { title: "Underline", value: "underline" },
-          ],
-        },
+        // marks: {
+        //   decorators: [
+        //     { title: "Strong", value: "strong" },
+        //     { title: "Emphasis", value: "em" },
+        //     { title: "Underline", value: "underline" },
+        //   ],
+        // },
       },
     ],
-  };
-};
+  }
+}
 
-export const blogPost = (hidden) => {
+export const blogPost = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     name: "blogPosts",
     title: "Blog Posts",
     description:
       "Click the 'Add item' button to add blog posts. To edit what is added, click this ⋮ icon found on its right.",
+    initialValue: async () => defaultBlogPosts(),
     hidden,
     type: "array",
     of: [{ type: "reference", to: { type: "post" } }],
-  };
-};
+  }
+}
 
-export const acceptButton = (hidden) => {
+export const acceptButton = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "acceptButtonLabel",
     hidden,
     title: "Accept button label",
     description: "Add accept button label by typing in the text field below",
     type: "string",
-  };
-};
+  }
+}
 
-export const declineButton = (hidden) => {
+export const declineButton = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "declineButtonLabel",
     hidden,
     title: "Decline button label",
     description: "Add decline button label by typing in the text field below",
     type: "string",
-  };
-};
+  }
+}
 
-export const featuredItems = (hidden) => {
+export const featuredItems = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     name: "featuredItems",
     title: "Features",
@@ -996,20 +1080,22 @@ export const featuredItems = (hidden) => {
         fields: [subtitle(), title(), description(), mainImage()],
       },
     ],
-  };
-};
+  }
+}
 
-export const youtubeLink = (hidden) => {
+export const youtubeLink = (
+  hidden?: ({ document }: DocumentProps) => boolean
+) => {
   return {
     title: "Youtube URL",
     name: "youtubeLink",
     description: "Add the youtube video url",
     hidden,
     type: "url",
-  };
-};
+  }
+}
 
-export const rating = (hidden) => {
+export const rating = (hidden?: ({ document }: DocumentProps) => boolean) => {
   return {
     title: "Rating",
     name: "rating",
@@ -1025,5 +1111,14 @@ export const rating = (hidden) => {
         { title: "5", value: "5" },
       ],
     },
-  };
-};
+  }
+}
+
+export const selectStripeAccount = (hidden?: ({ document }: DocumentProps) => boolean) => {
+  return {
+    title: "Choose Stripe Account",
+    name: "selectStripeAccount",
+    hidden,
+    type: "selectStripeAccount"
+  }
+}

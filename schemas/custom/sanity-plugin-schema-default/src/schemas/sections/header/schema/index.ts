@@ -9,7 +9,7 @@ import {
   webriqForms,
   youtubeLink,
 } from "../../../common/fields";
-import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default/lib/schemas/common/hideIfVariantIn";
+import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default";
 
 export const headerSchema = [
   title(),
