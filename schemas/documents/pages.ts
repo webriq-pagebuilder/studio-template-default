@@ -61,7 +61,7 @@ export default defineType({
               const defaultLabel = "Default C-Studio Navigation"
 
               // Do not display default navigation if C-Studio is not enabled
-              if (import.meta.env.SANITY_STUDIO_IN_CSTUDIO === "false") {
+              if (SANITY_STUDIO_IN_CSTUDIO === "false") {
                 return {
                   filter: "label != $label",
                   params: { label: defaultLabel },
@@ -102,30 +102,30 @@ export default defineType({
           type: "reference",
           to: [{ type: "callToAction" }],
         }),
-        // defineArrayMember({
-        //   title: "Featured products",
-        //   name: "featuredProducts",
-        //   type: "reference",
-        //   to: [{ type: "featuredProducts" }],
-        // }),
+        defineArrayMember({
+          title: "Featured products",
+          name: "featuredProducts",
+          type: "reference",
+          to: [{ type: "featuredProducts" }],
+        }),
         defineArrayMember({
           title: "Pricing",
           name: "pricing",
           type: "reference",
           to: [{ type: "pricing" }],
         }),
-        // defineArrayMember({
-        //   title: "Product Info",
-        //   name: "productInfo",
-        //   type: "reference",
-        //   to: [{ type: "pages_productInfo" }],
-        // }),
-        // defineArrayMember({
-        //   title: "Wishlist",
-        //   name: "wishlist",
-        //   type: "reference",
-        //   to: [{ type: "slotWishlist" }],
-        // }),
+        defineArrayMember({
+          title: "Product Info",
+          name: "productInfo",
+          type: "reference",
+          to: [{ type: "pages_productInfo" }],
+        }),
+        defineArrayMember({
+          title: "Wishlist",
+          name: "wishlist",
+          type: "reference",
+          to: [{ type: "slotWishlist" }],
+        }),
         defineArrayMember({
           title: "Contact",
           name: "contact",
