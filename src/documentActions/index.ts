@@ -40,7 +40,7 @@ export const ResolveDocumentActions = (props) => {
         "collectionSettings",
       ]?.includes(schemaType)
     ) {
-      return [createProductsPublishAction, ...prev.filter(({ action }) => ["discardChanges", "unpublish"].includes(action))];
+      return [createProductsPublishAction, ...prev.filter(({ action }: { action: string }) => ["discardChanges", "unpublish"].includes(action))];
     } else if (
       [
         "slotProductInfo",
@@ -52,9 +52,9 @@ export const ResolveDocumentActions = (props) => {
       return []; // hide document actions for default slot sections (all are read only)
     } else if (schemaType === "mainProduct") {
       // use a custom publish action function for mainProduct documents
-      return [createMainProductPublishAction, ...prev.filter(({ action }) => ["discardChanges", "unpublish", "duplicate", "delete"].includes(action))];
+      return [createMainProductPublishAction, ...prev.filter(({ action }: { action: string }) => ["discardChanges", "unpublish", "duplicate", "delete"].includes(action))];
     }
   
     // else for other document types use these document actions
-    return [createProductsPublishAction, ...prev.filter(({ action }) => !["publish"].includes(action))];
+    return [createProductsPublishAction, ...prev.filter(({ action }: { action: string }) => !["publish"].includes(action))];
 }

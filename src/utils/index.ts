@@ -18,9 +18,9 @@ const CStudioSchema = [
 ]
 
 export const mergeReplaceAndAdd = (existingItems: any, newItems: any) => {
-  const updatedItems = existingItems.map((existingItem) => {
+  const updatedItems = existingItems.map((existingItem: any) => {
     const searchedIndex = newItems
-      .map((newItem) => newItem.name)
+      .map((newItem: any) => newItem.name)
       .indexOf(existingItem.name);
 
     if (searchedIndex >= 0) {
@@ -30,8 +30,8 @@ export const mergeReplaceAndAdd = (existingItems: any, newItems: any) => {
     return existingItem;
   });
 
-  const additionalSchemas = newItems.reduce((all, current) => {
-    if (!existingItems.map((i) => i.name).includes(current.name)) {
+  const additionalSchemas = newItems.reduce((all: any, current: any) => {
+    if (!existingItems.map((i: any) => i.name).includes(current.name)) {
       all = [...all, current];
     }
 
