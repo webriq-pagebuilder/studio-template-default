@@ -20,7 +20,7 @@ import { ResolveDocumentActions } from "./src/documentActions"
 import { schemaTypes } from "./schemas/schema"
 
 // plugins
-import { media, mediaAssetSource } from "sanity-plugin-media"
+import { media } from "sanity-plugin-media"
 import { openaiImageAsset } from "sanity-plugin-asset-source-openai"
 import { visionTool } from "@sanity/vision"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
@@ -60,8 +60,10 @@ export default defineConfig({
   theme: DefaultStudioTheme,
   form: {
     image: {
-     //TODO: Add mediaAssetSource and OpenAI asset source here
-      assetSources: () => [mediaAssetSource],
+      assetSources: (prev) => {
+        // only display media browser and openai image assets as default options
+        return prev.filter((asset) => asset.name !== "sanity-default") 
+      },
     },
   },
   schema: {
