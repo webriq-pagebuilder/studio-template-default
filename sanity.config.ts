@@ -3,6 +3,7 @@ import {
   SANITY_STUDIO_PROJECT_NAME,
   SANITY_STUDIO_DATASET,
   SANITY_STUDIO_API_PROJECT_ID,
+  SANITY_STUDIO_OPENAI_KEY
 } from "./src/config"
 
 // desk customization
@@ -41,7 +42,7 @@ export default defineConfig({
     webriqBlog(), 
     media(),
     openaiImageAsset({
-      API_KEY:"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" // TODO: Update personal API key with default from WebriQ
+      API_KEY: SANITY_STUDIO_OPENAI_KEY // TODO: Update personal API key with default from WebriQ
     })
   ],
   tools: (prev) => {
@@ -57,12 +58,12 @@ export default defineConfig({
     },
   },
   theme: DefaultStudioTheme,
-  // form: {
-  //   image: {
-  //    TODO: Only mediaAssetSource and OpenAI asset source should be added here
-  //     assetSources: () => [mediaAssetSource],
-  //   },
-  // },
+  form: {
+    image: {
+     //TODO: Add mediaAssetSource and OpenAI asset source here
+      assetSources: () => [mediaAssetSource],
+    },
+  },
   schema: {
     types: schemaTypes,
   },
