@@ -28,4 +28,4 @@ export const SANITY_STUDIO_IN_CSTUDIO = process.env.SANITY_STUDIO_IN_CSTUDIO
 export const SANITY_STUDIO_STORE_CORS_SECRET = process.env.SANITY_STUDIO_STORE_CORS_SECRET || "cors_wE67XmOkBOgIXTmAs1iWJc5btQiCBosI"
 
 // Open AI key
-export const SANITY_STUDIO_OPENAI_KEY = process.env.SANITY_STUDIO_OPENAI_KEY || "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" // TODO: Add default OpenAI key as fallback value for WebriQ Studio here
+export const SANITY_STUDIO_OPENAI_KEY = process.env.SANITY_STUDIO_OPENAI_KEY || "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" 
