@@ -24,7 +24,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/studio-secrets": "^2.0.2",
     "@sanity/ui": "^1.2.5",
-    "@sanity/vision": "^3.5.1",
+    "@sanity/vision": "^3.7.0",
     "@webriq-pagebuilder/sanity-plugin-input-component-gpt3": "3.0.1-sanity-v3.2.1",
     "@webriq-pagebuilder/sanity-plugin-schema-blog": "3.0.3-sanity-v3.2.2",
     "@webriq-pagebuilder/sanity-plugin-schema-commerce": "3.0.3-sanity-v3.2.24",
