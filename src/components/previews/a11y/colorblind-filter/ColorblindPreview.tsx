@@ -30,17 +30,19 @@ function ColorblindPreview (props) {
   const { document, options } = props
   const { displayed } = document
 
-  const [activeFilter, setActiveFilter] = React.useState(FILTER_ITEMS[0])
+  const [activeFilter, setActiveFilter] = React.useState({
+    value: FILTER_ITEMS[0]?.title,
+  })
   const url = assembleProjectUrl({ displayed, options })
 
   const filterStyle = {
-    filter: activeFilter.value
-      ? `url('${filters}#${activeFilter.value}')`
+    filter: activeFilter?.value
+      ? `url('${filters}#${activeFilter?.value}')`
       : "none",
   }
 
   const handleFilterChange = (filter) => {
-    setActiveFilter(filter)
+    setActiveFilter({ value: filter })
   }
 
   if (!displayed) {
@@ -67,10 +69,10 @@ function ColorblindPreview (props) {
         </label>
         <Select
           fontSize={2}
-          onChange={handleFilterChange}
+          onChange={(e) => handleFilterChange(e.target.value)}
         >
           {FILTER_ITEMS?.map((filter, index) => (
-            <option key={index} value={filter.value}>
+            <option key={index} value={filter.title}>
               {filter.title}
             </option>
           ))}

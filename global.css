@@ -2,11 +2,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 
-:root {
-  /* Typography */
-  --font-family-sans-serif: "Open Sans";
-  --font-size-base: 18px;
-  --text-color: var(--brand-secondary--inverted);
+
+#sanity {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
 }
 
 /* Cosmetic: Remove border-right of tools menu */
