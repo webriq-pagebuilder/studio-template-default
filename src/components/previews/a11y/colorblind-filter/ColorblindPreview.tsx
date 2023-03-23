@@ -17,13 +17,30 @@ const FILTER_ITEMS = [
 ]
 
 const assembleProjectUrl = ({ displayed, options }) => {
-  const { slug } = displayed
+  const { slug, _type } = displayed
   const { previewURL } = options
-  if (!slug || !previewURL) {
-    console.warn("Missing slug or previewURL", { slug, previewURL })
+
+  const pageType = _type;
+  let pageSlug = slug?.current;
+
+  if(pageType === "mainProduct") {
+    pageSlug = `products/${pageSlug}`
+  } else if(pageType === "mainCollection") {
+    pageSlug = `collections/${pageSlug}`
+  } else if(pageType === "cartPage") {
+    pageSlug = "cart"
+  } else if(pageType === "wishlistPage") {
+    pageSlug = "wishlist"
+  } else if (pageType === "searchPage") {
+    pageSlug = "search"
+  }
+
+  if (!pageSlug || !previewURL) {
+    console.warn("Missing slug or previewURL", { pageSlug, previewURL })
     return ""
   }
-  return `${previewURL}${slug.current}`
+  
+  return `${previewURL}${pageSlug}`
 }
 
 function ColorblindPreview (props) {

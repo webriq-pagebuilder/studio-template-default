@@ -8,6 +8,7 @@ import { MdDashboard } from "react-icons/md"
 import Iframe from "sanity-plugin-iframe-pane"
 
 import resolveProductionUrl from "../resolvePreviewUrl"
+
 import SeoPreviews from "../components/previews/seo/SeoPreviews"
 import BraillePreview from "../components/previews/a11y/braille/Braille"
 import ColorblindPreview from "../components/previews/a11y/colorblind-filter/ColorblindPreview"
@@ -46,7 +47,7 @@ export const Page = (S: StructureBuilder) => {
 						S.view
 							.component(Iframe)
 							.options({
-							url: (doc: SanityDocument) => resolveProductionUrl(doc),
+							url: (doc: SanityDocument) => resolveProductionUrl(doc, true),
 								reload: {
 									button: true, // default `undefined`
 									revision: true, // boolean | number. default `undefined`. If a number is provided, add a delay (in ms) before the automatic reload on document revision
