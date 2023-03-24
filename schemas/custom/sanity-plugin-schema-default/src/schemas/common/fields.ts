@@ -5,8 +5,7 @@ import {
   BsCollection,
   BsPerson,
 } from "react-icons/bs"
-import { defaultBlogPosts } from "@webriq-pagebuilder/sanity-plugin-schema-default"
-import { hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default"
+import { defaultBlogPosts, hideIfVariantIn } from "@webriq-pagebuilder/sanity-plugin-schema-default"
 
 type DocumentProps = {
   document: {

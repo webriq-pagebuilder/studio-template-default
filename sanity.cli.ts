@@ -6,5 +6,4 @@ export default defineCliConfig({
     projectId: SANITY_STUDIO_API_PROJECT_ID,
     dataset: SANITY_STUDIO_DATASET,
   },
-  vite: (config) => config,
 })

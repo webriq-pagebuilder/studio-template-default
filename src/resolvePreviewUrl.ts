@@ -9,7 +9,7 @@ export default function resolveProductionUrl(doc: SanityDocumentLike & { slug?: 
   const currentSlug = doc?.slug?.current || ""
 
   // localhost
-  if(window.location.hostname.includes("localhost")) {
+  if(typeof window !== "undefined" && window.location.hostname.includes("localhost")) {
     return PreviewURL(
       SANITY_STUDIO_DEV_SITE_URL || "http://localhost:3000", 
       SANITY_STUDIO_PREVIEW_SECRET, 

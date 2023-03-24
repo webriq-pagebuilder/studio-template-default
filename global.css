@@ -1,13 +1,5 @@
 /* ./src/brand/styles/variables.css */
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-
-
-#sanity {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-}
-
 /* Cosmetic: Remove border-right of tools menu */
 div[data-ui="Navbar"] > div > div:first-child > div:last-child {
   border-right: 0 !important;
