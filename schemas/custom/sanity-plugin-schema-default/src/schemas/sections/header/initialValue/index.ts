@@ -4,7 +4,7 @@ import {
   defaultButton,
   defaultLinks,
   defaultForm,
-} from "../../../common/defaults"
+} from "@webriq-pagebuilder/sanity-plugin-schema-default"
 
 export default {
   title: "Build & Launch without problems",
