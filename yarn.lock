@@ -2431,16 +2431,6 @@
     magic-string "^0.27.0"
     react-refresh "^0.14.0"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-gpt3@3.0.1-sanity-v3.2.1":
-  version "3.0.1-sanity-v3.2.1"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-3.0.1-sanity-v3.2.1.tgz#5060b5c4503424281cbb9fa861d69b928e030c47"
-  integrity sha512-WYh0xLt+5teM3jq1e6JRH5LI/2+qErBIyxMbdkfj3QippUjS0fZuvGypuCXuhT1IT+/lxi+JLEFXMOeJRg1aTg==
-  dependencies:
-    "@sanity/icons" "^1.3.6"
-    "@sanity/incompatible-plugin" "^1.0.4"
-    "@sanity/ui" "^0.37.22"
-    nanoid "^4.0.0"
-
 "@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^3.0.1-sanity-v3.2.2":
   version "3.0.1-sanity-v3.2.2"
   resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-3.0.1-sanity-v3.2.2.tgz#a5e3fbcb54831aec1644d7641a68808b937c6526"
