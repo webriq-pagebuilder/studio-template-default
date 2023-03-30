@@ -6,7 +6,6 @@ import { SANITY_STUDIO_IN_CSTUDIO } from "../config";
 const CStudioSchema = [
   "allProducts",
   "featuredProducts",
-  "navigation",
   "pages_productInfo",
   "mainProduct",
   "mainCollection",
