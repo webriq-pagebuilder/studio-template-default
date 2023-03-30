@@ -51,7 +51,7 @@ export default function createProductsPublishAction(props) {
   const isDisabled = validation.length !== 0 || isPublishing;
 
   return {
-    disabled: publish.disabled === "ALREADY_PUBLISHED" || publish.disabled === "NOT_READY" || publish.disabled === "NO_CHANGES",
+    disabled: isDisabled || !props?.draft,
     label: [
       "page",
       "post",
