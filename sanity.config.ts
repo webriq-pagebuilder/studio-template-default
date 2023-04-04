@@ -26,6 +26,7 @@ import { visionTool } from "@sanity/vision"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
 import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
 import { webriqPayments } from "@webriq-pagebuilder/sanity-plugin-webriq-payments"
+import { webriqGPT3 } from "@webriq-pagebuilder/sanity-plugin-input-component-gpt3"
 
 // Open preview
 import resolveProductionUrl from "./src/resolvePreviewUrl"
@@ -40,6 +41,7 @@ export default defineConfig({
     webriqForms(), 
     webriqPayments(), 
     webriqBlog(),
+    webriqGPT3(),
     media(),
     openaiImageAsset({
       API_KEY: SANITY_STUDIO_OPENAI_KEY // TODO: Update personal API key with default from WebriQ
