@@ -25,7 +25,7 @@ export const SANITY_STUDIO_FROM_STAGING_APP = process.env.SANITY_STUDIO_FROM_STA
 export const SANITY_STUDIO_IN_CSTUDIO = process.env.SANITY_STUDIO_IN_CSTUDIO
 
 // Studio secret token to authenticate Ecwid API endpoint requests
-export const SANITY_STUDIO_STORE_CORS_SECRET = process.env.SANITY_STUDIO_STORE_CORS_SECRET || "cors_wE67XmOkBOgIXTmAs1iWJc5btQiCBosI"
+export const SANITY_STUDIO_STORE_CORS_SECRET = process.env.SANITY_STUDIO_STORE_CORS_SECRET
 
 // Open AI key
-export const SANITY_STUDIO_OPENAI_KEY = process.env.SANITY_STUDIO_OPENAI_KEY || "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" 
+export const SANITY_STUDIO_OPENAI_KEY = process.env.SANITY_STUDIO_OPENAI_KEY 
