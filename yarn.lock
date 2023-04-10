@@ -2384,15 +2384,15 @@
     magic-string "^0.27.0"
     react-refresh "^0.14.0"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-3.0.2.tgz#5bc9bcbd69df8ca0039126c17da8c8ea60f0f145"
-  integrity sha512-8owjD7IvKYDMPGbxCb9kDYMWXSqqqIPVsub61EA1enC/4pMJ83Y85h7ubRzyoFJRMJ5q4qHuTXHDE/T8+ijdGA==
+"@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-3.0.3.tgz#7f0c3a6a6f80ec47f082784d71966e433052a0f6"
+  integrity sha512-zQeZLs3nP/ZUZYAKYZhgo2xlbbRHScPzonQHu3SvaUBSdh37o+DmYwJfdL69wu+vvOq7nFTf8Kx6d/xIpdJ2VQ==
   dependencies:
     "@sanity/icons" "^1.3.6"
     "@sanity/incompatible-plugin" "^1.0.4"
     "@sanity/ui" "^1.3.1"
-    nanoid "^4.0.0"
+    nanoid "^3.1.30"
 
 "@webriq-pagebuilder/sanity-plugin-input-component-variants@^3.0.6":
   version "3.0.6"
@@ -2403,54 +2403,54 @@
     "@sanity/incompatible-plugin" "^1.0.4"
     "@sanity/ui" "^1.0.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-blog@^3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-blog/-/sanity-plugin-schema-blog-3.0.7.tgz#e5e6e38fbafea0c6b6706961b0f5743876b086a7"
-  integrity sha512-BGUhWYkiagZM/AhxFdSGZrwJ81Z3gNOgoytIYYuVREjuWzdd4mQpNKdfIGsI7b7VCfbHPZTwTbhxzRPh1qm2Yw==
+"@webriq-pagebuilder/sanity-plugin-schema-blog@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-blog/-/sanity-plugin-schema-blog-3.0.8.tgz#be7ccba110494772751b2f76d6c338a3c5f16bbb"
+  integrity sha512-F/tfLVmX3Q4+xA0JicWqLzHeXgmuvhNrnQM4QHuHQhRjrKQPNSVgUVitY6fj3FA2ARXVLfIp4PRdGMwsAv21Og==
   dependencies:
     "@sanity/incompatible-plugin" "^1.0.4"
-    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^3.0.2"
+    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^3.0.3"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-commerce@^3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-3.0.7.tgz#e67f0e5aeb31026ef245d510fe1239fe1eeb05de"
-  integrity sha512-SjeuBRSEVxX48OYkZqhQVOayzC9AmLTFuj6UUgbDuuE0G7ou9j43HDgHbWy2cU8TllN2iaDIzHgSNxrBtzCM4g==
+"@webriq-pagebuilder/sanity-plugin-schema-commerce@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-commerce/-/sanity-plugin-schema-commerce-3.0.8.tgz#db71c76b9da3248a3388f09503b6bcff14fbc758"
+  integrity sha512-oGi44cXYAdb7kWDtGV84/ThnuIh9vocHFu4J0hYDuGAoOS06qbEueYUcQ5NNHJMPkAZg+bNBANup2P5SxMnEIQ==
   dependencies:
     "@sanity/client" "^5.3.2"
     "@sanity/incompatible-plugin" "^1.0.4"
     "@sanity/ui" "1.2.4"
-    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^3.0.2"
+    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^3.0.3"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^3.0.6"
-    "@webriq-pagebuilder/sanity-plugin-schema-default" "^3.0.7"
+    "@webriq-pagebuilder/sanity-plugin-schema-default" "^3.0.8"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-schema-default@^3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-3.0.7.tgz#f453bc40ea031e0e75e4bcdb67dbede0637676d6"
-  integrity sha512-doXj57MeTqPoXXoA6NFC7Xx39NBvzc8UlDiWL1t3gpfIgGwT8c0aoj7zmJXweskdmyPMJqrKbEkRJ1KApE1waw==
+"@webriq-pagebuilder/sanity-plugin-schema-default@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-schema-default/-/sanity-plugin-schema-default-3.0.8.tgz#4a200d8d8bdded9f10fb8d6458dbbb3889cb6098"
+  integrity sha512-Cw+jbpVQjmw4XztL4iotdr2ifYBLdycyVu/KlafNBT+IUGoiQqTvTl3aL0xegDpCdftNb1OHaesbUiwGDmzs8w==
   dependencies:
     "@sanity/client" "^5.3.2"
     "@sanity/incompatible-plugin" "^1.0.4"
-    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^3.0.2"
+    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3" "^3.0.3"
     "@webriq-pagebuilder/sanity-plugin-input-component-variants" "^3.0.6"
     "@webriq-pagebuilder/sanity-plugin-webriq-payments" "^3.0.6"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
-"@webriq-pagebuilder/sanity-plugin-webriq-blog@^3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-blog/-/sanity-plugin-webriq-blog-3.0.7.tgz#2dae8cb4c4894da36e438ee57f0b1df7aa12cd47"
-  integrity sha512-i+MLsD/4vLkXN518bYw9PcRtbX0wG1TVMYAj/O7bZyNcaYQTKAK5n4SfBLaH9WHd7PGqFlZs87yNBI2dZ5HjMg==
+"@webriq-pagebuilder/sanity-plugin-webriq-blog@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-webriq-blog/-/sanity-plugin-webriq-blog-3.0.8.tgz#e5cf9898f6ea9a54fd4a463427dd7ecc3b0fc977"
+  integrity sha512-qiSIhyxlNjBUSXq8/LIB9NDQ22M53Kvcy106RiUGqUWzgLhtYfvpSdtCt+Hh5iUr9zKf9capGCwS8HV36XpVcA==
   dependencies:
     "@portabletext/react" "^1.0.6"
     "@sanity/client" "^5.3.2"
     "@sanity/image-url" "^1.0.1"
     "@sanity/incompatible-plugin" "^1.0.4"
     "@sanity/ui" "^1.3.0"
-    "@webriq-pagebuilder/sanity-plugin-schema-blog" "^3.0.7"
+    "@webriq-pagebuilder/sanity-plugin-schema-blog" "^3.0.8"
     nanoid "^3.1.30"
     react-icons "^4.2.0"
 
@@ -5138,11 +5138,6 @@ nanoid@^3.1.12, nanoid@^3.1.22, nanoid@^3.1.25, nanoid@^3.1.30, nanoid@^3.3.3, n
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
-
-nanoid@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.2.tgz#140b3c5003959adbebf521c170f282c5e7f9fb9e"
-  integrity sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==
 
 natural-compare-lite@^1.4.0:
   version "1.4.0"
