@@ -32,3 +32,18 @@ button#login-status-menu {
 select[data-testid="field-group-select"] > option:first-child {
   display: none;
 }
+
+ /** Help Guide **/
+ div[aria-label="List of Content"] {
+  min-height: calc(100vh - 260px);
+}
+
+div[aria-label="List of Content"] > div:last-child {
+  border-top: 1px solid var(--card-border-color);
+  position: absolute;
+  width: 100%;
+  transform: none;
+  bottom: 0;
+  top: inherit !important;
+}
+/* End */

@@ -27,6 +27,7 @@ import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
 import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
 import { webriqPayments } from "@webriq-pagebuilder/sanity-plugin-webriq-payments"
 import { webriqGPT3 } from "@webriq-pagebuilder/sanity-plugin-input-component-gpt3"
+import { webriqComponents } from "@webriq-pagebuilder/sanity-plugin-webriq-components"
 
 // Open preview
 import resolveProductionUrl from "./src/resolvePreviewUrl"
@@ -37,6 +38,7 @@ export default defineConfig({
   dataset: SANITY_STUDIO_DATASET,
   plugins: [
     deskStructure, 
+    webriqComponents(),
     visionTool(), 
     webriqForms(), 
     webriqPayments(), 
