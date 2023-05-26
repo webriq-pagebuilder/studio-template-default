@@ -26,6 +26,7 @@ const hiddenTypes = [
   "searchPage",
   "slotProductInfo",
   "slotCollectionInfo",
+  "aiWriterGPT3",
   ...sections,
 ];
 

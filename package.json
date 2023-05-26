@@ -10,7 +10,7 @@
     "start": "sanity start",
     "build": "sanity build dist && cp _redirects dist/",
     "update:next": "yarn add @webriq-pagebuilder/sanity-plugin-input-component-conditional-fields@next @webriq-pagebuilder/sanity-plugin-schema-default@next @webriq-pagebuilder/sanity-plugin-webriq-blog@next @webriq-pagebuilder/sanity-plugin-schema-blog@next @webriq-pagebuilder/sanity-plugin-webriq-forms@next @webriq-pagebuilder/sanity-plugin-webriq-payments@next",
-    "update:latest": "yarn add @webriq-pagebuilder/sanity-plugin-input-component-conditional-fields@latest @webriq-pagebuilder/sanity-plugin-schema-default@latest @webriq-pagebuilder/sanity-plugin-webriq-blog@latest @webriq-pagebuilder/sanity-plugin-schema-blog@latest @webriq-pagebuilder/sanity-plugin-webriq-forms@latest @webriq-pagebuilder/sanity-plugin-webriq-payments@latest"
+    "update:latest": "yarn add @webriq-pagebuilder/sanity-plugin-input-component-conditional-fields@v2 @webriq-pagebuilder/sanity-plugin-schema-default@v2 @webriq-pagebuilder/sanity-plugin-webriq-blog@v2 @webriq-pagebuilder/sanity-plugin-schema-blog@v2 @webriq-pagebuilder/sanity-plugin-webriq-forms@v2 @webriq-pagebuilder/sanity-plugin-webriq-payments@v2 @webriq-pagebuilder/sanity-plugin-schema-commerce@v2 @webriq-pagebuilder/sanity-plugin-input-component-gpt3@v2"
   },
   "keywords": [
     "sanity"
@@ -26,13 +26,14 @@
     "@sanity/desk-tool": "^2.35.2",
     "@sanity/production-preview": "^2.29.3",
     "@sanity/vision": "^2.35.2",
-    "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields": "^1.0.0",
-    "@webriq-pagebuilder/sanity-plugin-schema-blog": "^1.0.7",
-    "@webriq-pagebuilder/sanity-plugin-schema-commerce": "^1.0.18",
-    "@webriq-pagebuilder/sanity-plugin-schema-default": "^1.0.24",
-    "@webriq-pagebuilder/sanity-plugin-webriq-blog": "^1.0.7",
-    "@webriq-pagebuilder/sanity-plugin-webriq-forms": "^1.0.7",
-    "@webriq-pagebuilder/sanity-plugin-webriq-payments": "^1.0.2",
+    "@webriq-pagebuilder/sanity-plugin-input-component-conditional-fields": "^1.1.0",
+    "@webriq-pagebuilder/sanity-plugin-input-component-gpt3": "^1.1.0",
+    "@webriq-pagebuilder/sanity-plugin-schema-blog": "^1.1.0",
+    "@webriq-pagebuilder/sanity-plugin-schema-commerce": "^1.1.0",
+    "@webriq-pagebuilder/sanity-plugin-schema-default": "^1.1.0",
+    "@webriq-pagebuilder/sanity-plugin-webriq-blog": "^1.1.0",
+    "@webriq-pagebuilder/sanity-plugin-webriq-forms": "^1.1.0",
+    "@webriq-pagebuilder/sanity-plugin-webriq-payments": "^1.1.0",
     "braille": "^1.1.0",
     "crypto-js": "^4.1.1",
     "get-it": "^4.1.4",
