@@ -2,14 +2,24 @@ import React, { useState, useEffect } from "react";
 import { useToast, Tooltip, Box, Text } from "@sanity/ui";
 import { useDocumentOperation, useValidationStatus } from "sanity";
 import { processData } from "../../stripeActions/process-data";
+import { SANITY_STUDIO_IN_CSTUDIO } from "../../config";
+
 
 export default function createProductsPublishAction(props) {
   const toast = useToast();
-
   const { validation } = useValidationStatus(props.id, props.type);
   const { publish } = useDocumentOperation(props.id, props.type);
-
   const [isPublishing, setIsPublishing] = useState(false);
+
+  const CStudioSchemas = [
+    "mainProduct",
+    "mainCollection",
+    "productSettings",
+    "collectionSettings",
+    "cartPage",
+    "wishlistPage",
+    "searchPage"
+  ];
 
   useEffect(() => {
     // if the isPublishing state was set to true and the draft has changed
@@ -34,7 +44,6 @@ export default function createProductsPublishAction(props) {
 
     async function create() {
       const response = await processData(payload);
-
       if (response) {
         toast.push({
           status: response.status === 500 ? "error" : "success",
@@ -42,26 +51,28 @@ export default function createProductsPublishAction(props) {
         });
       }
     }
-
     publish.disabled !== "ALREADY_PUBLISHED" &&
       publish.disabled !== "NO_CHANGES" &&
     create();
   }, [isPublishing]);
 
+  const isCStudioDisabled = SANITY_STUDIO_IN_CSTUDIO !== "true" && CStudioSchemas?.includes(props.type);
   const isDisabled = validation.length !== 0 || isPublishing;
 
   return {
-    disabled: isDisabled || !props?.draft,
+    disabled: isDisabled || !props?.draft || isCStudioDisabled,
     label: [
       "page",
       "post",
       "category",
       "author",
+      "mainProduct",
       "mainCollection",
       "productSettings",
       "collectionSettings",
       "cartPage",
       "wishlistPage",
+      "searchPage"
     ].includes(props.type) ? (
       <CustomPublishLabel hasErrors={isDisabled} isPublishing={isPublishing} />
     ) : isPublishing ? (
@@ -69,13 +80,12 @@ export default function createProductsPublishAction(props) {
     ) : (
       "Save"
     ),
+
     onHandle: async () => {
       // This will update the button text
       setIsPublishing(true);
-
       // Perform the publish
       publish.execute()
-
       // Signal that the action is completed
       props.onComplete()
     },
@@ -101,6 +111,5 @@ function CustomPublishLabel({ hasErrors = false, isPublishing = false }) {
       </Tooltip>
     );
   }
-
   return isPublishing ? <span>Publishing...</span> : <span>Publish</span>;
 }
