@@ -15,6 +15,11 @@ export default defineType({
       description: "What's this page is for?",
       type: "string",
     }),
+    // defineField({
+    //   title: "SEO",
+    //   name: "customSeo",
+    //   type: "seoSchema",
+    // }),
     defineField({
       title: "Slug",
       name: "slug",
@@ -236,7 +241,7 @@ export default defineType({
     defineField({
       title: "SEO Settings",
       name: "seo",
-      type: "seoSettings",
+      type: "seoSchema",
       options: {
         collapsible: true,
         collapsed: true,

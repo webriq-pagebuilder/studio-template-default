@@ -2,9 +2,9 @@ import { deskTool as sanityDesktool } from "sanity/desk"
 
 import { Page } from "./pages"
 import { Store } from "./store"
-import { StudioDocs } from "./StudioDocs";
+import { StudioDocs } from "./StudioDocs"
 
-import { HelpCircleIcon } from "@sanity/icons";
+import { HelpCircleIcon } from "@sanity/icons"
 
 export default sanityDesktool({
   structure: (S) =>
@@ -14,6 +14,9 @@ export default sanityDesktool({
         Page(S),
         S.divider(),
         Store(S),
+        S.listItem()
+          .title("Default Seo")
+          .child(S.document().schemaType("defaultSeo").documentId("defaultSeo")),
 
         // Help Guide below
         S.listItem()
