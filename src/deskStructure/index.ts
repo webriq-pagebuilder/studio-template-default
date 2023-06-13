@@ -14,9 +14,9 @@ export default sanityDesktool({
         Page(S),
         S.divider(),
         Store(S),
-        S.listItem()
-          .title("Default Seo")
-          .child(S.document().schemaType("defaultSeo").documentId("defaultSeo")),
+        // S.listItem()
+        //   .title("Default Seo")
+        //   .child(S.document().schemaType("defaultSeo").documentId("defaultSeo")),
 
         // Help Guide below
         S.listItem()

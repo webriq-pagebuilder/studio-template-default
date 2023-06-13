@@ -4,7 +4,8 @@ import { createClient } from "@sanity/client"
 import { SANITY_STUDIO_API_PROJECT_ID, SANITY_STUDIO_DATASET } from "../../../src/config"
 import { StringInputProps, defaultRenderInput, set, unset } from "sanity"
 import { Card, Flex, Grid, Text } from "@sanity/ui"
-import { FieldMember, MemberField, ObjectInputProps, useFormValue } from "sanity"
+import { FieldMember, MemberField, ObjectInputProps, useFormValue, ObjectInputMember } from "sanity"
+import { IntentLink } from "sanity/router"
 
 interface GlobalSeoData {
   defaultSeoTitle: string | null
@@ -34,9 +35,19 @@ const INITIAL_GLOBAL_SEO_DATA: GlobalSeoData = {
 }
 
 export const CustomSeo = (props: ObjectInputProps) => {
-  const { onChange, value, members, renderField, renderItem, renderInput, renderPreview } = props
+  const {
+    onChange,
+    value,
+    members,
+    renderField,
+    renderItem,
+    renderInput,
+    renderPreview,
+    renderDefault,
+  } = props
 
   const [globalSeoData, setGlobalSeoData] = useState<GlobalSeoData>(INITIAL_GLOBAL_SEO_DATA)
+
   // const imageData = "seoImage" in globalSeoData ? globalSeoData.seoImage : undefined
 
   const pageTitle = useFormValue(["title"]) as string
@@ -44,7 +55,7 @@ export const CustomSeo = (props: ObjectInputProps) => {
   const client = createClient({
     projectId: SANITY_STUDIO_API_PROJECT_ID,
     dataset: SANITY_STUDIO_DATASET,
-    useCdn: true, // set to `false` to bypass the edge cache
+    useCdn: false, // set to `false` to bypass the edge cache
     apiVersion: "2023-05-03", // use current date (YYYY-MM-DD) to target the latest API version
   })
 
@@ -89,40 +100,122 @@ export const CustomSeo = (props: ObjectInputProps) => {
         | GlobalSeoData
         | undefined
       setGlobalSeoData(globalData ?? INITIAL_GLOBAL_SEO_DATA)
+      console.log("fetching data from global sel")
+      console.log("globalData", globalData)
     }
 
     fetchData()
   }, [])
 
   const customTitleRenderInput = () => (
-    <TextInput
-      placeholder={pageTitle || globalSeoData?.defaultSeoTitle || ""}
-      value={value?.seoTitle}
-      onChange={(e) => handleOnChange(e, "seoTitle")}
-    />
+    <>
+      <TextInput
+        placeholder={pageTitle || globalSeoData?.defaultSeoTitle || ""}
+        value={value?.seoTitle}
+        onChange={(e) => handleOnChange(e, "seoTitle")}
+      />
+
+      <Text style={{ marginTop: "12px", textAlign: "right" }} size={1} muted>
+        {pageTitle && !value?.seoTitle ? (
+          "Page title value will be used."
+        ) : !pageTitle && !value?.seoTitle ? (
+          <>
+            No page title or value specified. The{" "}
+            <IntentLink
+              style={{ textDecoration: "none" }}
+              intent="edit"
+              params={{ id: "defaultSeo", type: "defaultSeo" }}
+            >
+              Default SEO
+            </IntentLink>{" "}
+            value will be used.
+          </>
+        ) : null}
+      </Text>
+    </>
   )
   const customKeywordsRenderInput = () => (
-    <TextInput
-      placeholder={globalSeoData?.defaultSeoKeywords || ""}
-      value={value?.seoKeywords}
-      onChange={(e) => handleOnChange(e, "seoKeywords")}
-    />
+    <>
+      <TextInput
+        placeholder={globalSeoData?.defaultSeoKeywords || ""}
+        value={value?.seoKeywords}
+        onChange={(e) => handleOnChange(e, "seoKeywords")}
+      />
+      <Text style={{ marginTop: "12px", textAlign: "right" }} size={1} muted>
+        {!value?.seoKeywords ? (
+          <>
+            No value specified. The{" "}
+            <IntentLink
+              style={{ textDecoration: "none" }}
+              intent="edit"
+              params={{ id: "defaultSeo", type: "defaultSeo" }}
+            >
+              Default SEO
+            </IntentLink>{" "}
+            value will be used.
+          </>
+        ) : null}
+      </Text>
+    </>
   )
   const customSynonymRenderInput = () => (
-    <TextInput
-      placeholder={globalSeoData?.defaultSeoSynonyms || ""}
-      value={value?.seoSynonyms}
-      onChange={(e) => handleOnChange(e, "seoSynonyms")}
-    />
+    <>
+      <TextInput
+        placeholder={globalSeoData?.defaultSeoSynonyms || ""}
+        value={value?.seoSynonyms}
+        onChange={(e) => handleOnChange(e, "seoSynonyms")}
+      />
+      <Text style={{ marginTop: "12px", textAlign: "right" }} size={1} muted>
+        {!value?.seoSynonyms ? (
+          <>
+            No value specified. The{" "}
+            <IntentLink
+              style={{ textDecoration: "none" }}
+              intent="edit"
+              params={{ id: "defaultSeo", type: "defaultSeo" }}
+            >
+              Default SEO
+            </IntentLink>{" "}
+            value will be used.
+          </>
+        ) : null}
+      </Text>
+    </>
   )
   const customDescriptionRenderInput = () => (
-    <TextArea
-      placeholder={globalSeoData?.defaultSeoDescription || ""}
-      value={value?.seoDescription}
-      onChange={(e) => handleOnChange(e, "seoDescription")}
-      rows={10}
-    />
+    <>
+      <TextArea
+        placeholder={globalSeoData?.defaultSeoDescription || ""}
+        value={value?.seoDescription}
+        onChange={(e) => handleOnChange(e, "seoDescription")}
+        rows={10}
+      />
+      <Text style={{ marginTop: "12px", textAlign: "right" }} size={1} muted>
+        {!value?.seoDescription ? (
+          <>
+            No value specified. The{" "}
+            <IntentLink
+              style={{ textDecoration: "none" }}
+              intent="edit"
+              params={{ id: "defaultSeo", type: "defaultSeo" }}
+            >
+              Default SEO
+            </IntentLink>{" "}
+            value will be used.
+          </>
+        ) : null}
+      </Text>
+    </>
   )
+
+  const renderProps = {
+    renderInput,
+    renderField,
+    renderItem,
+    renderPreview,
+  }
+
+  console.log("props", props)
 
   return (
     <Stack space={5}>
@@ -166,15 +259,30 @@ export const CustomSeo = (props: ObjectInputProps) => {
         />
       )}
 
-      {globalSeoImage && (
-        <MemberField
-          member={globalSeoImage}
-          renderInput={renderInput}
-          renderField={renderField}
-          renderItem={renderItem}
-          renderPreview={renderPreview}
-        />
-      )}
+      <ImageInput globalSeoImage={globalSeoImage} renderProps={renderProps} value={value} />
     </Stack>
+  )
+}
+
+const ImageInput = ({ globalSeoImage, renderProps, value }) => {
+  return (
+    <Card>
+      {globalSeoImage && <MemberField member={globalSeoImage} {...renderProps} />}{" "}
+      <Text style={{ marginTop: "12px", textAlign: "right" }} size={1} muted>
+        {!value?.seoImage ? (
+          <>
+            No value specified. The{" "}
+            <IntentLink
+              style={{ textDecoration: "none" }}
+              intent="edit"
+              params={{ id: "defaultSeo", type: "defaultSeo" }}
+            >
+              Default SEO
+            </IntentLink>{" "}
+            value will be used.
+          </>
+        ) : null}
+      </Text>
+    </Card>
   )
 }
