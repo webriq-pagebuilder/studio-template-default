@@ -1,7 +1,7 @@
 {
   "name": "@webriq-pagebuilder/studio-template-default",
   "private": true,
-  "version": "3.1.1",
+  "version": "3.2.0",
   "description": "",
   "main": "package.json",
   "author": "WebriQ <info@webriq.com>",
