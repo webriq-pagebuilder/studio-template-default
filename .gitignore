@@ -1,6 +1,8 @@
 /node_modules
+.sanity
 dist
 yarn-error.log
+tsconfig.tsbuildinfo
 
 # local env files
 .env
@@ -9,3 +11,7 @@ yarn-error.log
 .env.test.local
 .env.production.local
 .env*
+
+# pkg-utils
+.yalc
+yalc.lock

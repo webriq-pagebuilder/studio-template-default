@@ -1,17 +1,15 @@
-@import "part:@sanity/base/theme/variables-style";
-
 .wrapper {
   padding: 1rem;
 }
 
-.selectionWrapper {
+/* .selectionWrapper {
   display: flex;
   flex-wrap: wrap;
   @nest & div[class*="DefaultSelect_root"] {
     flex: 1;
     margin-right: 0.5em;
   }
-}
+} */
 
 .transcriptHeading {
   margin: 0;
@@ -19,5 +17,6 @@
 }
 
 .transcriptBody {
-  margin: 0;
+  margin-top: 5px;
+  font-size: medium;
 }
