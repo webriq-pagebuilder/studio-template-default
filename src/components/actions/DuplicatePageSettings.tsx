@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Badge,
   Box, 
+  Button, 
   Card, 
   Flex,
   Inline, 
@@ -105,9 +106,14 @@ export default function DuplicatePageSettings({ page, variants, setValues, setDi
           {pageTitle !== (page?.title || page?.name)  && (
             <ButtonWithTooltip toolTipText="Revert">
               <button
-                className="absolute top-0 right-0 z-20 mt-3 mr-3"
                 style={{ 
-                  cursor: pageTitle !== page?.title || page?.name ? null : "not-allowed"
+                  position: "absolute",
+                  border: 0,
+                  background: "transparent",
+                  top: 45,
+                  right: 30,
+                  zIndex: 99,
+                  marginTop: "12px",
                 }}
                 disabled={pageTitle === page?.title || page?.name}
                 onClick={() => setPageTitle(page?.title || page?.name)}
@@ -144,15 +150,18 @@ export default function DuplicatePageSettings({ page, variants, setValues, setDi
                   }}
                 >
                   {section?.isEditing ? (
-                    <div className="flex flex-wrap justify-between">
+                    <div style={{ display: "flex", flex: "wrap", justifyContent: "space-between" }}>
                       {/* Cancel button + search bar + feature buttons (restore and/or exclude) */}
-                      <div className="flex flex-wrap w-3/4">
+                      <div style={{ display: "flex", flex: "wrap", width: "75%" }}>
                         <ButtonWithTooltip toolTipText="Cancel">
-                          <button
-                            className="items-center text-center font-medium text-webriq-darkblue hover:text-webriq-babyblue"
+                          <button 
                             onClick={() => handleEditReferenceBtn(null, index)}
+                            style={{
+                              border: 0,
+                              background: "transparent",
+                            }}
                           >
-                            <ArrowLeftIcon style={{ fontSize: 30 }} />
+                            <ArrowLeftIcon style={{ fontSize: 24 }} />
                           </button>
                         </ButtonWithTooltip>
                         {/* Search bar to select variant */}
@@ -165,33 +174,41 @@ export default function DuplicatePageSettings({ page, variants, setValues, setDi
                           />
                         </Box>
                       </div>
-                      <div className="flex flex-wrap">
+                      <Flex>
                         {/* Revert changes button */}
                         {(section?.replaced || !section?.include) && (
                           <ButtonWithTooltip toolTipText="Revert">
-                            <button
-                              className="mr-3"
+                            <button 
                               onClick={() => handleFeatureButtons("revert", index)}
+                              style={{
+                                border: 0,
+                                background: "transparent",
+                              }}
                             >
-                              <RestoreIcon style={{ fontSize: 30 }} />
+                              <RestoreIcon style={{ fontSize: 24 }} />
                             </button>
                           </ButtonWithTooltip>
                         )}
                         {/* Exclude reference button */}
                         <ButtonWithTooltip toolTipText="Exclude">
-                          <button
+                          <button 
                             onClick={() => handleFeatureButtons("exclude", index)}
+                            style={{
+                              border: 0,
+                              background: "transparent",
+                              color: "maroon"
+                            }}
                           >
-                            <CloseCircleIcon style={{ fontSize: 30, color: "maroon" }} />
+                            <CloseCircleIcon style={{ fontSize: 24 }} />
                           </button>
                         </ButtonWithTooltip>
-                      </div>
+                      </Flex>
                     </div>
                   ) : (
                     <>
                       <Flex justify="space-between">
                         <Inline className="showBtn" space={2} padding={2}>
-                          <Text style={{ paddingTop: 7, minHeight: "24px" }}>
+                          <Text style={{ paddingTop: 7, minHeight: "22px" }}>
                             {section?.label ?? "Untitled document"}
                           </Text>
                           {!section?.include ? (
@@ -204,9 +221,14 @@ export default function DuplicatePageSettings({ page, variants, setValues, setDi
                           {/* Replace reference button */}
                           {section?.include && (
                             <ButtonWithTooltip toolTipText="Edit">
-                              <button
-                                className={`text-webriq-darkblue hover:text-webriq-babyblue ${!section?.isEditing && "hide"}`}
+                              <button 
+                                className={`${!section?.isEditing && "hide"}`}
                                 onClick={() => handleEditReferenceBtn(null, index)}
+                                style={{
+                                  border: 0,
+                                  background: "transparent",
+                                  color: "#0045d8"
+                                }}
                               >
                                 <ComposeIcon style={{ fontSize: 24 }} />
                               </button>
@@ -215,11 +237,14 @@ export default function DuplicatePageSettings({ page, variants, setValues, setDi
                           {/* Revert changes button */}
                           {!section?.isEditing && !section?.include && (
                             <ButtonWithTooltip toolTipText="Revert">
-                              <button
-                                className="mr-3"
+                              <button 
                                 onClick={() => handleFeatureButtons("revert", index)}
+                                style={{
+                                  border: 0,
+                                  background: "transparent",
+                                }}
                               >
-                                <RestoreIcon style={{ fontSize: 30 }} />
+                                <RestoreIcon style={{ fontSize: 24 }} />
                               </button>
                             </ButtonWithTooltip>
                           )}
