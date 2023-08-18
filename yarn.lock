@@ -2462,10 +2462,10 @@
     "@babel/plugin-transform-react-jsx-source" "^7.22.5"
     react-refresh "^0.14.0"
 
-"@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^3.2.2-feat-ai.1":
-  version "3.2.2-feat-ai.1"
-  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-3.2.2-feat-ai.1.tgz#4b966a5e34052d5d3e7dbcc7556f95558d0d784b"
-  integrity sha512-yrXS57uuHOviMVEMvyLuBU8iGHuPrLboVumOGrCT413mrP5vZIKqmQvew8Fe3DE9eXzk1zMbD79QfPutAO8I/A==
+"@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^3.2.2-feat-ai.2":
+  version "3.2.2-feat-ai.2"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-input-component-gpt3/-/sanity-plugin-input-component-gpt3-3.2.2-feat-ai.2.tgz#463294d7bb9a2c1d61bf74b768d105e6a2eeee22"
+  integrity sha512-wtrXbXihgDlfKFuEYZUs7HmfC0rL32VF1czlgpVqz51kMiRZT3yHb9M2P8yZ7NcgzC0YAcC9+G8sYTp2HWcbbw==
   dependencies:
     "@sanity/icons" "^2.4.1"
     "@sanity/incompatible-plugin" "^1.0.4"
