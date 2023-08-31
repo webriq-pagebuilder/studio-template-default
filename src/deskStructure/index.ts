@@ -2,9 +2,9 @@ import { deskTool as sanityDesktool } from "sanity/desk"
 
 import { Page } from "./pages"
 import { Store } from "./store"
-import { StudioDocs } from "./StudioDocs";
+import { StudioDocs } from "./StudioDocs"
 
-import { HelpCircleIcon } from "@sanity/icons";
+import { HelpCircleIcon } from "@sanity/icons"
 
 export default sanityDesktool({
   structure: (S) =>
@@ -19,7 +19,7 @@ export default sanityDesktool({
         S.listItem()
           .title("Guide")
           .icon(HelpCircleIcon)
-          .child(S.component(StudioDocs).title("Help Guide")),
+          .child(S.component(StudioDocs).title("Help Guide & Version")),
       ]),
   name: "desk",
   title: "Desk",
