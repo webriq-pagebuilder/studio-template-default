@@ -1,12 +1,13 @@
-import { ArrowTopRightIcon } from "@sanity/icons"
+import { FiExternalLink } from "react-icons/fi"
+
 import { lazy } from "react"
 import { DocumentInspector } from "sanity"
 
 const InlineEditBtn: DocumentInspector = {
   name: "InlineEditBtn",
   useMenuItem: () => ({
-    icon: ArrowTopRightIcon,
-    title: "Launch LIVE Edit",
+    icon: FiExternalLink,
+    title: "Launch Inline Editing",
     showAsAction: true,
   }),
   component: lazy(() => import("./LaunchPreview")),

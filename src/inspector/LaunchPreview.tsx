@@ -42,7 +42,7 @@ export default function LaunchPreview(props: DocumentInspectorProps) {
           <Text size={2} weight="bold">
             Inline Editing Launched 🚀
           </Text>
-          <Text size={1}>(This will automatically close in {countdown} seconds)</Text>
+          <Text size={1}>(This pane will automatically close in {countdown} seconds)</Text>
         </Stack>
       </Card>
     </Flex>
