@@ -3,7 +3,7 @@ import {
   SANITY_STUDIO_PROJECT_NAME,
   SANITY_STUDIO_DATASET,
   SANITY_STUDIO_API_PROJECT_ID,
-  SANITY_STUDIO_OPENAI_KEY
+  SANITY_STUDIO_OPENAI_KEY,
 } from "./src/config"
 
 // desk customization
@@ -30,6 +30,7 @@ import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
 import { webriqPayments } from "@webriq-pagebuilder/sanity-plugin-webriq-payments"
 import { webriqGPT3 } from "@webriq-pagebuilder/sanity-plugin-input-component-gpt3"
 import { webriqComponents } from "@webriq-pagebuilder/sanity-plugin-webriq-components"
+import { webriQInspectorInlineEdit } from "@webriq-pagebuilder/sanity-plugin-inspector-inline-edit"
 
 // Open preview
 import resolveProductionUrl from "./src/resolvePreviewUrl"
@@ -39,18 +40,19 @@ export default defineConfig({
   projectId: SANITY_STUDIO_API_PROJECT_ID,
   dataset: SANITY_STUDIO_DATASET,
   plugins: [
-    deskStructure, 
+    deskStructure,
     webriqComponents(),
-    visionTool(), 
-    webriqForms(), 
-    webriqPayments(), 
+    visionTool(),
+    webriqForms(),
+    webriqPayments(),
     webriqBlog(),
     webriqGPT3(),
     media(),
     codeInput(),
+    webriQInspectorInlineEdit(),
     openaiImageAsset({
-      API_KEY: SANITY_STUDIO_OPENAI_KEY // TODO: Update personal API key with default from WebriQ
-    })
+      API_KEY: SANITY_STUDIO_OPENAI_KEY, // TODO: Update personal API key with default from WebriQ
+    }),
   ],
   tools: (prev) => {
     // 👇 Uses environment variables set by Vite in development mode
@@ -69,7 +71,7 @@ export default defineConfig({
     image: {
       assetSources: (prev) => {
         // only display media browser and openai image assets as default options
-        return prev.filter((asset) => asset.name !== "sanity-default") 
+        return prev.filter((asset) => asset.name !== "sanity-default")
       },
     },
   },
@@ -78,14 +80,6 @@ export default defineConfig({
   },
   document: {
     badges: [LiveURLBadge],
-    actions: (prev, context) =>
-      ResolveDocumentActions({ prev, context }),
-    // Open preview link
-    productionUrl: async (prev, context) => {
-      // context includes the client and other details
-      const { document } = context
-
-      return resolveProductionUrl(document)
-    }
+    actions: (prev, context) => ResolveDocumentActions({ prev, context }),
   },
 })
