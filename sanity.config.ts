@@ -46,6 +46,7 @@ export default defineConfig({
     webriqPayments(),
     webriqBlog(),
     webriqGPT3(),
+    webriQInspectorInlineEdit(),
     media(),
     codeInput(),
   ],
