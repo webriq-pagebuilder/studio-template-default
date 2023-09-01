@@ -47,3 +47,12 @@ div[aria-label="List of Content"] > div:last-child {
   top: inherit !important;
 }
 /* End */
+
+/* Duplicate page settings modal */
+.hide {
+  display: none;
+}
+
+.showBtn:hover .hide {
+  display: block;
+}
