@@ -31,9 +31,6 @@ import { webriqGPT3 } from "@webriq-pagebuilder/sanity-plugin-input-component-gp
 import { webriqComponents } from "@webriq-pagebuilder/sanity-plugin-webriq-components"
 import { webriQInspectorInlineEdit } from "@webriq-pagebuilder/sanity-plugin-inspector-inline-edit"
 
-// Open preview
-import resolveProductionUrl from "./src/resolvePreviewUrl"
-
 export default defineConfig({
   title: SANITY_STUDIO_PROJECT_NAME,
   projectId: SANITY_STUDIO_API_PROJECT_ID,
