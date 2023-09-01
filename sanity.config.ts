@@ -29,6 +29,7 @@ import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
 import { webriqPayments } from "@webriq-pagebuilder/sanity-plugin-webriq-payments"
 import { webriqGPT3 } from "@webriq-pagebuilder/sanity-plugin-input-component-gpt3"
 import { webriqComponents } from "@webriq-pagebuilder/sanity-plugin-webriq-components"
+import { webriQInspectorInlineEdit } from "@webriq-pagebuilder/sanity-plugin-inspector-inline-edit"
 
 // Open preview
 import resolveProductionUrl from "./src/resolvePreviewUrl"
@@ -75,12 +76,5 @@ export default defineConfig({
   document: {
     badges: [LiveURLBadge],
     actions: (prev, context) => ResolveDocumentActions({ prev, context }),
-    // Open preview link
-    productionUrl: async (prev, context) => {
-      // context includes the client and other details
-      const { document } = context
-
-      return resolveProductionUrl(document)
-    },
   },
 })
