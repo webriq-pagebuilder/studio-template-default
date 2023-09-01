@@ -23,7 +23,6 @@ import { schemaTypes } from "./schemas/schema"
 import { media } from "sanity-plugin-media"
 import { codeInput } from "@sanity/code-input"
 
-import { openaiImageAsset } from "sanity-plugin-asset-source-openai"
 import { visionTool } from "@sanity/vision"
 import { webriqBlog } from "@webriq-pagebuilder/sanity-plugin-webriq-blog"
 import { webriqForms } from "@webriq-pagebuilder/sanity-plugin-webriq-forms"
@@ -49,10 +48,6 @@ export default defineConfig({
     webriqGPT3(),
     media(),
     codeInput(),
-    webriQInspectorInlineEdit(),
-    openaiImageAsset({
-      API_KEY: SANITY_STUDIO_OPENAI_KEY, // TODO: Update personal API key with default from WebriQ
-    }),
   ],
   tools: (prev) => {
     // 👇 Uses environment variables set by Vite in development mode
