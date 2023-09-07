@@ -2083,9 +2083,9 @@
     react-refractor "^2.1.7"
 
 "@sanity/ui@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.8.1.tgz#1dbea46d3d562cac48c36e18fa70978dcca16c28"
-  integrity sha512-ui20lmSeUTgwrFiybUBnO95HyJMEzdQJbvEoUN25fE0hcRHA0oQDG48281TUcPMDVPLDwSn9JYYpCbrA8/PZoA==
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.8.2.tgz#70f0c55e3bdd04b662d3cd84af168d4e27adfc2c"
+  integrity sha512-XWtVdIG1PWBEiNPcObRfXsX/EPhiPCHMmfdn+frPIVLTLnoQnNju3W9UQAWec+BwjXBCpPtfc36AoiQSDUkxzw==
   dependencies:
     "@floating-ui/react-dom" "2.0.0"
     "@sanity/color" "^2.2.5"
@@ -2481,6 +2481,16 @@
     "@babel/plugin-transform-react-jsx-self" "^7.22.5"
     "@babel/plugin-transform-react-jsx-source" "^7.22.5"
     react-refresh "^0.14.0"
+
+"@webriq-pagebuilder/sanity-plugin-desk-studio-version@^3.5.0-studio-version":
+  version "3.5.0-studio-version"
+  resolved "https://registry.yarnpkg.com/@webriq-pagebuilder/sanity-plugin-desk-studio-version/-/sanity-plugin-desk-studio-version-3.5.0-studio-version.tgz#c9f13993309ad970f29778b54b5a46c2e560072f"
+  integrity sha512-XWjFGt8zfjIhGlCMlRN5KD9s7bYVlAMcpsCCzNVpxWX9D9gX4zKQEOzwttcdeSGt/RkMFw/gNdZhBF1gddOWQw==
+  dependencies:
+    "@sanity/incompatible-plugin" "^1.0.4"
+    "@sanity/ui" "^1.8.1"
+    react-icons "^4.10.1"
+    semver "^7.5.4"
 
 "@webriq-pagebuilder/sanity-plugin-input-component-gpt3@^3.5.0-dall-e":
   version "3.5.0-dall-e"
@@ -3992,9 +4002,9 @@ framer-motion@^10.0.0, framer-motion@^10.13.1, framer-motion@^10.15.1:
     "@emotion/is-prop-valid" "^0.8.2"
 
 framer-motion@^10.16.1:
-  version "10.16.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.16.2.tgz#b737f628f69a883824024124dab452273f73cbba"
-  integrity sha512-aY6L9YMvqMWtfOQptaUvvr8dp97jskXY5UYLQM0vOPxKeERrG/Z034EIQZ/52u7MeCT0HlCQy3/l0HdUZCB9Tw==
+  version "10.16.4"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.16.4.tgz#30279ef5499b8d85db3a298ee25c83429933e9f8"
+  integrity sha512-p9V9nGomS3m6/CALXqv6nFGMuFOxbWsmaOrdmhyQimMIlLl3LC7h7l86wge/Js/8cRu5ktutS/zlzgR7eBOtFA==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -6204,7 +6214,7 @@ semver@^6.0.0, semver@^6.3.0, semver@^6.3.1:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
-semver@^7.3.5, semver@^7.3.7:
+semver@^7.3.5, semver@^7.3.7, semver@^7.5.4:
   version "7.5.4"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
   integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
