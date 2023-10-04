@@ -3,7 +3,6 @@ import {
   SANITY_STUDIO_PROJECT_NAME,
   SANITY_STUDIO_DATASET,
   SANITY_STUDIO_API_PROJECT_ID,
-  SANITY_STUDIO_OPENAI_KEY,
 } from "./src/config"
 
 // desk customization
